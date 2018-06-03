@@ -171,10 +171,6 @@
 
 
 
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2018/01/前端获取实时数据探索/" class="pageViews">0</span>次
-  </a>
-
         
         <a href="/2018/01/前端获取实时数据探索/" class="archive-article-date">
   	<time datetime="2018-01-06T14:05:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-06</time>
@@ -414,62 +410,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
 
-//�����Զ�һ��js�ļ�,���� layout\_parial\post Ŀ¼ leancloud.ejs��
-<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
-<script type="text/javascript"> 
-if(true){
-    var leancloud_app_id  = 'RhigvKP7dh5fI6OjFWIbsa9x-gzGzoHsz';
-    var leancloud_app_key = 'NcBFCOrThUeP2SDiBATpcR7S';
-
-    AV.init({
-        appId: leancloud_app_id,
-        appKey: leancloud_app_key
-    });
-
-    var pageViewsLength = $(".pageViews").length;
-
-    var isIndex = $(".pageViews").length > 1 ?true:false;
-
-    function showTime() {
-        var Counter = AV.Object.extend("Counter");
-        if(isIndex){
-            $(".pageViews").each(function(){
-                showPageViewsNum($(this),Counter);
-                addPageViewsNum($(this));
-            });
-        }else{
-            showPageViewsNum($(".pageViews"),Counter);
-            addPageViewsNum($(".pageViews"));
-        }
-    }
-
-    //��ʾ�Ķ���
-    function showPageViewsNum(ele,Counter){
-        var query = new AV.Query("Counter");
-        var url = ele.attr('id').trim();
-            query.equalTo("words", url);
-            query.count().then(function (number) {
-                $(document.getElementById(url)).text(number?  number : '0');
-            }, function (error) {
-                 $(document.getElementById(url)).text('0');
-            });
-    }
-
-    //׷���Ķ���
-    function addPageViewsNum(ele){
-        var url = ele.attr('id').trim();
-        var Counter = AV.Object.extend("Counter");
-        var query = new Counter;
-        query.save({
-            words: url
-        }).then(function (object) {});
-    }
-
-    if(pageViewsLength){ //�˴��жϵ��� 1 ��ִ�� ��ȥ��ѭ��
-        showTime();
-    }
-}
-</script> 
 
 
 #������ yilia ���������Դ�
@@ -533,15 +473,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,6 +486,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
               </li>
              
               <li class="article-tag-list-item">
