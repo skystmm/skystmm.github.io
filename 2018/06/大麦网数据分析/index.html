@@ -16,11 +16,12 @@
 <meta property="og:site_name" content="skystmm的博客">
 <meta property="og:description" content="最近看到很多爬虫到各种各样数据进行分析的文章，于是自己也想小试牛刀一下。最后决定尝试爬一下大麦网的数据。 数据获取决定了要爬去的目标，就开始对目标数据获取进行分析，通过chrome抓包分析接口，发现可以直接通过接口获取售卖信息的json数据，这样就可以省去对html的解析工作。顺便尝试一下python3的urllib3来获取数据。 123456789import urllib3pool = url">
 <meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png">
+<meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720180722224859.png">
 <meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E7%B1%BB%E5%9E%8B%E5%88%86%E5%B8%83.png">
 <meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E6%97%B6%E9%97%B4%E5%88%86%E5%B8%83.png">
 <meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E6%BC%94%E5%94%B1%E4%BC%9A%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png">
 <meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E8%AF%9D%E5%89%A7%E6%AD%8C%E5%89%A7%E5%AD%90%E7%B1%BB%E5%9E%8B%E5%88%86%E5%B8%83.png">
-<meta property="og:updated_time" content="2018-06-25T15:59:21.368Z">
+<meta property="og:updated_time" content="2018-07-22T14:54:26.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大麦网数据分析">
 <meta name="twitter:description" content="最近看到很多爬虫到各种各样数据进行分析的文章，于是自己也想小试牛刀一下。最后决定尝试爬一下大麦网的数据。 数据获取决定了要爬去的目标，就开始对目标数据获取进行分析，通过chrome抓包分析接口，发现可以直接通过接口获取售卖信息的json数据，这样就可以省去对html的解析工作。顺便尝试一下python3的urllib3来获取数据。 123456789import urllib3pool = url">
@@ -197,7 +198,8 @@
 <p>这样就完成了，大麦网数据的爬去和存盘工作。</p>
 <h2 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h2><p>第一次做数据分析，爬去的数据量也不大，总共爬去了当前有效的售票信息4847条。数据量和看的其他文章完全不在一个量级。首先对爬取数据按照城市进行了分类。</p>
 <p><img src="http://ov6si0726.bkt.clouddn.com/%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png" alt="大麦数据城市分类"></p>
-<p>可以看到意料之中的北上，排名第一第二，而第三名的武汉则场次数不到上海场次数的一半，这里只展示了排名前十五的城市。比较意外的是南京的场次数，因为以前有朋友说，南京是出了北上广深以外，演出最多的城市。</p>
+<p>可以看到意料之中的北上，排名第一第二，而第三名的武汉则场次数不到上海场次数的一半，这里只展示了排名前十五的城市。比较意外的是南京的场次数，因为以前有朋友说，南京是出了北上广深以外，演出最多的城市。然后再从地图的上直观的看一下演出分布的情况，如下图(<a href="http://ov6si0726.bkt.clouddn.com/%E5%94%AE%E7%A5%A8%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.html" target="_blank" rel="external">地图动态信息链接</a>)</p>
+<p><img src="http://ov6si0726.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720180722224859.png" alt="大麦数据城市分布详情"></p>
 <p><img src="http://ov6si0726.bkt.clouddn.com/%E7%B1%BB%E5%9E%8B%E5%88%86%E5%B8%83.png" alt="演出类型"></p>
 <p>从上图中可以看出，按照大麦大类来进行区分的话，售票信息最多的是话剧歌剧类。</p>
 <p><img src="http://ov6si0726.bkt.clouddn.com/%E6%97%B6%E9%97%B4%E5%88%86%E5%B8%83.png" alt="时间分布"></p>
@@ -536,19 +538,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,7 +550,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">工作相关</a>
               </li>
             
             <div class="clearfix"></div>
