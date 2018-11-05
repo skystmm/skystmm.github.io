@@ -9,6 +9,7 @@
   <title>Tomcat源码学习（二）——启动流程之load初探 | skystmm的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="上次对于Bootstrap类进行了学习，并且引出了Tomcat启动过程中一直有调用的Catalina类，今天就对Catalina类进行学习和分析。  根据Bootstrap类的main方法的调用顺序如下图所示： Bootstrap的实例在执行load方法实际调用的是Catalina的load方法。查看Catalina的源码可以发现有两个load方法。12public void load(Stri">
+<meta name="keywords" content="java,tomcat,源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tomcat源码学习（二）——启动流程之load初探">
 <meta property="og:url" content="https://stxl117.top/2018/11/Tomcat源码学习（二）——启动流程之load初探/index.html">
@@ -17,7 +18,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/136194-3d870c4093e696d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-967d0930242f2402.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-27efe74fc8370abb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-11-05T12:50:47.087Z">
+<meta property="og:updated_time" content="2018-11-05T12:54:57.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat源码学习（二）——启动流程之load初探">
 <meta name="twitter:description" content="上次对于Bootstrap类进行了学习，并且引出了Tomcat启动过程中一直有调用的Catalina类，今天就对Catalina类进行学习和分析。  根据Bootstrap类的main方法的调用顺序如下图所示： Bootstrap的实例在执行load方法实际调用的是Catalina的load方法。查看Catalina的源码可以发现有两个load方法。12public void load(Stri">
@@ -240,6 +241,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -516,15 +536,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
