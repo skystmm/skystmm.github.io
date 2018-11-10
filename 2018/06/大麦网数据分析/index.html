@@ -22,23 +22,23 @@ var _hmt = _hmt || [];
   <link rel="dns-prefetch" href="https://stxl117.top">
   <title>大麦网数据分析 | skystmm的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近看到很多爬虫到各种各样数据进行分析的文章，于是自己也想小试牛刀一下。最后决定尝试爬一下大麦网的数据。 数据获取决定了要爬去的目标，就开始对目标数据获取进行分析，通过chrome抓包分析接口，发现可以直接通过接口获取售卖信息的json数据，这样就可以省去对html的解析工作。顺便尝试一下python3的urllib3来获取数据。 123456789import urllib3pool = url">
+  <meta name="description" content="最近看到很多爬虫到各种各样数据进行分析的文章，于是自己也想小试牛刀一下。最后决定尝试爬一下大麦网的数据。">
 <meta name="keywords" content="python,爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大麦网数据分析">
 <meta property="og:url" content="https://stxl117.top/2018/06/大麦网数据分析/index.html">
 <meta property="og:site_name" content="skystmm的博客">
-<meta property="og:description" content="最近看到很多爬虫到各种各样数据进行分析的文章，于是自己也想小试牛刀一下。最后决定尝试爬一下大麦网的数据。 数据获取决定了要爬去的目标，就开始对目标数据获取进行分析，通过chrome抓包分析接口，发现可以直接通过接口获取售卖信息的json数据，这样就可以省去对html的解析工作。顺便尝试一下python3的urllib3来获取数据。 123456789import urllib3pool = url">
+<meta property="og:description" content="最近看到很多爬虫到各种各样数据进行分析的文章，于是自己也想小试牛刀一下。最后决定尝试爬一下大麦网的数据。">
 <meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png">
 <meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720180722224859.png">
 <meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E7%B1%BB%E5%9E%8B%E5%88%86%E5%B8%83.png">
 <meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E6%97%B6%E9%97%B4%E5%88%86%E5%B8%83.png">
 <meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E6%BC%94%E5%94%B1%E4%BC%9A%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png">
 <meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E8%AF%9D%E5%89%A7%E6%AD%8C%E5%89%A7%E5%AD%90%E7%B1%BB%E5%9E%8B%E5%88%86%E5%B8%83.png">
-<meta property="og:updated_time" content="2018-07-22T14:54:26.871Z">
+<meta property="og:updated_time" content="2018-11-10T02:11:18.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大麦网数据分析">
-<meta name="twitter:description" content="最近看到很多爬虫到各种各样数据进行分析的文章，于是自己也想小试牛刀一下。最后决定尝试爬一下大麦网的数据。 数据获取决定了要爬去的目标，就开始对目标数据获取进行分析，通过chrome抓包分析接口，发现可以直接通过接口获取售卖信息的json数据，这样就可以省去对html的解析工作。顺便尝试一下python3的urllib3来获取数据。 123456789import urllib3pool = url">
+<meta name="twitter:description" content="最近看到很多爬虫到各种各样数据进行分析的文章，于是自己也想小试牛刀一下。最后决定尝试爬一下大麦网的数据。">
 <meta name="twitter:image" content="http://ov6si0726.bkt.clouddn.com/%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png">
   
     <link rel="alternative" href="/atom.xml" title="skystmm的博客" type="application/atom+xml">
@@ -204,6 +204,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近看到很多爬虫到各种各样数据进行分析的文章，于是自己也想小试牛刀一下。最后决定尝试爬一下大麦网的数据。</p>
+<a id="more"></a>
 <h2 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h2><p>决定了要爬去的目标，就开始对目标数据获取进行分析，通过chrome抓包分析接口，发现可以直接通过接口获取售卖信息的json数据，这样就可以省去对html的解析工作。顺便尝试一下python3的urllib3来获取数据。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib3</div><div class="line"></div><div class="line">pool = urllib3.PoolManager()</div><div class="line"></div><div class="line">headers = &#123;</div><div class="line">        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36Name'</span>,</div><div class="line">        <span class="string">'Referer'</span>: base_page&#125;</div><div class="line"></div><div class="line">response = pool.request(<span class="string">'POST'</span>,url,param,headers=headers)</div></pre></td></tr></table></figure>
 <p>首先使用PoolManager来创建连接池，然后使用request方法来模拟数据获取接口请求，一开始没有添加http header伪装，在爬去到第15页左右数据时，开始出现访问被拒绝的情况。添加header以及添加两次请求间的时间价格，就可以完美的避开大麦的反扒机制。</p>
@@ -560,15 +561,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,6 +590,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
               </li>
             
             <div class="clearfix"></div>

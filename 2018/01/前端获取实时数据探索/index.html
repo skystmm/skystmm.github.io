@@ -22,18 +22,18 @@ var _hmt = _hmt || [];
   <link rel="dns-prefetch" href="https://stxl117.top">
   <title>前端获取实时数据探索 | skystmm的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端获取实时数据探索背景介绍最近在工作中，有个需求是前端需要获取实时展示最新的n条报警数据。使用http的请求响应，一问一答方式获取数据时，就出现可能部分数据获取不到的问题，然后在网上寻找和咨询老同事相关解决方案的时候，发现有使用DWR的方式进行向前端推送的解决方案， 解决思路1.ajax订阅ActiveMQajax订阅activeMQ获取实时数据的流程如下 使用ajax直接获取ActiveMQ">
+  <meta name="description" content="前端获取实时数据探索背景介绍最近在工作中，有个需求是前端需要获取实时展示最新的n条报警数据。使用http的请求响应，一问一答方式获取数据时，就出现可能部分数据获取不到的问题，然后在网上寻找和咨询老同事相关解决方案的时候，发现有使用DWR的方式进行向前端推送的解决方案，">
 <meta name="keywords" content="java,工作相关">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端获取实时数据探索">
 <meta property="og:url" content="https://stxl117.top/2018/01/前端获取实时数据探索/index.html">
 <meta property="og:site_name" content="skystmm的博客">
-<meta property="og:description" content="前端获取实时数据探索背景介绍最近在工作中，有个需求是前端需要获取实时展示最新的n条报警数据。使用http的请求响应，一问一答方式获取数据时，就出现可能部分数据获取不到的问题，然后在网上寻找和咨询老同事相关解决方案的时候，发现有使用DWR的方式进行向前端推送的解决方案， 解决思路1.ajax订阅ActiveMQajax订阅activeMQ获取实时数据的流程如下 使用ajax直接获取ActiveMQ">
+<meta property="og:description" content="前端获取实时数据探索背景介绍最近在工作中，有个需求是前端需要获取实时展示最新的n条报警数据。使用http的请求响应，一问一答方式获取数据时，就出现可能部分数据获取不到的问题，然后在网上寻找和咨询老同事相关解决方案的时候，发现有使用DWR的方式进行向前端推送的解决方案，">
 <meta property="og:image" content="https://stxl117.top/2018/images/ajax.png">
-<meta property="og:updated_time" content="2018-02-26T15:51:11.380Z">
+<meta property="og:updated_time" content="2018-11-10T02:11:13.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端获取实时数据探索">
-<meta name="twitter:description" content="前端获取实时数据探索背景介绍最近在工作中，有个需求是前端需要获取实时展示最新的n条报警数据。使用http的请求响应，一问一答方式获取数据时，就出现可能部分数据获取不到的问题，然后在网上寻找和咨询老同事相关解决方案的时候，发现有使用DWR的方式进行向前端推送的解决方案， 解决思路1.ajax订阅ActiveMQajax订阅activeMQ获取实时数据的流程如下 使用ajax直接获取ActiveMQ">
+<meta name="twitter:description" content="前端获取实时数据探索背景介绍最近在工作中，有个需求是前端需要获取实时展示最新的n条报警数据。使用http的请求响应，一问一答方式获取数据时，就出现可能部分数据获取不到的问题，然后在网上寻找和咨询老同事相关解决方案的时候，发现有使用DWR的方式进行向前端推送的解决方案，">
 <meta name="twitter:image" content="https://stxl117.top/2018/images/ajax.png">
   
     <link rel="alternative" href="/atom.xml" title="skystmm的博客" type="application/atom+xml">
@@ -198,7 +198,8 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前端获取实时数据探索"><a href="#前端获取实时数据探索" class="headerlink" title="前端获取实时数据探索"></a>前端获取实时数据探索</h1><h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>最近在工作中，有个需求是前端需要获取实时展示最新的n条报警数据。使用http的请求响应，一问一答方式获取数据时，就出现可能部分数据获取不到的问题，然后在网上寻找和咨询老同事相关解决方案的时候，发现有使用DWR的方式进行向前端推送的解决方案，</p>
+        <h1 id="前端获取实时数据探索"><a href="#前端获取实时数据探索" class="headerlink" title="前端获取实时数据探索"></a>前端获取实时数据探索</h1><h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>最近在工作中，有个需求是前端需要获取实时展示最新的n条报警数据。使用http的请求响应，一问一答方式获取数据时，就出现可能部分数据获取不到的问题，然后在网上寻找和咨询老同事相关解决方案的时<br>候，发现有使用DWR的方式进行向前端推送的解决方案，</p>
+<a id="more"></a>
 <h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><h3 id="1-ajax订阅ActiveMQ"><a href="#1-ajax订阅ActiveMQ" class="headerlink" title="1.ajax订阅ActiveMQ"></a>1.ajax订阅ActiveMQ</h3><p>ajax订阅activeMQ获取实时数据的流程如下<br><img src="../../images/ajax.png" alt="ajax订阅activeMQ数据流程图"></p>
 <p>使用ajax直接获取ActiveMQ topic中的数据，可以在activeMQ 官网中，找到Demo。需要在相应的页面中引入amq.js,amq_jquery_adapter.js以及jquery-1.4.2.min.js三个js文件，并且在后端添加相应的servlet配置。</p>
 <p>demo中给出的配置如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>AjaxServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.apache.activemq.web.AjaxServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">async-supported</span>&gt;</span>true<span class="tag">&lt;/<span class="name">async-supported</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></div><div class="line">       	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>AjaxServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line">       	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/amq/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- activeMQ 服务地址 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>org.apache.activemq.brokerURL<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>tcp://127.0.0.1:61616<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></div></pre></td></tr></table></figure></p>
@@ -543,15 +544,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,6 +573,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
               </li>
             
             <div class="clearfix"></div>
