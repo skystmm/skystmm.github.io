@@ -197,8 +197,6 @@ var _hmt = _hmt || [];
 <p>上次对于Bootstrap类进行了学习，并且引出了Tomcat启动过程中一直有调用的Catalina类，今天就对Catalina类进行学习和分析。</p>
 </blockquote>
         
-          <a class="article-more-a" href="/2018/11/Tomcat源码学习（二）——启动流程之load初探/#more">more >></a>
-        
       
 
       
@@ -292,8 +290,6 @@ var _hmt = _hmt || [];
 <p><a href="https://github.com/apache/tomcat" target="_blank" rel="external">https://github.com/apache/tomcat</a><br>这里使用idea的git直接从github上拉去了最新源码，同时方便获取最新修改。</p>
 </blockquote>
         
-          <a class="article-more-a" href="/2018/11/Tomcat源码学习（一）——Bootstarp入口类/#more">more >></a>
-        
       
 
       
@@ -384,8 +380,6 @@ var _hmt = _hmt || [];
       
         <p>最近看到很多爬虫到各种各样数据进行分析的文章，于是自己也想小试牛刀一下。最后决定尝试爬一下大麦网的数据。</p>
         
-          <a class="article-more-a" href="/2018/06/大麦网数据分析/#more">more >></a>
-        
       
 
       
@@ -473,8 +467,6 @@ var _hmt = _hmt || [];
         <h1 id="AQS源码分析"><a href="#AQS源码分析" class="headerlink" title="AQS源码分析"></a>AQS源码分析</h1><h2 id="AbstractQueuedSynchronizer类结构分析"><a href="#AbstractQueuedSynchronizer类结构分析" class="headerlink" title="AbstractQueuedSynchronizer类结构分析"></a>AbstractQueuedSynchronizer类结构分析</h2><p><img src="http://ov6si0726.bkt.clouddn.com/AQS.png" alt="AbstractQueuedSynchronizer"></p>
 <p>其中AbstractOwnaleSynchronizer提供了当前资源拥有者相关的操作，AbatractQueuedSynchronizer（下文中简称为AQS）这个抽象类中主要提供了对互斥锁和共享锁相关操作提供了基础功能的实现，以及提供了对于不同场景下的加锁和释放锁的方法定义。</p>
 <p>而AQS这个抽象类中主要为我们提供了对于CLH队列的一系列操作，包括无法获得请求资源时的如队列操作和资源释放时怎么通知等待队列中的节点获取资源的操作。这样使得我们在需要自己实现锁功能时，只要需要专注于具体的加锁和释放锁操作。下面来看一下AQS中核心的数据结构CLH队列。</p>
-        
-          <a class="article-more-a" href="/2018/05/AQS源码分析-md/#more">more >></a>
         
       
 
@@ -632,8 +624,6 @@ var _hmt = _hmt || [];
       
         <h1 id="ConcurrentHashMap学习笔记"><a href="#ConcurrentHashMap学习笔记" class="headerlink" title="ConcurrentHashMap学习笔记"></a>ConcurrentHashMap学习笔记</h1>
         
-          <a class="article-more-a" href="/2018/02/concurrentHashMap学习笔记/#more">more >></a>
-        
       
 
       
@@ -722,8 +712,6 @@ var _hmt = _hmt || [];
 <li>Python网络数据采集（已读）</li>
 </ol>
         
-          <a class="article-more-a" href="/2018/01/2018技术读书计划及笔记/#more">more >></a>
-        
       
 
       
@@ -805,8 +793,6 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="前端获取实时数据探索"><a href="#前端获取实时数据探索" class="headerlink" title="前端获取实时数据探索"></a>前端获取实时数据探索</h1><h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>最近在工作中，有个需求是前端需要获取实时展示最新的n条报警数据。使用http的请求响应，一问一答方式获取数据时，就出现可能部分数据获取不到的问题，然后在网上寻找和咨询老同事相关解决方案的时<br>候，发现有使用DWR的方式进行向前端推送的解决方案，</p>
-        
-          <a class="article-more-a" href="/2018/01/前端获取实时数据探索/#more">more >></a>
         
       
 
@@ -900,8 +886,6 @@ var _hmt = _hmt || [];
 <p>yum install wget</p>
 </blockquote>
 <p>安装wget</p>
-        
-          <a class="article-more-a" href="/2017/12/python环境搭建/#more">more >></a>
         
       
 
@@ -1135,15 +1119,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1155,6 +1131,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -1163,11 +1147,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作相关</a>
               </li>
             
             <div class="clearfix"></div>
