@@ -381,13 +381,31 @@ var _hmt = _hmt || [];
 
 
   
-  
-  
 
   
 
   
 
+  
+
+
+
+<div class="gitalk">
+    <div id="gitalk-container"></div>
+    <script type="text/javascript">
+        const gitalk = new Gitalk({
+            clientID: '65bbb016d27827ea2bb7',
+            clientSecret: 'a0a18bcc6db0c995d95485acdcdf3a5ef43b220a',
+            repo: 'skystmm.github.io',
+            owner: 'skystmm',
+            admin: ['skystmm'],
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+</div>
 
 
 
