@@ -20,14 +20,22 @@ var _hmt = _hmt || [];
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://stxl117.top">
-  <title>Archives: 2018 | skystmm的博客</title>
+  <title>Tomcat源码学习(三)——启动流程之start | skystmm的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="skystmm的博客">
-<meta property="og:url" content="https://stxl117.top/archives/2018/index.html">
+  <meta name="description" content="Tomcat源码学习(三)——启动流程之start 上一篇对于load过程进行学习，从Bootstrap的入口类可以看到启动过程主要分为三个流程——init,load和start。之前已经学习了init和load的源码，今天就来一探tomcat启动中最后一个流程start">
+<meta name="keywords" content="java,tomcat,源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tomcat源码学习(三)——启动流程之start">
+<meta property="og:url" content="https://stxl117.top/2018/11/tomcat3/index.html">
 <meta property="og:site_name" content="skystmm的博客">
+<meta property="og:description" content="Tomcat源码学习(三)——启动流程之start 上一篇对于load过程进行学习，从Bootstrap的入口类可以看到启动过程主要分为三个流程——init,load和start。之前已经学习了init和load的源码，今天就来一探tomcat启动中最后一个流程start">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/136194-3d870c4093e696d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-cd41e2e41f6b61bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-11T07:06:27.654Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="skystmm的博客">
+<meta name="twitter:title" content="Tomcat源码学习(三)——启动流程之start">
+<meta name="twitter:description" content="Tomcat源码学习(三)——启动流程之start 上一篇对于load过程进行学习，从Bootstrap的入口类可以看到启动过程主要分为三个流程——init,load和start。之前已经学习了init和load的源码，今天就来一探tomcat启动中最后一个流程start">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/136194-3d870c4093e696d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="skystmm的博客" type="application/atom+xml">
   
@@ -165,31 +173,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-tomcat3" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/tomcat3/" class="archive-article-date">
-  	<time datetime="2018-11-11T06:51:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/tomcat3/">Tomcat源码学习(三)——启动流程之start</a>
+    <h1 class="article-title" itemprop="name">
+      Tomcat源码学习(三)——启动流程之start
     </h1>
   
 
@@ -200,8 +191,67 @@ var _hmt = _hmt || [];
   </a>
 
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/11/tomcat3/" class="archive-article-date">
+  	<time datetime="2018-11-11T06:51:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-11</time>
+</a>
+        
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Tomcat源码学习-三-——启动流程之start"><a href="#Tomcat源码学习-三-——启动流程之start" class="headerlink" title="Tomcat源码学习(三)——启动流程之start"></a>Tomcat源码学习(三)——启动流程之start</h1><blockquote>
+<p>上一篇对于load过程进行学习，从Bootstrap的入口类可以看到启动过程主要分为三个流程——init,load和start。之前已经学习了init和load的源码，今天就来一探tomcat启动中最后一个流程start<br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/136194-3d870c4093e696d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Tomcat启动Bootstrap调用顺序"></p>
+</blockquote>
+<p>之前我们看到bootstarp的start方法实际是通过反射调用了Catalina的start方法，接下来就看一下start方法的内容<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">    * Start a new server instance.</div><div class="line">    */</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (getServer() == <span class="keyword">null</span>) &#123;</div><div class="line">           load();</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">if</span> (getServer() == <span class="keyword">null</span>) &#123;</div><div class="line">           log.fatal(<span class="string">"Cannot start server. Server instance is not configured."</span>);</div><div class="line">           <span class="keyword">return</span>;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">long</span> t1 = System.nanoTime();</div><div class="line">       <span class="comment">// Start the new server</span></div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           getServer().start();</div><div class="line">       &#125; <span class="keyword">catch</span> (LifecycleException e) &#123;</div><div class="line">           log.fatal(sm.getString(<span class="string">"catalina.serverStartFail"</span>), e);</div><div class="line">           <span class="keyword">try</span> &#123;</div><div class="line">               getServer().destroy();</div><div class="line">           &#125; <span class="keyword">catch</span> (LifecycleException e1) &#123;</div><div class="line">               log.debug(<span class="string">"destroy() failed for failed Server "</span>, e1);</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">return</span>;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">long</span> t2 = System.nanoTime();</div><div class="line">       <span class="keyword">if</span>(log.isInfoEnabled()) &#123;</div><div class="line">           log.info(<span class="string">"Server startup in "</span> + ((t2 - t1) / <span class="number">1000000</span>) + <span class="string">" ms"</span>);</div><div class="line">       &#125;</div><div class="line">       <span class="comment">// Register shutdown hook</span></div><div class="line">       <span class="keyword">if</span> (useShutdownHook) &#123;</div><div class="line">           <span class="keyword">if</span> (shutdownHook == <span class="keyword">null</span>) &#123;</div><div class="line">               shutdownHook = <span class="keyword">new</span> CatalinaShutdownHook();</div><div class="line">           &#125;</div><div class="line">           Runtime.getRuntime().addShutdownHook(shutdownHook);</div><div class="line"></div><div class="line">           <span class="comment">// If JULI is being used, disable JULI's shutdown hook since</span></div><div class="line">           <span class="comment">// shutdown hooks run in parallel and log messages may be lost</span></div><div class="line">           <span class="comment">// if JULI's hook completes before the CatalinaShutdownHook()</span></div><div class="line">           LogManager logManager = LogManager.getLogManager();</div><div class="line">           <span class="keyword">if</span> (logManager <span class="keyword">instanceof</span> ClassLoaderLogManager) &#123;</div><div class="line">               ((ClassLoaderLogManager) logManager).setUseShutdownHook(</div><div class="line">                       <span class="keyword">false</span>);</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">if</span> (await) &#123;</div><div class="line">           await(); <span class="comment">//监听关闭服务连接信息端口并阻塞，默认8005</span></div><div class="line">           stop();</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>首先可以看到，会对server进行npl检测，如果server没有初始化就会调用load方法来进行初始化工作，然后映入眼帘的就是Start方法——今天的正主了；完成start后，会向JVM中添加钩子方法，这里的钩子方法时为了优雅的关闭tomcat。</p>
+<p>点到getServer().start()方法，会发现有一次来到了LifecycleBase类，这会不一样的是我们看到的是一个新的模板方法start。让我们来先看看start方法都做了什么<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> <span class="keyword">throws</span> LifecycleException </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (LifecycleState.STARTING_PREP.equals(state) || LifecycleState.STARTING.equals(state) ||</div><div class="line">                LifecycleState.STARTED.equals(state)) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</div><div class="line">                Exception e = <span class="keyword">new</span> LifecycleException();</div><div class="line">                log.debug(sm.getString(<span class="string">"lifecycleBase.alreadyStarted"</span>, toString()), e);</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (log.isInfoEnabled()) &#123;</div><div class="line">                log.info(sm.getString(<span class="string">"lifecycleBase.alreadyStarted"</span>, toString()));</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (state.equals(LifecycleState.NEW)) &#123;</div><div class="line">            init();</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (state.equals(LifecycleState.FAILED)) &#123;</div><div class="line">            stop();</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!state.equals(LifecycleState.INITIALIZED) &amp;&amp;</div><div class="line">                !state.equals(LifecycleState.STOPPED)) &#123;</div><div class="line">            invalidTransition(Lifecycle.BEFORE_START_EVENT);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            setStateInternal(LifecycleState.STARTING_PREP, <span class="keyword">null</span>, <span class="keyword">false</span>);</div><div class="line">            startInternal();</div><div class="line">            <span class="keyword">if</span> (state.equals(LifecycleState.FAILED)) &#123;</div><div class="line">                <span class="comment">// This is a 'controlled' failure. The component put itself into the</span></div><div class="line">                <span class="comment">// FAILED state so call stop() to complete the clean-up.</span></div><div class="line">                stop();</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!state.equals(LifecycleState.STARTING)) &#123;</div><div class="line">                <span class="comment">// Shouldn't be necessary but acts as a check that sub-classes are</span></div><div class="line">                <span class="comment">// doing what they are supposed to.</span></div><div class="line">                invalidTransition(Lifecycle.AFTER_START_EVENT);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                setStateInternal(LifecycleState.STARTED, <span class="keyword">null</span>, <span class="keyword">false</span>);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (Throwable t) &#123;</div><div class="line">            <span class="comment">// This is an 'uncontrolled' failure so put the component into the</span></div><div class="line">            <span class="comment">// FAILED state and throw an exception.</span></div><div class="line">            handleSubClassException(t, <span class="string">"lifecycleBase.startFail"</span>, toString());</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>看到start的实现，会发现比init方法处理复杂了很多，细看会发现start方法会对当前的LifecycleBase实例的状态进行判断，然后调用startInternal方法，然后根据startInternal的结果，再次更新该实例的状态。相当于一个流程控制。这里又引出了startInternal方法，这个就会在继承了LifecycleBase的实现类中实现了，上文中提到过tomcat默认的server是StandardServer，那么就来看看server的Start到底做了些什么。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">startInternal</span><span class="params">()</span> <span class="keyword">throws</span> LifecycleException </span>&#123;</div><div class="line"></div><div class="line">       fireLifecycleEvent(CONFIGURE_START_EVENT, <span class="keyword">null</span>);</div><div class="line">       setState(LifecycleState.STARTING);</div><div class="line"></div><div class="line">       globalNamingResources.start();</div><div class="line"></div><div class="line">       <span class="comment">// Start our defined Services</span></div><div class="line">       <span class="keyword">synchronized</span> (servicesLock) &#123;</div><div class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; services.length; i++) &#123;</div><div class="line">               services[i].start();</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>从代码汇总可以看到，StandardServr的start过程是先根据Server实例创建生命周期事件实例，再将该事件实例依次注册到配置的listener上。最后一次执行Service的start方法来启动配置的ServerService。在对load过程学习的时候，我们知道默认情况下ServerServIce只有一个——StandardService。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">startInternal</span><span class="params">()</span> <span class="keyword">throws</span> LifecycleException </span>&#123;</div><div class="line"></div><div class="line">       <span class="keyword">if</span>(log.isInfoEnabled())</div><div class="line">           log.info(sm.getString(<span class="string">"standardService.start.name"</span>, <span class="keyword">this</span>.name));</div><div class="line">       setState(LifecycleState.STARTING);</div><div class="line"></div><div class="line">       <span class="comment">// Start our defined Container first</span></div><div class="line">       <span class="keyword">if</span> (engine != <span class="keyword">null</span>) &#123;</div><div class="line">           <span class="keyword">synchronized</span> (engine) &#123;</div><div class="line">               engine.start();</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">synchronized</span> (executors) &#123;</div><div class="line">           <span class="keyword">for</span> (Executor executor: executors) &#123;</div><div class="line">               executor.start();</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       mapperListener.start();</div><div class="line"></div><div class="line">       <span class="comment">// Start our defined Connectors second</span></div><div class="line">       <span class="keyword">synchronized</span> (connectorsLock) &#123;</div><div class="line">           <span class="keyword">for</span> (Connector connector: connectors) &#123;</div><div class="line">               <span class="comment">// If it has already failed, don't try and start it</span></div><div class="line">               <span class="keyword">if</span> (connector.getState() != LifecycleState.FAILED) &#123;</div><div class="line">                   connector.start();</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到start过程和load过程是对应的，不过相对于load过程，对于container，executor和connector的start都使用了同步操作。</p>
+<p>那么就先来看看Container的启动过程，根据load学习，得知了默认的container是StandardEngine，它的UML关系如下<br><img src="https://upload-images.jianshu.io/upload_images/7504708-cd41e2e41f6b61bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="StandardEngine 继承关系"></p>
+<p>阅读源码会发现StandardEngine的启动过程，是在其父类ContainerBase中实现的，话不多说先来一波源码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">startInternal</span><span class="params">()</span> <span class="keyword">throws</span> LifecycleException </span>&#123;</div><div class="line">       <span class="comment">// Start our subordinate components, if any</span></div><div class="line">       logger = <span class="keyword">null</span>;</div><div class="line">       getLogger();</div><div class="line">       Cluster cluster = getClusterInternal();</div><div class="line">       <span class="keyword">if</span> (cluster <span class="keyword">instanceof</span> Lifecycle) &#123;</div><div class="line">           ((Lifecycle) cluster).start();</div><div class="line">       &#125;</div><div class="line">       Realm realm = getRealmInternal();</div><div class="line">       <span class="keyword">if</span> (realm <span class="keyword">instanceof</span> Lifecycle) &#123;</div><div class="line">           ((Lifecycle) realm).start();</div><div class="line">       &#125;</div><div class="line">       <span class="comment">// Start our child containers, if any</span></div><div class="line">       Container children[] = findChildren();</div><div class="line">       List&lt;Future&lt;Void&gt;&gt; results = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; children.length; i++) &#123;</div><div class="line">           results.add(startStopExecutor.submit(<span class="keyword">new</span> StartChild(children[i])));</div><div class="line">       &#125;</div><div class="line">       MultiThrowable multiThrowable = <span class="keyword">null</span>;</div><div class="line">       <span class="keyword">for</span> (Future&lt;Void&gt; result : results) &#123;</div><div class="line">           <span class="keyword">try</span> &#123;</div><div class="line">               result.get();</div><div class="line">           &#125; <span class="keyword">catch</span> (Throwable e) &#123;</div><div class="line">               log.error(sm.getString(<span class="string">"containerBase.threadedStartFailed"</span>), e);</div><div class="line">               <span class="keyword">if</span> (multiThrowable == <span class="keyword">null</span>) &#123;</div><div class="line">                   multiThrowable = <span class="keyword">new</span> MultiThrowable();</div><div class="line">               &#125;</div><div class="line">               multiThrowable.add(e);</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">if</span> (multiThrowable != <span class="keyword">null</span>) &#123;</div><div class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> LifecycleException(sm.getString(<span class="string">"containerBase.threadedStartFailed"</span>),</div><div class="line">                   multiThrowable.getThrowable());</div><div class="line">       &#125;</div><div class="line">       <span class="comment">// Start the Valves in our pipeline (including the basic), if any</span></div><div class="line">       <span class="keyword">if</span> (pipeline <span class="keyword">instanceof</span> Lifecycle) &#123;</div><div class="line">           ((Lifecycle) pipeline).start();</div><div class="line">       &#125;</div><div class="line">       setState(LifecycleState.STARTING);</div><div class="line">       <span class="comment">// Start our thread</span></div><div class="line">       threadStart();</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>在container的启动过程中，会异步的对container的子container进行Start的操作。并通过Future来获取其子container的Start结果，如果其中任何一个子container启动异常，都会添加到multiThrowable实例中，然后抛出异常。最后拉起Container的校验session有效期的线程,同时该线程也是一个守护线程。同时在启动Container的时，会对webapp(在server.xml中可进行配置)目录下，自己发布的应用程序进行加载和初始化。</p>
+<p>接下来对配置的工作线程池进行启动操作，源码中提供的默认server.xml中并没有配置工作线程池，不配置时所有的connector共享一个默认线程池，配置后connector可以使用专属的线程池,给8080端口配置使用名称为tomcatThreadPool的线程池，方法如下<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Executor</span> <span class="attr">name</span>=<span class="string">"tomcatThreadPool"</span> <span class="attr">namePrefix</span>=<span class="string">"catalina-exec-"</span></span></div><div class="line">        <span class="attr">maxThreads</span>=<span class="string">"150"</span> <span class="attr">minSpareThreads</span>=<span class="string">"4"</span>/&gt;</div><div class="line"><span class="tag">&lt;<span class="name">Connector</span> <span class="attr">executor</span>=<span class="string">"tomcatThreadPool"</span></span></div><div class="line">               <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span></div><div class="line">               <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span></div><div class="line">               <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<p>访问8080端口时，将会使用tomcatThraeadPool这个线程池中的线程进行处理，而不是默认线程池。最后进行connector的启动。到这里tomcat完成了整个启动过程，可以对外提供服务了。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>动动手，支持一下<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -221,396 +271,108 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://stxl117.top/2018/11/tomcat3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/Tomcat源码学习（二）——启动流程之load初探/" class="archive-article-date">
-  	<time datetime="2018-11-05T12:50:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/Tomcat源码学习（二）——启动流程之load初探/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Tomcat源码学习（二）——启动流程之load初探</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/Tomcat源码学习（二）——启动流程之load初探/">Tomcat源码学习（二）——启动流程之load初探</a>
-    </h1>
+  
   
 
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2018/11/Tomcat源码学习（二）——启动流程之load初探/" class="pageViews">0</span>次
-  </a>
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/Tomcat源码学习（一）——Bootstarp入口类/" class="archive-article-date">
-  	<time datetime="2018-11-05T12:40:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/Tomcat源码学习（一）——Bootstarp入口类/">Tomcat源码学习（一）——Bootstarp入口类</a>
-    </h1>
+
   
 
 
 
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2018/11/Tomcat源码学习（一）——Bootstarp入口类/" class="pageViews">0</span>次
-  </a>
 
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/大麦网数据分析/" class="archive-article-date">
-  	<time datetime="2018-06-25T12:03:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/大麦网数据分析/">大麦网数据分析</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2018/06/大麦网数据分析/" class="pageViews">0</span>次
-  </a>
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/AQS源码分析-md/" class="archive-article-date">
-  	<time datetime="2018-05-15T14:45:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/AQS源码分析-md/">AQS源码分析</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2018/05/AQS源码分析-md/" class="pageViews">0</span>次
-  </a>
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">J.U.C</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/面试总结-2018/" class="archive-article-date">
-  	<time datetime="2018-03-26T08:49:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/面试总结-2018/">面试总结-2018</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2018/03/面试总结-2018/" class="pageViews">0</span>次
-  </a>
-
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/concurrentHashMap学习笔记/" class="archive-article-date">
-  	<time datetime="2018-02-13T02:28:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/concurrentHashMap学习笔记/">ConcurrentHashMap学习笔记</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2018/02/concurrentHashMap学习笔记/" class="pageViews">0</span>次
-  </a>
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/2018技术读书计划及笔记/" class="archive-article-date">
-  	<time datetime="2018-01-28T14:00:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/2018技术读书计划及笔记/">2018读书计划及笔记</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2018/01/2018技术读书计划及笔记/" class="pageViews">0</span>次
-  </a>
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/前端获取实时数据探索/" class="archive-article-date">
-  	<time datetime="2018-01-06T14:05:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/前端获取实时数据探索/">前端获取实时数据探索</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2018/01/前端获取实时数据探索/" class="pageViews">0</span>次
-  </a>
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工作相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -641,8 +403,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
