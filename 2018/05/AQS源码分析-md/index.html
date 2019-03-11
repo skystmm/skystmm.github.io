@@ -29,12 +29,12 @@ var _hmt = _hmt || [];
 <meta property="og:url" content="https://stxl117.top/2018/05/AQS源码分析-md/index.html">
 <meta property="og:site_name" content="skystmm的博客">
 <meta property="og:description" content="AQS源码分析AbstractQueuedSynchronizer类结构分析 其中AbstractOwnaleSynchronizer提供了当前资源拥有者相关的操作，AbatractQueuedSynchronizer（下文中简称为AQS）这个抽象类中主要提供了对互斥锁和共享锁相关操作提供了基础功能的实现，以及提供了对于不同场景下的加锁和释放锁的方法定义。 而AQS这个抽象类中主要为我们提供了对于">
-<meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/AQS.png">
-<meta property="og:updated_time" content="2018-11-10T03:16:03.457Z">
+<meta property="og:image" content="http://image.stxl117.top/AQS.png">
+<meta property="og:updated_time" content="2019-03-11T13:54:12.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AQS源码分析">
 <meta name="twitter:description" content="AQS源码分析AbstractQueuedSynchronizer类结构分析 其中AbstractOwnaleSynchronizer提供了当前资源拥有者相关的操作，AbatractQueuedSynchronizer（下文中简称为AQS）这个抽象类中主要提供了对互斥锁和共享锁相关操作提供了基础功能的实现，以及提供了对于不同场景下的加锁和释放锁的方法定义。 而AQS这个抽象类中主要为我们提供了对于">
-<meta name="twitter:image" content="http://ov6si0726.bkt.clouddn.com/AQS.png">
+<meta name="twitter:image" content="http://image.stxl117.top/AQS.png">
   
     <link rel="alternative" href="/atom.xml" title="skystmm的博客" type="application/atom+xml">
   
@@ -200,7 +200,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="AQS源码分析"><a href="#AQS源码分析" class="headerlink" title="AQS源码分析"></a>AQS源码分析</h1><h2 id="AbstractQueuedSynchronizer类结构分析"><a href="#AbstractQueuedSynchronizer类结构分析" class="headerlink" title="AbstractQueuedSynchronizer类结构分析"></a>AbstractQueuedSynchronizer类结构分析</h2><p><img src="http://ov6si0726.bkt.clouddn.com/AQS.png" alt="AbstractQueuedSynchronizer"></p>
+        <h1 id="AQS源码分析"><a href="#AQS源码分析" class="headerlink" title="AQS源码分析"></a>AQS源码分析</h1><h2 id="AbstractQueuedSynchronizer类结构分析"><a href="#AbstractQueuedSynchronizer类结构分析" class="headerlink" title="AbstractQueuedSynchronizer类结构分析"></a>AbstractQueuedSynchronizer类结构分析</h2><p><img src="http://image.stxl117.top/AQS.png" alt="AbstractQueuedSynchronizer"></p>
 <p>其中AbstractOwnaleSynchronizer提供了当前资源拥有者相关的操作，AbatractQueuedSynchronizer（下文中简称为AQS）这个抽象类中主要提供了对互斥锁和共享锁相关操作提供了基础功能的实现，以及提供了对于不同场景下的加锁和释放锁的方法定义。</p>
 <p>而AQS这个抽象类中主要为我们提供了对于CLH队列的一系列操作，包括无法获得请求资源时的如队列操作和资源释放时怎么通知等待队列中的节点获取资源的操作。这样使得我们在需要自己实现锁功能时，只要需要专注于具体的加锁和释放锁操作。下面来看一下AQS中核心的数据结构CLH队列。</p>
 <a id="more"></a>
@@ -581,15 +581,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,19 +617,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作相关</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作相关</a>
               </li>
             
             <div class="clearfix"></div>
