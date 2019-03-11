@@ -29,17 +29,17 @@ var _hmt = _hmt || [];
 <meta property="og:url" content="https://stxl117.top/2018/06/大麦网数据分析/index.html">
 <meta property="og:site_name" content="skystmm的博客">
 <meta property="og:description" content="最近看到很多爬虫到各种各样数据进行分析的文章，于是自己也想小试牛刀一下。最后决定尝试爬一下大麦网的数据。">
-<meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png">
-<meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720180722224859.png">
-<meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E7%B1%BB%E5%9E%8B%E5%88%86%E5%B8%83.png">
-<meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E6%97%B6%E9%97%B4%E5%88%86%E5%B8%83.png">
-<meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E6%BC%94%E5%94%B1%E4%BC%9A%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png">
-<meta property="og:image" content="http://ov6si0726.bkt.clouddn.com/%E8%AF%9D%E5%89%A7%E6%AD%8C%E5%89%A7%E5%AD%90%E7%B1%BB%E5%9E%8B%E5%88%86%E5%B8%83.png">
-<meta property="og:updated_time" content="2018-11-10T03:16:20.486Z">
+<meta property="og:image" content="http://image.stxl117.top/%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png">
+<meta property="og:image" content="http://image.stxl117.top/QQ%E5%9B%BE%E7%89%8720180722224859.png">
+<meta property="og:image" content="http://image.stxl117.top/%E7%B1%BB%E5%9E%8B%E5%88%86%E5%B8%83.png">
+<meta property="og:image" content="http://image.stxl117.top/%E6%97%B6%E9%97%B4%E5%88%86%E5%B8%83.png">
+<meta property="og:image" content="http://image.stxl117.top/%E6%BC%94%E5%94%B1%E4%BC%9A%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png">
+<meta property="og:image" content="http://image.stxl117.top/%E8%AF%9D%E5%89%A7%E6%AD%8C%E5%89%A7%E5%AD%90%E7%B1%BB%E5%9E%8B%E5%88%86%E5%B8%83.png">
+<meta property="og:updated_time" content="2019-03-11T13:33:02.142Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大麦网数据分析">
 <meta name="twitter:description" content="最近看到很多爬虫到各种各样数据进行分析的文章，于是自己也想小试牛刀一下。最后决定尝试爬一下大麦网的数据。">
-<meta name="twitter:image" content="http://ov6si0726.bkt.clouddn.com/%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png">
+<meta name="twitter:image" content="http://image.stxl117.top/%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png">
   
     <link rel="alternative" href="/atom.xml" title="skystmm的博客" type="application/atom+xml">
   
@@ -214,15 +214,15 @@ var _hmt = _hmt || [];
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line"></div><div class="line">cf = configparser.ConfigParser()</div><div class="line">cf.read(<span class="string">"C:/Users/Administrator/PycharmProjects/spider/spider/config.ini"</span>)</div><div class="line">url = cf.get(<span class="string">'mongo'</span>, <span class="string">'mongo.url'</span>)</div><div class="line">conn = MongoClient(cf.get(<span class="string">'mongo'</span>, <span class="string">'mongo.url'</span>), cf.getint(<span class="string">'mongo'</span>, <span class="string">'mongo.port'</span>))</div><div class="line">db = conn.damai  <span class="comment"># 连接mydb数据库，没有则自动创建</span></div><div class="line">data_set = db.damai_set</div><div class="line"></div><div class="line">ids = data_set.insert(data)</div></pre></td></tr></table></figure>
 <p>这样就完成了，大麦网数据的爬去和存盘工作。</p>
 <h2 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h2><p>第一次做数据分析，爬去的数据量也不大，总共爬去了当前有效的售票信息4847条。数据量和看的其他文章完全不在一个量级。首先对爬取数据按照城市进行了分类。</p>
-<p><img src="http://ov6si0726.bkt.clouddn.com/%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png" alt="大麦数据城市分类"></p>
-<p>可以看到意料之中的北上，排名第一第二，而第三名的武汉则场次数不到上海场次数的一半，这里只展示了排名前十五的城市。比较意外的是南京的场次数，因为以前有朋友说，南京是出了北上广深以外，演出最多的城市。然后再从地图的上直观的看一下演出分布的情况，如下图(<a href="http://ov6si0726.bkt.clouddn.com/%E5%94%AE%E7%A5%A8%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.html" target="_blank" rel="external">地图动态信息链接</a>)</p>
-<p><img src="http://ov6si0726.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720180722224859.png" alt="大麦数据城市分布详情"></p>
-<p><img src="http://ov6si0726.bkt.clouddn.com/%E7%B1%BB%E5%9E%8B%E5%88%86%E5%B8%83.png" alt="演出类型"></p>
+<p><img src="http://image.stxl117.top/%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png" alt="大麦数据城市分类"></p>
+<p>可以看到意料之中的北上，排名第一第二，而第三名的武汉则场次数不到上海场次数的一半，这里只展示了排名前十五的城市。比较意外的是南京的场次数，因为以前有朋友说，南京是出了北上广深以外，演出最多的城市。然后再从地图的上直观的看一下演出分布的情况，如下图(<a href="http://image.stxl117.top/%E5%94%AE%E7%A5%A8%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.html" target="_blank" rel="external">地图动态信息链接</a>)</p>
+<p><img src="http://image.stxl117.top/QQ%E5%9B%BE%E7%89%8720180722224859.png" alt="大麦数据城市分布详情"></p>
+<p><img src="http://image.stxl117.top/%E7%B1%BB%E5%9E%8B%E5%88%86%E5%B8%83.png" alt="演出类型"></p>
 <p>从上图中可以看出，按照大麦大类来进行区分的话，售票信息最多的是话剧歌剧类。</p>
-<p><img src="http://ov6si0726.bkt.clouddn.com/%E6%97%B6%E9%97%B4%E5%88%86%E5%B8%83.png" alt="时间分布"></p>
+<p><img src="http://image.stxl117.top/%E6%97%B6%E9%97%B4%E5%88%86%E5%B8%83.png" alt="时间分布"></p>
 <p>从时间分布上来看，暑期档也是演出比较集中的时间。</p>
-<p><img src="http://ov6si0726.bkt.clouddn.com/%E6%BC%94%E5%94%B1%E4%BC%9A%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png" alt="演唱会城市分布"><br>可以看到上海是演唱会场次数最多的城市，第二名的海外范围比较大。</p>
-<p><img src="http://ov6si0726.bkt.clouddn.com/%E8%AF%9D%E5%89%A7%E6%AD%8C%E5%89%A7%E5%AD%90%E7%B1%BB%E5%9E%8B%E5%88%86%E5%B8%83.png" alt="演唱会城市分布"></p>
+<p><img src="http://image.stxl117.top/%E6%BC%94%E5%94%B1%E4%BC%9A%E5%9F%8E%E5%B8%82%E5%88%86%E5%B8%83.png" alt="演唱会城市分布"><br>可以看到上海是演唱会场次数最多的城市，第二名的海外范围比较大。</p>
+<p><img src="http://image.stxl117.top/%E8%AF%9D%E5%89%A7%E6%AD%8C%E5%89%A7%E5%AD%90%E7%B1%BB%E5%9E%8B%E5%88%86%E5%B8%83.png" alt="演唱会城市分布"></p>
 <p>从“话剧歌剧”这个场次数占比最大的分类在进行分析，发现儿童剧是这个大麦中占比最高的子分类项目。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本次做大麦网的数据爬取和分析，主要是小试牛刀。其中主要使用了python3中的额urllib3,pymongo,pyecharts,pandas等包，学习了使用urllib3进行爬虫，同时学习使用了pandas这个数据科学高频包的使用，一开始准备使用matplotlib进行数据图的绘制，但是由于汉字的问题，踩了很多坑，最后还是使用了更为熟悉的pyecharts包来进行数据图表的渲染。</p>
 
@@ -577,15 +577,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
               </li>
              
               <li class="article-tag-list-item">
