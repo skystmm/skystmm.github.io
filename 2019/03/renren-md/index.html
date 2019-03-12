@@ -20,19 +20,21 @@ var _hmt = _hmt || [];
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://stxl117.top">
-  <title>python环境搭建 | skystmm的博客</title>
+  <title>人人关系爬取 | skystmm的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Python 安装笔记1.下载源码包 wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz  如果没有wget则可通过  yum install wget  安装wget">
-<meta name="keywords" content="python,树莓派">
+  <meta name="description" content="人人网好友关系爬取前言一开始准备爬取人人网的数据，是因为想把自己的人人数据做一个备份，结果后来就跑偏了，成了爬取好友关系网。（p.s.再一次成功跑偏）。作为拖延症重度患者，本来这个爬虫是在人人网被转卖的时候写好的，但是仅仅是把数据爬了回来，让数据安静的躺在家里的树莓派里。">
+<meta name="keywords" content="python,爬虫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python环境搭建">
-<meta property="og:url" content="https://stxl117.top/2017/12/python环境搭建/index.html">
+<meta property="og:title" content="人人关系爬取">
+<meta property="og:url" content="https://stxl117.top/2019/03/renren-md/index.html">
 <meta property="og:site_name" content="skystmm的博客">
-<meta property="og:description" content="Python 安装笔记1.下载源码包 wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz  如果没有wget则可通过  yum install wget  安装wget">
-<meta property="og:updated_time" content="2018-11-10T03:24:03.597Z">
+<meta property="og:description" content="人人网好友关系爬取前言一开始准备爬取人人网的数据，是因为想把自己的人人数据做一个备份，结果后来就跑偏了，成了爬取好友关系网。（p.s.再一次成功跑偏）。作为拖延症重度患者，本来这个爬虫是在人人网被转卖的时候写好的，但是仅仅是把数据爬了回来，让数据安静的躺在家里的树莓派里。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-0b3669cd964af72f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-12T15:43:26.203Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python环境搭建">
-<meta name="twitter:description" content="Python 安装笔记1.下载源码包 wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz  如果没有wget则可通过  yum install wget  安装wget">
+<meta name="twitter:title" content="人人关系爬取">
+<meta name="twitter:description" content="人人网好友关系爬取前言一开始准备爬取人人网的数据，是因为想把自己的人人数据做一个备份，结果后来就跑偏了，成了爬取好友关系网。（p.s.再一次成功跑偏）。作为拖延症重度患者，本来这个爬虫是在人人网被转卖的时候写好的，但是仅仅是把数据爬了回来，让数据安静的躺在家里的树莓派里。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7504708-0b3669cd964af72f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="skystmm的博客" type="application/atom+xml">
   
@@ -171,62 +173,61 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-python环境搭建" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-renren-md" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      python环境搭建
+      人人关系爬取
     </h1>
   
 
 
 
   <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2017/12/python环境搭建/" class="pageViews">0</span>次
+      <i class="icon-smile icon"></i> 阅读数:<span id="/2019/03/renren-md/" class="pageViews">0</span>次
   </a>
 
 
         
-        <a href="/2017/12/python环境搭建/" class="archive-article-date">
-  	<time datetime="2017-12-06T14:38:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-06</time>
+        <a href="/2019/03/renren-md/" class="archive-article-date">
+  	<time datetime="2019-03-11T14:07:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-11</time>
 </a>
         
         
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Python-安装笔记"><a href="#Python-安装笔记" class="headerlink" title="Python 安装笔记"></a>Python 安装笔记</h1><h2 id="1-下载源码包"><a href="#1-下载源码包" class="headerlink" title="1.下载源码包"></a>1.下载源码包</h2><blockquote>
-<p>wget <a href="https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz" target="_blank" rel="external">https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz</a></p>
-</blockquote>
-<p>如果没有wget则可通过</p>
-<blockquote>
-<p>yum install wget</p>
-</blockquote>
-<p>安装wget</p>
+        <h1 id="人人网好友关系爬取"><a href="#人人网好友关系爬取" class="headerlink" title="人人网好友关系爬取"></a>人人网好友关系爬取</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一开始准备爬取人人网的数据，是因为想把自己的人人数据做一个备份，结果后来就跑偏了，成了爬取好友关系网。（p.s.再一次成功跑偏）。作为拖延症重度患者，本来这个爬虫是在人人网被转卖的时候写好的，但是仅仅是把数据爬了回来，让数据安静的躺在家里的树莓派里。</p>
 <a id="more"></a>
-<h2 id="2准备工作"><a href="#2准备工作" class="headerlink" title="2准备工作"></a>2准备工作</h2><p>检查当前linux系统中的ssl相关.so是否齐全：</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>要爬去一个网站的数据，首先是要对这个网站及这个网站中想要获取数据的数据接口进行分析。不同于上次大麦网（资讯类网站）数据的获取，这里解决需要用户的登录以及session保存的问题。<br>人人网作为曾经风靡一时的社交类网站，对于登录认证还是做了一些加固的，不像有些网站明文密码传输。而是对于密码信息进行了加密处理。正好前一段时间尝试爬取一些漫画类网站的时候，有看到使用selenium+phantomjs模拟浏览行为的方式，获取动态加载的漫画图片。也是出于偷懒的心思，就决定试试用selenium+phantomjs来绕过人人网的登录。</p>
+<h2 id="尝试"><a href="#尝试" class="headerlink" title="尝试"></a>尝试</h2><p>决定了使用seleium+phantomjs来作为这次爬虫使用的技术框架，就开始着手准备环境的搭建，总的来说环境搭建比较简单。</p>
+<ol>
+<li><p>seleium安装</p>
 <blockquote>
-<p>rpm -aq|grep openssl</p>
+<p>pip install seleium</p>
 </blockquote>
-<p>齐全情况应该如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">openssl-devel-1.0.2k-8.el7.armv7hl</div><div class="line">openssl-libs-1.0.2k-8.el7.armv7hl</div></pre></td></tr></table></figure>
-<p>如果缺少则可通过</p>
+</li>
+<li><p>phantomjs下载</p>
+</li>
+</ol>
+<p>可以从<a href="http://phantomjs.org/download.html" target="_blank" rel="external">phantonjs官网</a>选择适合的操作系统下载最新版的程序，同时官网也提供源码下载。</p>
+<p>完成了基础环境的准备，接下来就可以开始进行数据爬取了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"></div><div class="line">driver = webdriver.PhantomJS(<span class="string">'/Users/tian/Downloads/phantomjs-2.1.1-macosx/bin/phantomjs'</span>)</div><div class="line">driver.set_window_size(<span class="string">"800"</span>,<span class="string">"600"</span>)</div><div class="line">driver.get(<span class="string">'http://renren.com'</span>)</div><div class="line"></div><div class="line">print(<span class="string">"---------------***************---------------------"</span>)</div><div class="line">input1 = driver.find_element(<span class="string">"id"</span>, <span class="string">"email"</span>)</div><div class="line">input1.send_keys(<span class="string">"****"</span>)</div><div class="line">input2 = driver.find_element(<span class="string">"id"</span>, <span class="string">"password"</span>)</div><div class="line">input2.send_keys(<span class="string">"*****"</span>)</div><div class="line"></div><div class="line">driver.find_element(<span class="string">"id"</span>, <span class="string">"login"</span>).click()</div></pre></td></tr></table></figure>
+<p>使用seleium+phantomjs进行人人网的模拟登陆的代码如上，通过seleium的webdriver.PhantomJS拉起phantomJS无界面浏览器，之后的操作类似于JQuery的选择器，找到需要使用的元素，然后设置相关的参数。</p>
+<p>虽然很容易就可以绕过人人网的登录操作，但是并不是没有问题，phantomjs在并发情况下，表现不是很令人满意。最后还是放弃了使用seleium+phantomjs的方式进行数据的爬去。</p>
+<h2 id="分析和设计"><a href="#分析和设计" class="headerlink" title="分析和设计"></a>分析和设计</h2><p>由于seleium+phantomjs表现不能满足需求，不能使用偷懒的方式进行数据获取，只能按部就班的对登陆页面进行分析。最后在github上找到了前人的经验(<a href="https://github.com/XueSeason/renren-album" target="_blank" rel="external">github链接</a>),作者使用js实现了人人网登陆的密码加密方法。于是发挥python“胶水语言”的特性以及强大的类库支持，也本着不重复造轮子的原则就厚颜无耻的拿过来使用了。</p>
+<p>既然已经解决了登陆密码加密的问题，就可以进行下一步关系网的爬取了。在社交网络中有个六度理论，所以一开始想要从自己的人人账号出发，爬取六度好友，就可以获取所有人人网用户的关系网络。但是这个过程应该是一个先发散后收敛的过程.人人网有上亿用户，所以单任务爬取不是一个可行的方案。需要进行分布式爬取，而采用现有的分布式爬取框架，又觉得有点重，于是设计了如下架构进行这次爬取。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7504708-0b3669cd964af72f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="爬虫架构设计"></p>
+<p>这里redis有两个作用，一个是经常我们使用的共享缓存的作用，还有一个是借用redis中队列数据结构，将任务解耦供多个worker进行分布式爬取好友关系数据。同时为了避难重复爬去而导致的任务无法结束问题，借助redis的bitmap进行过滤已经获取过用户信息，从而避免无限爬取的情况。</p>
+<p>login/worker是一个特殊的worker,该worker负责登录并将session信息缓存到redis中，供其他worker使用，然后获取数据源的好友信息，并将其放入redis队列中，之后和其他worker一样消费redis队列中的任务信息，进行分布式爬取。</p>
+<p>worker的设计，为了进一步提升效率，使用线程池+线程的方式进行数据的爬取。由于树莓派的内存限制，导致最后只爬取了自己账号的三度好友的数据。</p>
 <blockquote>
-<p>yum install openssl openssl-devel</p>
+<p>p.s.爬虫代码上传到了github中（<a href="https://github.com/skystmm/some-spider" target="_blank" rel="external">传送门</a>）</p>
 </blockquote>
-<p>进行补全安装</p>
-<h2 id="3-编译安装"><a href="#3-编译安装" class="headerlink" title="3.编译安装"></a>3.编译安装</h2><blockquote>
-<p>./configure –prefix=/usr/local/python3</p>
-<p>make &amp;&amp; make install</p>
-</blockquote>
-<p>就完成了基本的python源码安装，当下版本的python源码安装已经将pip集成在源码中，不需要在单独安装pip，就可以直接使用pip进行模块安装了</p>
-<p>这里没有进行环境变量的配置而是直接在/usr/bin下建立了python3和pip的软连接，命令如下：</p>
-<blockquote>
-<p>ln -s /usr/local/python3/bin/python /usr/bin/python3<br>ln -s /usr/local/python3/bin/pip3 /usr/bin/pip</p>
-</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本次爬虫的编写，一开始走了很多弯路，也有了一些思维定式的原因。一开始主观臆断的选择了seleium+phantomjs方式进行，并没有考虑导数据量的问题和爬取效率的问题。同时也反映出初期准备的时候没有对目标网站连接仔细分析，导致选型上的偏差。从而做了大量的无用功，之后是需要注意的。</p>
 
       
 
@@ -275,7 +276,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">树莓派</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
         		</li>
       		
 		</ul>
@@ -331,7 +332,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://stxl117.top/2017/12/python环境搭建/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://stxl117.top/2019/03/renren-md/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -345,15 +346,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2018/01/前端获取实时数据探索/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          前端获取实时数据探索
-        
-      </div>
-    </a>
   
+    <a href="/2018/11/study-info/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">左耳朵耗子程序员练级攻略(2018)资料整理</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
