@@ -30,7 +30,7 @@ var _hmt = _hmt || [];
 <meta property="og:site_name" content="skystmm的博客">
 <meta property="og:description" content="前言一开始准备爬取人人网的数据，是因为想把自己的人人数据做一个备份，结果后来就跑偏了，成了爬取好友关系网。（p.s.再一次成功跑偏）。作为拖延症重度患者，本来这个爬虫是在人人网被转卖的时候写好的，但是仅仅是把数据爬了回来，让数据安静的躺在家里的树莓派里。">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-0b3669cd964af72f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-05-12T14:02:31.655Z">
+<meta property="og:updated_time" content="2019-05-12T14:25:20.164Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人人网好友关系爬取">
 <meta name="twitter:description" content="前言一开始准备爬取人人网的数据，是因为想把自己的人人数据做一个备份，结果后来就跑偏了，成了爬取好友关系网。（p.s.再一次成功跑偏）。作为拖延症重度患者，本来这个爬虫是在人人网被转卖的时候写好的，但是仅仅是把数据爬了回来，让数据安静的躺在家里的树莓派里。">
@@ -204,15 +204,11 @@ var _hmt = _hmt || [];
 <a id="more"></a>
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>要爬去一个网站的数据，首先是要对这个网站及这个网站中想要获取数据的数据接口进行分析。不同于上次大麦网（资讯类网站）数据的获取，这里解决需要用户的登录以及session保存的问题。<br>人人网作为曾经风靡一时的社交类网站，对于登录认证还是做了一些加固的，不像有些网站明文密码传输。而是对于密码信息进行了加密处理。正好前一段时间尝试爬取一些漫画类网站的时候，有看到使用selenium+phantomjs模拟浏览行为的方式，获取动态加载的漫画图片。也是出于偷懒的心思，就决定试试用selenium+phantomjs来绕过人人网的登录。</p>
 <h2 id="尝试"><a href="#尝试" class="headerlink" title="尝试"></a>尝试</h2><p>决定了使用seleium+phantomjs来作为这次爬虫使用的技术框架，就开始着手准备环境的搭建，总的来说环境搭建比较简单。</p>
-<ol>
-<li><p>seleium安装</p>
+<p>1.seleium安装</p>
 <blockquote>
 <p>pip install seleium</p>
 </blockquote>
-</li>
-<li><p>phantomjs下载</p>
-</li>
-</ol>
+<p>2.phantomjs下载</p>
 <p>可以从<a href="http://phantomjs.org/download.html" target="_blank" rel="external">phantonjs官网</a>选择适合的操作系统下载最新版的程序，同时官网也提供源码下载。</p>
 <p>完成了基础环境的准备，接下来就可以开始进行数据爬取了。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"></div><div class="line">driver = webdriver.PhantomJS(<span class="string">'/Users/tian/Downloads/phantomjs-2.1.1-macosx/bin/phantomjs'</span>)</div><div class="line">driver.set_window_size(<span class="string">"800"</span>,<span class="string">"600"</span>)</div><div class="line">driver.get(<span class="string">'http://renren.com'</span>)</div><div class="line"></div><div class="line">print(<span class="string">"---------------***************---------------------"</span>)</div><div class="line">input1 = driver.find_element(<span class="string">"id"</span>, <span class="string">"email"</span>)</div><div class="line">input1.send_keys(<span class="string">"****"</span>)</div><div class="line">input2 = driver.find_element(<span class="string">"id"</span>, <span class="string">"password"</span>)</div><div class="line">input2.send_keys(<span class="string">"*****"</span>)</div><div class="line"></div><div class="line">driver.find_element(<span class="string">"id"</span>, <span class="string">"login"</span>).click()</div></pre></td></tr></table></figure>
@@ -567,22 +563,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -599,7 +579,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,6 +600,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">资料</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
