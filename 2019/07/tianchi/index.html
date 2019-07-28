@@ -20,15 +20,22 @@ var _hmt = _hmt || [];
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://stxl117.top">
-  <title>categories | skystmm的博客</title>
+  <title>第五届天池中间件比赛初赛总结 | skystmm的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://stxl117.top/categories/index-1.html">
+  <meta name="description" content="起源了解到天池程序设计大赛还是去年在网上逛博客的时候，看到有人分享了自己的参赛经历，和在参赛过程中一步步完善思路提高成绩的过程（附上链接）。就暗暗记下了这个比赛想要有朝一日自己也亲自操刀尝试一下。">
+<meta name="keywords" content="java,比赛">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第五届天池中间件比赛初赛总结">
+<meta property="og:url" content="https://stxl117.top/2019/07/tianchi/index.html">
 <meta property="og:site_name" content="skystmm的博客">
-<meta property="og:updated_time" content="2017-08-15T14:56:51.285Z">
+<meta property="og:description" content="起源了解到天池程序设计大赛还是去年在网上逛博客的时候，看到有人分享了自己的参赛经历，和在参赛过程中一步步完善思路提高成绩的过程（附上链接）。就暗暗记下了这个比赛想要有朝一日自己也亲自操刀尝试一下。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-db89a511d4ccae8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-8f2f2d0f3e6743b7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-28T09:39:45.463Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="第五届天池中间件比赛初赛总结">
+<meta name="twitter:description" content="起源了解到天池程序设计大赛还是去年在网上逛博客的时候，看到有人分享了自己的参赛经历，和在参赛过程中一步步完善思路提高成绩的过程（附上链接）。就暗暗记下了这个比赛想要有朝一日自己也亲自操刀尝试一下。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7504708-db89a511d4ccae8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="skystmm的博客" type="application/atom+xml">
   
@@ -167,34 +174,46 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-tianchi" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      categories
+      第五届天池中间件比赛初赛总结
     </h1>
   
 
 
 
   <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/categories/index-1.html" class="pageViews">0</span>次
+      <i class="icon-smile icon"></i> 阅读数:<span id="/2019/07/tianchi/" class="pageViews">0</span>次
   </a>
 
 
         
-        <a href="/categories/index-1.html" class="archive-article-date">
-  	<time datetime="2017-08-15T14:56:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-15</time>
+        <a href="/2019/07/tianchi/" class="archive-article-date">
+  	<time datetime="2019-07-28T09:38:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
 </a>
         
         
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h1><p>了解到天池程序设计大赛还是去年在网上逛博客的时候，看到有人分享了自己的参赛经历，和在参赛过程中一步步完善思路提高成绩的过程（<a href="https://juejin.im/post/5c471e3d6fb9a04a0822031a" target="_blank" rel="external">附上链接</a>）。就暗暗记下了这个比赛想要有朝一日自己也亲自操刀尝试一下。</p>
+<a id="more"></a>
+<h1 id="赛题——自适应负载均衡的设计实现"><a href="#赛题——自适应负载均衡的设计实现" class="headerlink" title="赛题——自适应负载均衡的设计实现"></a>赛题——自适应负载均衡的设计实现</h1><p><img src="https://upload-images.jianshu.io/upload_images/7504708-db89a511d4ccae8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br>题目的内容是基于Dubbo的负载均衡算法实现，如上图所示，测评时提供三个配置和性能不同的provider节点。同时可以通过官方提供的辅助接口进行想过性能数据的采集。</p>
+<p>可以通过provider的Callback获取provider的基本信息，包括最大线程数，内存使用信息等；提供了comsumer和provider端的Fliter可以进行请求情况的采集；provider端还提供了限流器TestRequestLimiter 来进行限流操作。</p>
+<h1 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h1><p>本次和队友各设计实现了一种负载均衡算法，答题思路都是通过固定时间窗口进行统计，根据统计值进行权重计算，来更新下一轮次的权重，同时根据权重选择节点采用了平滑加权轮训算法，来保证请求分配按照权重比例进行分配。算法一采用统计成功次数占比的方式来计算下个周期的权重，算法二采用统计平均rt的方式，在计算下一周期的各个节点的分配权重。整体流程如下图</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7504708-8f2f2d0f3e6743b7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="tianchi_st.jpg"></p>
+<h1 id="优化点"><a href="#优化点" class="headerlink" title="优化点"></a>优化点</h1><h2 id="引入平滑加权轮询算法"><a href="#引入平滑加权轮询算法" class="headerlink" title="引入平滑加权轮询算法"></a>引入平滑加权轮询算法</h2><p>接下来主要说一说成功占比这一实现的优化过程，起初版本大概在113W左右徘徊。这个版本对于节点的选择，是通过生成一个随机数，然后看随机数落在哪个节点区间，进行随机节点选择。这种方式会有很大的随机性，导致出现15-20%的限流请求。后来和队友讨论，将随机选择算法换成了平滑加权轮询算法，来进行节点的选择，跟换算法后，错误请求数大幅下降，基本达到了99.99的成功率。成绩也有了大幅提升，大概来到了117W左右。</p>
+<h2 id="引入rt和并发量统计"><a href="#引入rt和并发量统计" class="headerlink" title="引入rt和并发量统计"></a>引入rt和并发量统计</h2><p>由于最大并发是1024而三个节点的总线程数为1300(200+450+650),所以会出现全部测评过程中权重不发生任何变化的情况。就想到了根据统计固定窗口期的rt来进行权重便宜调整，但是计算出周期内平均rt并不能很好的和当前使用的权重进行关联，后来通过rt计算出本窗口期的最大并发，在结合题目中每个周期内每节点最大并发数变化的。根军统计结果计算出本窗口期的并发量，然后根据情况修改权重。修改完成的版本成绩有了一定提升，当然也和赛会方提高了上限乏味有一定关系，这一阶段成绩在122-125W之间浮动，浮动区间比较大。</p>
+<h2 id="乱七八糟的参数调优"><a href="#乱七八糟的参数调优" class="headerlink" title="乱七八糟的参数调优"></a>乱七八糟的参数调优</h2><p>进一步优化就是修改部分参数，同时部分区间的rt偏大的情况，引入了根据rt情况微调权重的计算逻辑，但是这部分的优化并没有带来成绩的提升，但是增加了成绩的稳定性，成绩基本稳定在124-125W之间，这也是最后的成绩。未能突破初赛，赛后在进行总结，准备明年再战。</p>
+<h1 id="未能提交的思路"><a href="#未能提交的思路" class="headerlink" title="未能提交的思路"></a>未能提交的思路</h1><p>昨天晚上临睡前在突然想到一种新的方式来进行负载均衡，大体的思路是根据provider的请求数和其最大线程数进行统计计算权重，摒弃之前使用的固定时间窗口统计的方式，改为实时统计。大体流程为在consumer的filter每次invoke前生成一条消息，对应invoker的权重-1，在response中如果成功，则对应invoker的权重+1，如果有异常则对应invoker的权重置为0。</p>
+<p>但是由于错看了截止时间，想要今天在实现，当实现了最初版的时候，发现初赛提交已经结束，所以这个思路的结果不得而知。</p>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>刚刚群里有排名靠前的大佬公开了初赛代码，学习了下他们的思路和代码，发现差距还是比较大的。接下来好好学习，多看多想，来年再战。</p>
+
       
 
       
@@ -233,6 +252,21 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">比赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -283,7 +317,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://stxl117.top/categories/index-1.html" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://stxl117.top/2019/07/tianchi/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -295,6 +329,16 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/renren-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">人人网好友关系爬取</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -343,6 +387,8 @@ var _hmt = _hmt || [];
 
 
 
+
+
           </div>
         </div>
       </div>
@@ -367,7 +413,7 @@ var _hmt = _hmt || [];
     var yiliaConfig = {
         mathjax: false,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
