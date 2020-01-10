@@ -6,14 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://stxl117.top">
-  <title>Tomcat源码学习(三)——启动流程之start | skystmm的博客</title>
+  <title>Tomcat源码学习(三)——启动流程之start | 胖小天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="上一篇对于load过程进行学习，从Bootstrap的入口类可以看到启动过程主要分为三个流程——init,load和start。之前已经学习了init和load的源码，今天就来一探tomcat启动中最后一个流程start">
 <meta name="keywords" content="java,tomcat,源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tomcat源码学习(三)——启动流程之start">
 <meta property="og:url" content="https://stxl117.top/2018/11/tomcat3/index.html">
-<meta property="og:site_name" content="skystmm的博客">
+<meta property="og:site_name" content="胖小天">
 <meta property="og:description" content="上一篇对于load过程进行学习，从Bootstrap的入口类可以看到启动过程主要分为三个流程——init,load和start。之前已经学习了init和load的源码，今天就来一探tomcat启动中最后一个流程start">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/136194-3d870c4093e696d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-cd41e2e41f6b61bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -23,7 +23,7 @@
 <meta name="twitter:description" content="上一篇对于load过程进行学习，从Bootstrap的入口类可以看到启动过程主要分为三个流程——init,load和start。之前已经学习了init和load的源码，今天就来一探tomcat启动中最后一个流程start">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/136194-3d870c4093e696d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
-    <link rel="alternative" href="/atom.xml" title="skystmm的博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="胖小天" type="application/atom+xml">
   
   
     <link rel="icon" href="/iamges/favicon.png">
@@ -519,14 +519,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
               </li>
              
@@ -535,11 +527,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习路径</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">资料</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,15 +543,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习路径</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">资料</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">比赛</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工作相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
             
             <div class="clearfix"></div>
