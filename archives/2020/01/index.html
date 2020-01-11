@@ -21,18 +21,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://stxl117.top">
-  <title>胖小天</title>
+  <title>Archives: 2020/1 | 胖小天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vtarget接口文档v1.0   修改记录 版本 日期     创建 v1.0 2019-1-5    1.请求加密和验签（暂不做）2.标准输出信息返回统一结构| 参数名称 | 参数类型 |  备注 || ——- | ——– | —- || code | int | 错误码  || reason | String | 描述信息 || data | Object |  请求返回结果数据（无数据结果">
-<meta property="og:type" content="website">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="胖小天">
-<meta property="og:url" content="https://stxl117.top/photos/vtarget接口.html">
+<meta property="og:url" content="https://stxl117.top/archives/2020/01/index.html">
 <meta property="og:site_name" content="胖小天">
-<meta property="og:description" content="vtarget接口文档v1.0   修改记录 版本 日期     创建 v1.0 2019-1-5    1.请求加密和验签（暂不做）2.标准输出信息返回统一结构| 参数名称 | 参数类型 |  备注 || ——- | ——– | —- || code | int | 错误码  || reason | String | 描述信息 || data | Object |  请求返回结果数据（无数据结果">
-<meta property="og:updated_time" content="2019-01-06T07:00:11.185Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="胖小天">
-<meta name="twitter:description" content="vtarget接口文档v1.0   修改记录 版本 日期     创建 v1.0 2019-1-5    1.请求加密和验签（暂不做）2.标准输出信息返回统一结构| 参数名称 | 参数类型 |  备注 || ——- | ——– | —- || code | int | 错误码  || reason | String | 描述信息 || data | Object |  请求返回结果数据（无数据结果">
   
     <link rel="alternative" href="/atom.xml" title="胖小天" type="application/atom+xml">
   
@@ -65,10 +61,10 @@ ga('send', 'pageview');
 <script>
 var _hmt = _hmt || [];
 (function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?c8177f8bdb785f8fff011e4dc58d5097";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?c8177f8bdb785f8fff011e4dc58d5097";
+	var s = document.getElementsByTagName("script")[0];
+	s.parentNode.insertBefore(hm, s);
 })();
 </script>
 
@@ -191,236 +187,60 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-    <div class="article-entry" itemprop="articleBody">
+    
       
-        <h1 id="vtarget接口文档v1-0"><a href="#vtarget接口文档v1-0" class="headerlink" title="vtarget接口文档v1.0"></a>vtarget接口文档v1.0</h1><table>
-<thead>
-<tr>
-<th>修改记录</th>
-<th>版本</th>
-<th>日期</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>创建</td>
-<td>v1.0</td>
-<td>2019-1-5</td>
-</tr>
-</tbody>
-</table>
-<h2 id="1-请求加密和验签（暂不做）"><a href="#1-请求加密和验签（暂不做）" class="headerlink" title="1.请求加密和验签（暂不做）"></a>1.请求加密和验签（暂不做）</h2><h2 id="2-标准输出信息"><a href="#2-标准输出信息" class="headerlink" title="2.标准输出信息"></a>2.标准输出信息</h2><p>返回统一结构<br>| 参数名称 | 参数类型 |  备注 |<br>| ——- | ——– | —- |<br>| code | int | 错误码  |<br>| reason | String | 描述信息 |<br>| data | Object |  请求返回结果数据（无数据结果返回时不传） |</p>
-<blockquote>
-<p><strong><em>所有接口的数据结果均遵从本结果返回，接口信息中的返回结果均为data中的信息</em></strong></p>
-</blockquote>
-<h2 id="接口信息"><a href="#接口信息" class="headerlink" title="接口信息"></a>接口信息</h2><p>1.微信授权</p>
-<p>url:</p>
-<p>/wechat/user/login</p>
-<p>入参:<br>| 参数名称 | 参数类型 | 备注                                                                                                          |<br>| ——– | ——– | ————————————————————————————————————- |<br>| code     | string   | 临时登录凭证code 。开发者需要在开发者服务器后台调用 code2Session，使用 code 换取 openid 和 session_key 等信息 |</p>
-<p>返回结果:</p>
-<p>结果示例：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">成功</div><div class="line">&#123;"code": 200, "reason": "success"&#125;</div><div class="line"></div><div class="line">session中会有uid(用户id)，sessionKey(微信提供的sessionKey)</div><div class="line"></div><div class="line">失败</div><div class="line">&#123;"code": 401, "reason": "授权失败"&#125;</div></pre></td></tr></table></figure>
-<p>2.获取用户信息（待定要不要做）<br>url:</p>
-<p>/wechat/user/detail</p>
-<p>入参: 无</p>
-<p>返回结果:<br>| 参数名称    | 参数类型 | 备注                                     |<br>| ———– | ——– | —————————————- |<br>| uid         | String   | 用户ID                                   |<br>| userName    | String   | 用户名                                   |<br>| nickName    | String   | 请求返回结果数据（无数据结果返回时不传） |<br>| mail        | String   | 邮箱                                     |<br>| sendTag     | int      | 发送标识（0为关闭，1为打开）             |<br>| firstUpdate | int      | userName是否可修改标识（0为可修改，1为不可修改）|</p>
-<p>结果示例：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"><span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line"><span class="attr">"reason"</span>: <span class="string">"successs"</span>,</div><div class="line"><span class="attr">"data"</span>:&#123;</div><div class="line">    <span class="attr">"uid"</span>:<span class="string">"用户ID"</span>,</div><div class="line">    <span class="attr">"userName"</span>:<span class="string">"用户名"</span>,</div><div class="line">    <span class="attr">"nickName"</span>:<span class="string">"昵称"</span>,</div><div class="line">    <span class="attr">"mail"</span>:<span class="string">"邮箱"</span>,</div><div class="line">    <span class="attr">"sendTag"</span>:<span class="string">"发送标识（0为关闭，1为打开）"</span>,</div><div class="line">    <span class="attr">"firstUpdate"</span>:<span class="string">"userName是否可修改标识（0为可修改，1为不可修改）"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>3.新增目标：</p>
-<p>url:</p>
-<p>/wechat/target/add</p>
-<p>入参:<br>| 参数名称      | 参数类型 | 备注                     |<br>| ————- | ——– | ———————— |<br>| targetType    | int      | 目标类型，见状态码表     |<br>| targetContent | String   | 目标内容                 |<br>| targetCycle   | int      | 目标执行周期，件状态码表 |<br>| targetDegree  | int      | 执行次数                 |</p>
-<p>返回结果:</p>
-<p>结果示例:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>4.获取今日未打卡/已打卡信息（首屏查询）</p>
-<p>url:</p>
-<p>/wechat/target/searchToday</p>
-<p>入参：<br>| 参数名称 | 参数类型 | 备注                             |<br>| ——– | ——– | ——————————– |<br>| status   | int      | 今日打卡状态（0未完成，1已完成） |</p>
-<p>返回结果:<br>| 参数名称      | 参数类型 | 备注   |<br>| ————- | ——– | —— |<br>| id            | long     | 目标ID |<br>| targetContent | string   | 内容   |<br>| status        | int      | 今日打卡状态（0未完成，1已完成）       |</p>
-<p>返回示例：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span>,</div><div class="line">	<span class="attr">"data"</span>: [&#123;</div><div class="line">		<span class="attr">"id"</span>: <span class="number">2</span>,</div><div class="line">		<span class="attr">"targetType"</span>: <span class="number">1</span>,</div><div class="line">		<span class="attr">"targetContent"</span>: <span class="string">"读书(页)"</span>,</div><div class="line">		<span class="attr">"status"</span>:<span class="number">0</span></div><div class="line">	&#125;, &#123;</div><div class="line">		<span class="attr">"id"</span>: <span class="number">3</span>,</div><div class="line">		<span class="attr">"targetType"</span>: <span class="number">1</span>,</div><div class="line">		<span class="attr">"targetContent"</span>: <span class="string">"读书(页)"</span>,</div><div class="line">    <span class="attr">"status"</span>:<span class="number">0</span></div><div class="line">	&#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>5.获取目标列表</p>
-<p>url:</p>
-<p>/wechat/target/search</p>
-<p>入参:<br>| 参数名称 | 参数类型 | 备注                                   |<br>| ——– | ——– | ————————————– |<br>| status   | int      | 任务状态（0进行中，10已达成，1已过期） |</p>
-<p>返回结果:<br>| 参数名称       | 参数类型 | 备注                                   |<br>| ————– | ——– | ————————————– |<br>| id             | long     | 目标ID                                 |<br>| status         | int      | 任务状态（0进行中，10已达成，1已过期） |<br>| targetType     | int      | 目标类型,详见类型码表                  |<br>| targetContent  | String   | 目标内容                               |<br>| completedCount | int      | 已打卡次数                             |<br>| missCount      | int      | 错过次数                               |</p>
-<p>返回示例：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span>,</div><div class="line">	<span class="attr">"data"</span>: [&#123;</div><div class="line">		<span class="attr">"id"</span>: <span class="number">2</span>,</div><div class="line">		<span class="attr">"targetType"</span>: <span class="number">1</span>,</div><div class="line">		<span class="attr">"targetContent"</span>: <span class="string">"读书(页)"</span>,</div><div class="line">		<span class="attr">"completedCount"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"missCount"</span>:<span class="number">2</span></div><div class="line">	&#125;, &#123;</div><div class="line">		<span class="attr">"id"</span>: <span class="number">3</span>,</div><div class="line">		<span class="attr">"targetType"</span>: <span class="number">1</span>,</div><div class="line">		<span class="attr">"targetContent"</span>: <span class="string">"读书(页)"</span>,</div><div class="line">		<span class="attr">"completedCount"</span>: <span class="number">4</span>,</div><div class="line">    <span class="attr">"missCount"</span>:<span class="number">2</span></div><div class="line">	&#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>6.获取目标详情：</p>
-<p>url:</p>
-<p>/wechat/target/detail</p>
-<p>入参: (目标ID)</p>
-<table>
-<thead>
-<tr>
-<th>参数名称</th>
-<th>参数类型</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>long</td>
-<td>目标ID</td>
-</tr>
-</tbody>
-</table>
-<p>返回结果:<br>| 参数名称        | 参数类型 | 备注         |<br>| ————— | ——– | ———— |<br>| id              | long     | 目标ID       |<br>| targetType      | int      | 目标类型     |<br>| targetContent   | string   | 目标内容     |<br>| compleltedCount | int      | 完成次数     |<br>| missCount       | int      | 错过次数     |<br>| todoList        | Array    | 具体完成情况 |</p>
-<p>  todoList内容如下：<br>| 参数名称 | 参数类型 | 备注                                                |<br>| ——– | ——– | ————————————————— |<br>| date     | String   | 执行日期（yyyy-mm-dd）                              |<br>| status   | int      | 当日执行状态 (打卡类型，0未完成，1已错过，10已完成) |</p>
-<p>结果示例:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span>,</div><div class="line">	<span class="attr">"data"</span>: &#123;</div><div class="line">		<span class="attr">"id"</span>: <span class="number">2</span>,</div><div class="line">		<span class="attr">"targetType"</span>: <span class="number">1</span>,</div><div class="line">		<span class="attr">"targetContent"</span>: <span class="string">"读书(页)"</span>,</div><div class="line">		<span class="attr">"targetCount"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"todoList"</span>:[&#123;<span class="attr">"date"</span>:<span class="string">"yyyy-mm-dd"</span>,<span class="attr">"status"</span>:<span class="number">1</span>&#125;]</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>7.获取目标类型字典</p>
-<p>url:</p>
-<p>/wechat/target/dict</p>
-<p>入参：</p>
-<p>返回结果：<br>| 参数名称 | 参数类型 | 备注                 |<br>| ——– | ——– | ——————– |<br>| type     | int      | 目标类型，见状态码表 |<br>| name     | String   | 类型名称             |</p>
-<p>结果示例:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span>,</div><div class="line">  <span class="attr">"data"</span> :[&#123;<span class="attr">"type"</span>:<span class="number">1</span>,<span class="attr">"name"</span>:<span class="string">"读书"</span>&#125;,&#123;<span class="attr">"type"</span>:<span class="number">2</span>,<span class="attr">"name"</span>:<span class="string">"运动"</span>&#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>8.目标删除</p>
-<p>url:</p>
-<p>/wechat/target/delete</p>
-<p>入参<br>| 参数名称 | 参数类型 | 备注   |<br>| ——– | ——– | —— |<br>| id      | long     | 目标ID |</p>
-<p>返回结果</p>
-<p>结果示例:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>9.目标打卡</p>
-<p>url:</p>
-<p>/wechat/mark/mark</p>
-<p>入参:<br>| 参数名称 | 参数类型 | 备注   |<br>| ——– | ——– | —— |<br>| tid      | long     | 目标ID |</p>
-<p>返回结果：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="相关状态码表"><a href="#相关状态码表" class="headerlink" title="相关状态码表"></a>相关状态码表</h2><p>目标类型码表<br>| 状态码 | 名称     |<br>| —— | ——– |<br>| 1      | 读书     |<br>| 2      | 写作     |<br>| 3      | 运动     |<br>| 4      | 饮食     |<br>| 5      | 生活习惯 |<br>| 6      | 文娱     |<br>| 7      | 理财     |</p>
-<p>执行周期码表<br>| 状态码 | 名称     |<br>| —— | ——– |<br>| 1      | 按日执行 |<br>| 2      | 按周执行 |<br>| 3      | 按月执行 |</p>
-<p>常见错误码表<br>| 状态码 | 名称         |<br>| —— | ———— |<br>| 200    | 成功         |<br>| 401    | 未登录       |<br>| 404    | 数据为空     |<br>| 500    | 系统内部错误 |<br>| 101    | 参数错误     |</p>
-
       
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>null<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/images/zhifubao.png">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/images/weixin.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/01/summary2019-md/" class="archive-article-date">
+  	<time datetime="2020-01-10T13:54:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-10</time>
+</a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/01/summary2019-md/">2019年度总结</a>
+    </h1>
+  
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://stxl117.top/photos/vtarget接口.html" alt="微信分享二维码">
-    </div>
-</div>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">年度总结，杂七杂八</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
+  
+  
+    </div></section>
   
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -467,7 +287,7 @@ var _hmt = _hmt || [];
 		mathjax: false,
 		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -546,6 +366,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
               </li>
              
@@ -574,10 +398,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习路径</a>
               </li>
              
@@ -586,11 +406,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作相关</a>
+                <a href="javascript:void(0)" class="js-tag color5">年度总结，杂七杂八</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">比赛</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">工作相关</a>
               </li>
             
             <div class="clearfix"></div>
