@@ -32,7 +32,7 @@
 <meta property="og:description" content="上一篇对于load过程进行学习，从Bootstrap的入口类可以看到启动过程主要分为三个流程——init,load和start。之前已经学习了init和load的源码，今天就来一探tomcat启动中最后一个流程start">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/136194-3d870c4093e696d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-cd41e2e41f6b61bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-11-11T07:49:15.745Z">
+<meta property="og:updated_time" content="2020-01-12T15:30:15.924Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat源码学习(三)——启动流程之start">
 <meta name="twitter:description" content="上一篇对于load过程进行学习，从Bootstrap的入口类可以看到启动过程主要分为三个流程——init,load和start。之前已经学习了init和load的源码，今天就来一探tomcat启动中最后一个流程start">
@@ -100,7 +100,11 @@ var _hmt = _hmt || [];
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/categories/other">总结</a></li>
+				<li><a href="/categories/other">随笔</a></li>
+	        
+				<li><a href="/categories/java">java</a></li>
+	        
+				<li><a href="/categories/pyhton">python</a></li>
 	        
 			</ul>
 		</nav>
@@ -152,6 +156,10 @@ var _hmt = _hmt || [];
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -165,12 +173,16 @@ var _hmt = _hmt || [];
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/categories/other">总结</a></li>
+					<li style="width: 25%"><a href="/categories/other">随笔</a></li>
+		        
+					<li style="width: 25%"><a href="/categories/java">java</a></li>
+		        
+					<li style="width: 25%"><a href="/categories/pyhton">python</a></li>
 		        
 				</ul>
 			</nav>
@@ -309,6 +321,17 @@ var _hmt = _hmt || [];
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -554,10 +577,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -567,6 +586,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
               </li>
              
               <li class="article-tag-list-item">
