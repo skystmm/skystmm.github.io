@@ -239,27 +239,9 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>注意：gitlab对硬件至少4GB内存</p>
 </blockquote>
-<h3 id="依赖安装"><a href="#依赖安装" class="headerlink" title="依赖安装"></a>依赖安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@your-server ~]# yum install -y curl policycoreutils-python openssh-server</div><div class="line">[root@your-server ~]# systemctl enable sshd</div><div class="line">[root@your-server ~]# systemctl start sshd</div><div class="line">[root@your-server ~]# firewall-cmd --permanent --add-service=http</div><div class="line">[root@your-server ~]# systemctl reload firewalld</div><div class="line">##修改/etc/sysconfig/selinux 永久生效</div><div class="line">setenforce 0</div></pre></td></tr></table></figure>
-<h3 id="gitlab安装"><a href="#gitlab安装" class="headerlink" title="gitlab安装"></a>gitlab安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@your-server ~]# rpm -ivh gitlab-ce-9.5.9-ce.0.el7.x86_64.rpm</div></pre></td></tr></table></figure>
-<h2 id="2-基础配置修改"><a href="#2-基础配置修改" class="headerlink" title="2.基础配置修改"></a>2.基础配置修改</h2><p>配置文件尾 /etc/gitlab/gitlab.rb<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@your-server ~]# vim  /etc/gitlab/gitlab.rb</div><div class="line">#进入配置文件后</div><div class="line"></div><div class="line">#对gitlab访问域名进行配置，可以为ip</div><div class="line">external_url &apos;http://&lt;gitlab访问的域名&gt;:10000&apos;</div><div class="line">#修改nginx的端口，默认为80，这里修改后external_url需要进行同步修改</div><div class="line">nginx[&apos;listen_port&apos;] = 10000</div></pre></td></tr></table></figure></p>
-<p>完成修改后需要执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@your-server ~]#  gitlab-ctl reconfigure</div></pre></td></tr></table></figure></p>
-<p>使修改生效</p>
-<h3 id="gitlab常用命令"><a href="#gitlab常用命令" class="headerlink" title="gitlab常用命令"></a>gitlab常用命令</h3><blockquote>
-<p>p.s.启停等命令需要在root权限下执行，否则会出现access deny错误提示，导致无法启动问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">gitlab-ctl start #启动全部服务</div><div class="line">gitlab-ctl restart #重启全部服务</div><div class="line">gitlab-ctl stop #停止全部服务</div><div class="line">gitlab-ctl restart nginx #重启单个服务</div><div class="line">gitlab-ctl status #查看全部组件的状态</div><div class="line">gitlab-ctl show-config #验证配置文件</div><div class="line">gitlab-ctl uninstall #删除gitlab(保留数据）</div><div class="line">gitlab-ctl cleanse #删除所有数据，重新开始</div><div class="line">gitlab-ctl tail &lt;svc_name&gt;  #查看服务的日志</div><div class="line">gitlab-rails console production #进入控制台 ，可以修改root 的密码</div></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="3-root密码修改"><a href="#3-root密码修改" class="headerlink" title="3.root密码修改"></a>3.root密码修改</h2><p>gitlab安装完毕后，使用浏览器第一次访问gitlab时，可以对root账号进行密码修改</p>
-<p>对root账号密码进行修改，还可以使用命令行进行，具体命令如下</p>
-<h3 id="1）在系统root权限下执行"><a href="#1）在系统root权限下执行" class="headerlink" title="1）在系统root权限下执行"></a>1）在系统root权限下执行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@your-server ~]#  gitlab-rails console production</div></pre></td></tr></table></figure>
-<h3 id="2）进入rails-console后进行如下操作"><a href="#2）进入rails-console后进行如下操作" class="headerlink" title="2）进入rails console后进行如下操作"></a>2）进入rails console后进行如下操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">irb(main):001:0&gt; user = User.where(id: 1).first</div><div class="line">=&gt; #&lt;User id:1 @root&gt;</div><div class="line"></div><div class="line">irb(main):002:0&gt; user.password=&quot;12345678&quot;</div><div class="line">=&gt; &quot;12345678&quot;</div><div class="line"></div><div class="line">irb(main):003:0&gt; user.password_confirmation=&quot;12345678&quot;</div><div class="line">=&gt; &quot;12345678&quot;</div><div class="line"></div><div class="line">irb(main):004:0&gt; user.save!</div><div class="line">=&gt; true</div><div class="line"></div><div class="line">irb(main):005:0&gt; quit</div></pre></td></tr></table></figure>
-<p>即可对gitlab的root账户进行密码修改</p>
-<h2 id="3-gitlab数据备份和恢复"><a href="#3-gitlab数据备份和恢复" class="headerlink" title="3.gitlab数据备份和恢复"></a>3.gitlab数据备份和恢复</h2><h3 id="1）对gitlab进行定时备份任务配置"><a href="#1）对gitlab进行定时备份任务配置" class="headerlink" title="1）对gitlab进行定时备份任务配置"></a>1）对gitlab进行定时备份任务配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[root@your-server ~]# vim  /etc/gitlab/gitlab.rb</div><div class="line">#进入配置文件后</div><div class="line"></div><div class="line">gitlab_rails[&apos;manage_backup_path&apos;] = true</div><div class="line">gitlab_rails[&apos;backup_path&apos;] = &quot;/data/gitlab/backups&quot;    //gitlab备份目录，不配置时，默认为/var/opt/gitlab/backup目录</div><div class="line">gitlab_rails[&apos;backup_archive_permissions&apos;] = 0644       //生成的备份文件权限</div><div class="line">gitlab_rails[&apos;backup_keep_time&apos;] = 7776000              //备份保留天数为3个月（即90天，这里是7776000秒）</div><div class="line"></div><div class="line">#如果修改了backup_path，需要确保配置的路径存在和权限正确，进行如下配置</div><div class="line">[root@your-server ~]# mkdir -p /data/gitlab/backups</div><div class="line">[root@your-server ~]# chown -R git.git /data/gitlab/backups</div><div class="line">[root@your-server ~]# chmod -R 777 /data/gitlab/backups</div><div class="line"></div><div class="line">#使配置修改生效</div><div class="line">[root@your-server ~]# gitlab-ctl reconfigure</div></pre></td></tr></table></figure>
-<h3 id="2）手动备份gitlab"><a href="#2）手动备份gitlab" class="headerlink" title="2）手动备份gitlab"></a>2）手动备份gitlab</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@code-server backups]# gitlab-rake gitlab:backup:create</div></pre></td></tr></table></figure>
-<p>执行完成后，会在gitlab的backup_path下生成备份的tar文件，这里也可以利用linux的crontab来配置定时任务进行备份。</p>
-<h3 id="3）gitlab恢复"><a href="#3）gitlab恢复" class="headerlink" title="3）gitlab恢复"></a>3）gitlab恢复</h3><p>首先关闭gitlab数据相关服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@your-server backups]# gitlab-ctl stop unicorn</div><div class="line">[root@your-server backups]# gitlab-ctl stop sidekiq</div><div class="line"></div><div class="line">#查看gitlab运行状态，确保unicorn，sidekiq两个服务已经停止</div><div class="line">[root@your-server backups]# gitlab-ctl status</div></pre></td></tr></table></figure></p>
-<p>然后将备份文件拷贝到gitlab配置的backup_path路径下（默认为/var/opt/gitlab/backups目录）</p>
-<p>然后执行gitlab恢复命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#例如导出的备份文件为1578453712_2020_01_08_9.5.9_gitlab_backup.tar，则备份信息版本号为1578453712_2020_01_08_9.5.9</div><div class="line">gitlab-rake gitlab:backup:restore BACKUP=&lt;备份信息版本号&gt;</div><div class="line">根据恢复提示信息进行yes操作，即可完成gitlab的恢复工作</div></pre></td></tr></table></figure></p>
-<p>最后重新启动gitlab即可完成恢复工作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@your-server backups]# gitlab-ctl start</div></pre></td></tr></table></figure></p>
-
+        
+          <a class="article-more-a" href="/2020/01/build-gitlab/#more">more >></a>
+        
       
 
       
@@ -1491,6 +1473,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -1503,7 +1489,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1527,6 +1513,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习路径</a>
               </li>
              
@@ -1540,14 +1530,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
