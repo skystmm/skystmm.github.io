@@ -98,6 +98,8 @@ var _hmt = _hmt || [];
 	        
 				<li><a href="/categories/python">python</a></li>
 	        
+				<li><a href="/categories/go">go</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -152,6 +154,8 @@ var _hmt = _hmt || [];
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -168,13 +172,15 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/categories/other">随笔</a></li>
+					<li style="width: 20%"><a href="/categories/other">随笔</a></li>
 		        
-					<li style="width: 25%"><a href="/categories/java">java</a></li>
+					<li style="width: 20%"><a href="/categories/java">java</a></li>
 		        
-					<li style="width: 25%"><a href="/categories/python">python</a></li>
+					<li style="width: 20%"><a href="/categories/python">python</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/go">go</a></li>
 		        
 				</ul>
 			</nav>
@@ -190,6 +196,177 @@ var _hmt = _hmt || [];
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-go1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/go1/">go学习笔记(一)——环境搭建</a>
+    </h1>
+  
+
+        
+        
+        <a href="/2020/02/go1/" class="archive-article-date">
+  	<time datetime="2020-02-07T14:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-07</time>
+</a>
+          
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">523字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+
+          
+        
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="go安装和配置"><a href="#go安装和配置" class="headerlink" title="go安装和配置"></a>go安装和配置</h1><p><a href="https://studygolang.com/dl" target="_blank" rel="external">国内源下载</a></p>
+<p>windows环境下，下一步安装法，即可完成安装</p>
+<blockquote>
+<p><a href="https://go-zh.org/doc/" target="_blank" rel="external">go中文文档</a><br>  <a href="https://golang.google.cn/pkg/" target="_blank" rel="external">go包信息检索</a></p>
+</blockquote>
+<h1 id="go的常用命令"><a href="#go的常用命令" class="headerlink" title="go的常用命令"></a>go的常用命令</h1><p>go包含的命令 如下图：<br><img src="https://upload-images.jianshu.io/upload_images/7504708-46eb42f7e559ecec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="go命令.png"></p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>可选参数</th>
+<th>作用</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>go build</td>
+<td>-o 指定输出名称</td>
+<td>将go代码文件编译成可执行文件</td>
+<td>默认输出名称为package名称，使用build时，会忽略已”_”和”.”开头的文件</td>
+</tr>
+<tr>
+<td>go install</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>go clean</td>
+<td></td>
+<td>清理当前项目中的</td>
+<td></td>
+</tr>
+<tr>
+<td>go get</td>
+<td></td>
+<td>从远程仓库获取代码包</td>
+<td>同python的pip</td>
+</tr>
+<tr>
+<td>go fmt</td>
+<td>-w 写入到源文件</td>
+<td>代码标准格式化</td>
+<td></td>
+</tr>
+<tr>
+<td>go test</td>
+<td></td>
+<td>执行单元测试(文件名为*_test.go)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="IDE选择"><a href="#IDE选择" class="headerlink" title="IDE选择"></a>IDE选择</h1><h2 id="1-atom"><a href="#1-atom" class="headerlink" title="1.atom"></a>1.atom</h2><p><a href="https://blog.csdn.net/sweetvvck/article/details/50333327" target="_blank" rel="external">在atom上开发go</a></p>
+<h2 id="2-vs-code"><a href="#2-vs-code" class="headerlink" title="2. vs code"></a>2. vs code</h2><p>安装请至<a href="https://code.visualstudio.com/Download" target="_blank" rel="external">官网</a>选择对应版本进行安装</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/3171be60b736" target="_blank" rel="external">vscode实用快捷键</a></p>
+</blockquote>
+<h3 id="手动安装go需要的插件"><a href="#手动安装go需要的插件" class="headerlink" title="手动安装go需要的插件"></a>手动安装go需要的插件</h3><blockquote>
+<p><a href="https://blog.csdn.net/dmt742055597/article/details/85865186" target="_blank" rel="external">vs code go插件安装失败问题解决</a></p>
+</blockquote>
+<h4 id="创建github-com下的插件"><a href="#创建github-com下的插件" class="headerlink" title="创建github.com下的插件"></a>创建github.com下的插件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src</div><div class="line">mkdir github.com</div><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com</div><div class="line">mkdir acroca cweill derekparker go-delve josharian karrick mdempsky pkg ramya-rao<span class="_">-a</span> rogpeppe sqs uudashr</div><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/acroca</div><div class="line">git <span class="built_in">clone</span> https://github.com/acroca/go-symbols.git</div><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/cweill</div><div class="line">git <span class="built_in">clone</span> https://github.com/cweill/gotests.git</div><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/derekparker</div><div class="line">git <span class="built_in">clone</span> https://github.com/derekparker/delve.git</div><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/go-delve</div><div class="line">git <span class="built_in">clone</span> https://github.com/go-delve\delve.git</div><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/josharian</div><div class="line">git <span class="built_in">clone</span> https://github.com/josharian/impl.git</div><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/karrick</div><div class="line">git <span class="built_in">clone</span> https://github.com/karrick/godirwalk.git</div><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/mdempsky</div><div class="line">git <span class="built_in">clone</span> https://github.com/mdempsky/gocode.git</div><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/pkg</div><div class="line">git <span class="built_in">clone</span> https://github.com/pkg/errors.git</div><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/ramya-rao<span class="_">-a</span></div><div class="line">git <span class="built_in">clone</span> https://github.com/ramya-rao<span class="_">-a</span>/go-outline.git</div><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/rogpeppe</div><div class="line">git <span class="built_in">clone</span> https://github.com/rogpeppe/godef.git</div><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/sqs</div><div class="line">git <span class="built_in">clone</span> https://github.com/sqs/goreturns.git</div><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/uudashr</div><div class="line">git <span class="built_in">clone</span> https://github.com/uudashr/gopkgs.git</div></pre></td></tr></table></figure>
+<h4 id="创建golang-org下的插件"><a href="#创建golang-org下的插件" class="headerlink" title="创建golang.org下的插件"></a>创建golang.org下的插件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src</div><div class="line">mkdir -p golang.org/x</div><div class="line"><span class="built_in">cd</span> golang.org/x</div><div class="line">git <span class="built_in">clone</span> https://github.com/golang/tools.git</div><div class="line">git <span class="built_in">clone</span> https://github.com/golang/lint.git</div></pre></td></tr></table></figure>
+<h4 id="手动安装插件"><a href="#手动安装插件" class="headerlink" title="手动安装插件"></a>手动安装插件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src</div><div class="line">go install github.com/mdempsky/gocode</div><div class="line">go install github.com/uudashr/gopkgs/cmd/gopkgs</div><div class="line">go install github.com/ramya-rao<span class="_">-a</span>/go-outline</div><div class="line">go install github.com/acroca/go-symbols</div><div class="line">go install github.com/rogpeppe/godef</div><div class="line">go install github.com/sqs/goreturns</div><div class="line">go install github.com/derekparker/delve/cmd/dlv</div><div class="line">go install github.com/cweill/gotests</div><div class="line">go install github.com/josharian/impl</div><div class="line">go install golang.org/x/tools/cmd/guru</div><div class="line">go install golang.org/x/tools/cmd/gorename</div><div class="line">go install golang.org/x/lint/golint</div></pre></td></tr></table></figure>
+
+      
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/go//" class="article-tag-list-link color3">go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/go1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-build-gitlab" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1235,128 +1412,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Tomcat源码学习（一）——Bootstarp入口类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/Tomcat源码学习（一）——Bootstarp入口类/">Tomcat源码学习（一）——Bootstarp入口类</a>
-    </h1>
-  
-
-        
-        
-        <a href="/2018/11/Tomcat源码学习（一）——Bootstarp入口类/" class="archive-article-date">
-  	<time datetime="2018-11-05T12:40:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-          
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
-      </span>
-    </span>
-</div>
-
-          
-        
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Tomcat作为平时工作中出镜率最高的web容器，今天我们就来对其源码一探究竟。通过github获取了tomcat的最新代码，获取地址如下</p>
-<blockquote>
-<p><a href="https://github.com/apache/tomcat" target="_blank" rel="external">https://github.com/apache/tomcat</a></p>
-</blockquote>
-<p>这里使用idea的git直接从github上拉去了最新源码，同时方便获取最新修改。</p>
-        
-          <a class="article-more-a" href="/2018/11/Tomcat源码学习（一）——Bootstarp入口类/#more">more >></a>
-        
-      
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/Tomcat源码学习（一）——Bootstarp入口类/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1483,14 +1538,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
               </li>
              
@@ -1511,11 +1558,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习路径</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">资料</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1528,14 +1595,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">比赛</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习路径</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">资料</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -103,6 +103,8 @@ var _hmt = _hmt || [];
 	        
 				<li><a href="/categories/python">python</a></li>
 	        
+				<li><a href="/categories/go">go</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -157,6 +159,8 @@ var _hmt = _hmt || [];
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -173,13 +177,15 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/categories/other">随笔</a></li>
+					<li style="width: 20%"><a href="/categories/other">随笔</a></li>
 		        
-					<li style="width: 25%"><a href="/categories/java">java</a></li>
+					<li style="width: 20%"><a href="/categories/java">java</a></li>
 		        
-					<li style="width: 25%"><a href="/categories/python">python</a></li>
+					<li style="width: 20%"><a href="/categories/python">python</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/go">go</a></li>
 		        
 				</ul>
 			</nav>
@@ -260,7 +266,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>git config receive.denyCurrentBranch ignore</p>
 </blockquote>
-<h3 id="2-提交到仓库后自动部署"><a href="#2-提交到仓库后自动部署" class="headerlink" title="2.提交到仓库后自动部署"></a>2.提交到仓库后自动部署</h3><p>在仓库.git目录下的hooks目录下创建post-recieve文件，来设定提交后部署操作，脚本可参考下面的脚本内容’<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>!/bin/sh</div><div class="line">BASE_HOME=&lt;发布路径&gt;</div><div class="line">git --work-tree=$&#123;BASE_HOME&#125; --git-dir=/home/git/blog.git checkout -f</div></pre></td></tr></table></figure></p>
+<h3 id="2-提交到仓库后自动部署"><a href="#2-提交到仓库后自动部署" class="headerlink" title="2.提交到仓库后自动部署"></a>2.提交到仓库后自动部署</h3><p>在仓库.git目录下的hooks目录下创建post-recieve文件，来设定提交后部署操作，脚本可参考下面的脚本内容’<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></div><div class="line">BASE_HOME=&lt;发布路径&gt;</div><div class="line">git --work-tree=$&#123;BASE_HOME&#125; --git-dir=/home/git/blog.git checkout -f</div></pre></td></tr></table></figure></p>
 <p>最后在hexo的根目录下的_config.yml中添加新建仓库即可。</p>
 
       
@@ -591,14 +597,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
               </li>
              
@@ -619,11 +617,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习路径</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">资料</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,14 +654,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">比赛</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习路径</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">资料</a>
               </li>
              
               <li class="article-tag-list-item">
