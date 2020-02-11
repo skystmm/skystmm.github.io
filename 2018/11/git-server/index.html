@@ -266,7 +266,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>git config receive.denyCurrentBranch ignore</p>
 </blockquote>
-<h3 id="2-提交到仓库后自动部署"><a href="#2-提交到仓库后自动部署" class="headerlink" title="2.提交到仓库后自动部署"></a>2.提交到仓库后自动部署</h3><p>在仓库.git目录下的hooks目录下创建post-recieve文件，来设定提交后部署操作，脚本可参考下面的脚本内容’<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></div><div class="line">BASE_HOME=&lt;发布路径&gt;</div><div class="line">git --work-tree=$&#123;BASE_HOME&#125; --git-dir=/home/git/blog.git checkout -f</div></pre></td></tr></table></figure></p>
+<h3 id="2-提交到仓库后自动部署"><a href="#2-提交到仓库后自动部署" class="headerlink" title="2.提交到仓库后自动部署"></a>2.提交到仓库后自动部署</h3><p>在仓库.git目录下的hooks目录下创建post-recieve文件，来设定提交后部署操作，脚本可参考下面的脚本内容’<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>!/bin/sh</div><div class="line">BASE_HOME=&lt;发布路径&gt;</div><div class="line">git --work-tree=$&#123;BASE_HOME&#125; --git-dir=/home/git/blog.git checkout -f</div></pre></td></tr></table></figure></p>
 <p>最后在hexo的根目录下的_config.yml中添加新建仓库即可。</p>
 
       
@@ -617,11 +617,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,11 +625,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,11 +653,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">比赛</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">比赛</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作相关</a>
               </li>
             
             <div class="clearfix"></div>
