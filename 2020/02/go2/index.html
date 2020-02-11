@@ -21,21 +21,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://stxl117.top">
-  <title>AQS源码分析 | 胖小天</title>
+  <title>go学习笔记(一)——环境搭建 | 胖小天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="AQS源码分析AbstractQueuedSynchronizer类结构分析 其中AbstractOwnaleSynchronizer提供了当前资源拥有者相关的操作，AbatractQueuedSynchronizer（下文中简称为AQS）这个抽象类中主要提供了对互斥锁和共享锁相关操作提供了基础功能的实现，以及提供了对于不同场景下的加锁和释放锁的方法定义。 而AQS这个抽象类中主要为我们提供了对于">
-<meta name="keywords" content="java,J.U.C">
+  <meta name="keywords" content="go">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AQS源码分析">
-<meta property="og:url" content="https://stxl117.top/2018/05/AQS源码分析-md/index.html">
+<meta property="og:title" content="go学习笔记(一)——环境搭建">
+<meta property="og:url" content="https://stxl117.top/2020/02/go2/index.html">
 <meta property="og:site_name" content="胖小天">
-<meta property="og:description" content="AQS源码分析AbstractQueuedSynchronizer类结构分析 其中AbstractOwnaleSynchronizer提供了当前资源拥有者相关的操作，AbatractQueuedSynchronizer（下文中简称为AQS）这个抽象类中主要提供了对互斥锁和共享锁相关操作提供了基础功能的实现，以及提供了对于不同场景下的加锁和释放锁的方法定义。 而AQS这个抽象类中主要为我们提供了对于">
-<meta property="og:image" content="http://image.stxl117.top/AQS.png">
-<meta property="og:updated_time" content="2019-03-11T13:54:12.861Z">
+<meta property="og:image" content="http://image.stxl117.top/Go语言.jpg">
+<meta property="og:image" content="http://image.stxl117.top/slice扩容.jpg">
+<meta property="og:updated_time" content="2020-02-11T07:45:43.961Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AQS源码分析">
-<meta name="twitter:description" content="AQS源码分析AbstractQueuedSynchronizer类结构分析 其中AbstractOwnaleSynchronizer提供了当前资源拥有者相关的操作，AbatractQueuedSynchronizer（下文中简称为AQS）这个抽象类中主要提供了对互斥锁和共享锁相关操作提供了基础功能的实现，以及提供了对于不同场景下的加锁和释放锁的方法定义。 而AQS这个抽象类中主要为我们提供了对于">
-<meta name="twitter:image" content="http://image.stxl117.top/AQS.png">
+<meta name="twitter:title" content="go学习笔记(一)——环境搭建">
+<meta name="twitter:image" content="http://image.stxl117.top/Go语言.jpg">
   
     <link rel="alternative" href="/atom.xml" title="胖小天" type="application/atom+xml">
   
@@ -202,14 +200,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-AQS源码分析-md" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-go2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      AQS源码分析
+      go学习笔记(一)——环境搭建
     </h1>
   
 
@@ -223,8 +221,8 @@ var _hmt = _hmt || [];
   </a>
 
         
-        <a href="/2018/05/AQS源码分析-md/" class="archive-article-date">
-  	<time datetime="2018-05-15T14:45:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-15</time>
+        <a href="/2020/02/go2/" class="archive-article-date">
+  	<time datetime="2020-02-11T07:37:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
 </a>
           
           <div style="margin-top:10px;">
@@ -232,7 +230,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.5k字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -241,7 +239,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">5分</span>
       </span>
     </span>
 </div>
@@ -253,35 +251,42 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="AQS源码分析"><a href="#AQS源码分析" class="headerlink" title="AQS源码分析"></a>AQS源码分析</h1><h2 id="AbstractQueuedSynchronizer类结构分析"><a href="#AbstractQueuedSynchronizer类结构分析" class="headerlink" title="AbstractQueuedSynchronizer类结构分析"></a>AbstractQueuedSynchronizer类结构分析</h2><p><img src="http://image.stxl117.top/AQS.png" alt="AbstractQueuedSynchronizer"></p>
-<p>其中AbstractOwnaleSynchronizer提供了当前资源拥有者相关的操作，AbatractQueuedSynchronizer（下文中简称为AQS）这个抽象类中主要提供了对互斥锁和共享锁相关操作提供了基础功能的实现，以及提供了对于不同场景下的加锁和释放锁的方法定义。</p>
-<p>而AQS这个抽象类中主要为我们提供了对于CLH队列的一系列操作，包括无法获得请求资源时的如队列操作和资源释放时怎么通知等待队列中的节点获取资源的操作。这样使得我们在需要自己实现锁功能时，只要需要专注于具体的加锁和释放锁操作。下面来看一下AQS中核心的数据结构CLH队列。</p>
+        <p><img src="http://image.stxl117.top/Go语言.jpg" alt="Go语言.jpg"></p>
 <a id="more"></a>
-<h2 id="CLH队列"><a href="#CLH队列" class="headerlink" title="CLH队列"></a>CLH队列</h2><p>上面基础数据结构为Node，Node为一个双向链表结构。CLH中节点数据结实现如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> Node SHARED = <span class="keyword">new</span> Node();</div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> Node EXCLUSIVE = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CANCELLED = <span class="number">1</span>;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SIGNAL = -<span class="number">1</span>;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CONDITION = -<span class="number">2</span>;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PROPAGATE = -<span class="number">3</span>;</div><div class="line"></div><div class="line">    <span class="keyword">volatile</span> <span class="keyword">int</span> waitStatus;</div><div class="line">    <span class="keyword">volatile</span> Node prev;</div><div class="line">    <span class="keyword">volatile</span> Node next;</div><div class="line">    <span class="keyword">volatile</span> Thread thread;</div><div class="line"></div><div class="line">    Node nextWaiter;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">isShared</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> nextWaiter == SHARED;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">final</span> Node <span class="title">predecessor</span><span class="params">()</span> <span class="keyword">throws</span> NullPointerException </span>&#123;</div><div class="line">        Node p = prev;</div><div class="line">        <span class="keyword">if</span> (p == <span class="keyword">null</span>)</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="keyword">return</span> p;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Node() &#123;    <span class="comment">// Used to establish initial head or SHARED marker</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Node(Thread thread, Node mode) &#123;     <span class="comment">// Used by addWaiter</span></div><div class="line">        <span class="keyword">this</span>.nextWaiter = mode;</div><div class="line">        <span class="keyword">this</span>.thread = thread;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Node(Thread thread, <span class="keyword">int</span> waitStatus) &#123; <span class="comment">// Used by Condition</span></div><div class="line">        <span class="keyword">this</span>.waitStatus = waitStatus;</div><div class="line">        <span class="keyword">this</span>.thread = thread;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>可以看出CLH队列是一个双线链表结构，每个节点包含线程信息和状态信息。</p>
-<h2 id="独占模式下的CLH操作"><a href="#独占模式下的CLH操作" class="headerlink" title="独占模式下的CLH操作"></a>独占模式下的CLH操作</h2><h3 id="1-加锁"><a href="#1-加锁" class="headerlink" title="1.加锁"></a>1.加锁</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!tryAcquire(arg) &amp;&amp;</div><div class="line">            acquireQueued(addWaiter(Node.EXCLUSIVE), arg))</div><div class="line">            selfInterrupt();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>通过AQS的源码可以看到获取独享锁时，首先调用tryAcquire方法进行锁获取，而AQS源码中我们发现tryAcuire方法为一个抽象方法，所以获取锁资源是根据具体的业务要求，有具体类进行实现的。而获取锁失败后，首先执行addWaiter方法，addWaiter方法是将当前请求线程信息构造成CLH队列中的节点，然后再将节点插入到队列的队尾，同时返回创建的这个node节点，然后执行acquireQueued方法，下面看下acquireQueued的实现，</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">acquireQueued</span><span class="params">(<span class="keyword">final</span> Node node, <span class="keyword">int</span> arg)</span> </span>&#123;</div><div class="line">        <span class="keyword">boolean</span> failed = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">boolean</span> interrupted = <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">for</span> (;;) &#123;</div><div class="line">                <span class="keyword">final</span> Node p = node.predecessor();</div><div class="line">                <span class="keyword">if</span> (p == head &amp;&amp; tryAcquire(arg)) &#123;</div><div class="line">                    setHead(node);</div><div class="line">                    p.next = <span class="keyword">null</span>; <span class="comment">// help GC</span></div><div class="line">                    failed = <span class="keyword">false</span>;</div><div class="line">                    <span class="keyword">return</span> interrupted;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (shouldParkAfterFailedAcquire(p, node) &amp;&amp;</div><div class="line">                    parkAndCheckInterrupt())</div><div class="line">                    interrupted = <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            <span class="keyword">if</span> (failed)</div><div class="line">                cancelAcquire(node);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>方法中，可以看到如果新加的节点是第一个节点，将再尝试获取获取锁一次，如果获取成功，进行将其从队列中移除，并返回。如果不是第一个节点，则设置节点状态，并挂起该线程。</p>
-<p>大致加锁流程为：</p>
-<h3 id="2-释放锁"><a href="#2-释放锁" class="headerlink" title="2.释放锁"></a>2.释放锁</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">release</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (tryRelease(arg)) &#123;</div><div class="line">            Node h = head;</div><div class="line">            <span class="keyword">if</span> (h != <span class="keyword">null</span> &amp;&amp; h.waitStatus != <span class="number">0</span>)</div><div class="line">                unparkSuccessor(h);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>和获取资源一样，释放资源的时候，还是先调用tryRelease方法进行资源释放，同样的tryRealse方法也是抽象方法，需要在具体实现类中进行具体实现的。当资源释放后，且CLH等待队列不为空时，会进行队列中节点唤醒的操作，具体实现如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">unparkSuccessor</span><span class="params">(Node node)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> ws = node.waitStatus;</div><div class="line">        <span class="keyword">if</span> (ws &lt; <span class="number">0</span>)</div><div class="line">            compareAndSetWaitStatus(node, ws, <span class="number">0</span>);</div><div class="line"></div><div class="line">        Node s = node.next;</div><div class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.waitStatus &gt; <span class="number">0</span>) &#123;</div><div class="line">            s = <span class="keyword">null</span>;</div><div class="line">            <span class="keyword">for</span> (Node t = tail; t != <span class="keyword">null</span> &amp;&amp; t != node; t = t.prev)</div><div class="line">                <span class="keyword">if</span> (t.waitStatus &lt;= <span class="number">0</span>)</div><div class="line">                    s = t;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (s != <span class="keyword">null</span>)</div><div class="line">            LockSupport.unpark(s.thread);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>可以看到唤醒时有两种情况，正常情况下是唤醒头结点后的第一个节点，当头结点下一个节点为空时后者该节点状态不为SIGNAL时，将从尾节点开始开始向前遍历找到排在最前面的一个为SIGNAL的节点，唤醒对应的线程进行锁资源的获取。</p>
-<p>大体流程如下图所示：</p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="1-基本类型"><a href="#1-基本类型" class="headerlink" title="1.基本类型"></a>1.基本类型</h2><p>go语言中的基本类型如上图所示，go语言中有五类基数类型。</p>
+<h3 id="1）-boolean型"><a href="#1）-boolean型" class="headerlink" title="1） boolean型"></a>1） boolean型</h3><p>同其他语言一样，boolean包括两个值 true 和false<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> booleanVal boolean = <span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<h3 id="2-数值类型"><a href="#2-数值类型" class="headerlink" title="2)  数值类型"></a>2)  数值类型</h3><p>数值类型中可以分为三大类：整型，浮点型和复数</p>
+<h4 id="a-整型"><a href="#a-整型" class="headerlink" title="a.整型"></a>a.整型</h4><p>go语言中直接定义好了不同位数的整型，其中包括如下表所示类型<br>| 类型 |  备注 |<br>| —— |—— |<br>| rune | int32的别称 |<br>| int8 | 8位带符号整数类型 |<br>| int16 | 16位带符号整数类型 |<br>| int32 | 32位带符号整数类型 |<br>| int64| 64位带符号整数类型 |<br>| byte | 相当于uint8别称 |<br>| uint8 | 8位不带符号整数类型 |<br>| uint16 | 16位不带符号整数类型 |<br>| uint32 | 32位不带符号整数类型 |<br>| uint64| 64位不带符号整数类型 |</p>
 <blockquote>
-<p>具体实现tryAcquire和tryRelease可以参考Juc包中的ReentrantLock类</p>
+<p>注意：<br>1.int的默认类型为int32<br>2.go语言中不支持隐式类型转换，哪怕是int8转int32，使用隐式类型转换会在编译器报错<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a <span class="keyword">int32</span> = <span class="number">123</span></div><div class="line"><span class="comment">//编译报错cannot use a (type int32) as type int8 in assignment</span></div><div class="line"><span class="keyword">var</span> b <span class="keyword">int8</span> = a</div></pre></td></tr></table></figure></p>
 </blockquote>
-<h2 id="共享模式下的CLH操作"><a href="#共享模式下的CLH操作" class="headerlink" title="共享模式下的CLH操作"></a>共享模式下的CLH操作</h2><h3 id="1-加锁-1"><a href="#1-加锁-1" class="headerlink" title="1.加锁"></a>1.加锁</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">acquireShared</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (tryAcquireShared(arg) &lt; <span class="number">0</span>)</div><div class="line">           doAcquireShared(arg);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p>同样的我们需要在具体的场景下实现tryAcquireShared方法，来实现加锁的过程。而AQS则我们实现了，未获取到所情况时，对于获取锁失败的线程的等待操作。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doAcquireShared</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</div><div class="line">        <span class="keyword">final</span> Node node = addWaiter(Node.SHARED);</div><div class="line">        <span class="keyword">boolean</span> failed = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">boolean</span> interrupted = <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">for</span> (;;) &#123;</div><div class="line">                <span class="keyword">final</span> Node p = node.predecessor();</div><div class="line">                <span class="keyword">if</span> (p == head) &#123;</div><div class="line">                    <span class="keyword">int</span> r = tryAcquireShared(arg);</div><div class="line">                    <span class="keyword">if</span> (r &gt;= <span class="number">0</span>) &#123;</div><div class="line">                        setHeadAndPropagate(node, r);</div><div class="line">                        p.next = <span class="keyword">null</span>; <span class="comment">// help GC</span></div><div class="line">                        <span class="keyword">if</span> (interrupted)</div><div class="line">                            selfInterrupt();</div><div class="line">                        failed = <span class="keyword">false</span>;</div><div class="line">                        <span class="keyword">return</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (shouldParkAfterFailedAcquire(p, node) &amp;&amp;</div><div class="line">                    parkAndCheckInterrupt())</div><div class="line">                    interrupted = <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            <span class="keyword">if</span> (failed)</div><div class="line">                cancelAcquire(node);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>可以看到共享锁的未获取到资源情况的操作与独占锁类似，都是将该线程挂起，并创建对应的Node节点插入到CLH等待队列中。</p>
-<h3 id="2-释放锁-1"><a href="#2-释放锁-1" class="headerlink" title="2.释放锁"></a>2.释放锁</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">releaseShared</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (tryReleaseShared(arg)) &#123;</div><div class="line">            doReleaseShared();</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doReleaseShared</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (;;) &#123;</div><div class="line">            Node h = head;</div><div class="line">            <span class="keyword">if</span> (h != <span class="keyword">null</span> &amp;&amp; h != tail) &#123;</div><div class="line">                <span class="keyword">int</span> ws = h.waitStatus;</div><div class="line">                <span class="keyword">if</span> (ws == Node.SIGNAL) &#123;</div><div class="line">                    <span class="keyword">if</span> (!compareAndSetWaitStatus(h, Node.SIGNAL, <span class="number">0</span>))</div><div class="line">                        <span class="keyword">continue</span>;            <span class="comment">// loop to recheck cases</span></div><div class="line">                    unparkSuccessor(h);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (ws == <span class="number">0</span> &amp;&amp;</div><div class="line">                         !compareAndSetWaitStatus(h, <span class="number">0</span>, Node.PROPAGATE))</div><div class="line">                    <span class="keyword">continue</span>;                <span class="comment">// loop on failed CAS</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (h == head)                   <span class="comment">// loop if head changed</span></div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>可以看到共享锁的未获释放资源情况的操作与独占锁类似。</p>
+<h4 id="b-浮点类型"><a href="#b-浮点类型" class="headerlink" title="b.浮点类型"></a>b.浮点类型</h4><p>浮点类型包括float32和float64两个，如果不显示声明为32位，则float默认为64位<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> floatVal <span class="keyword">float64</span> =<span class="number">43.32</span></div></pre></td></tr></table></figure></p>
+<h4 id="c-复数类型"><a href="#c-复数类型" class="headerlink" title="c.复数类型"></a>c.复数类型</h4><p>复数类型是go语言增加支持的数据类型，复数类型就是我们在高中数学中学过的复数，表示方法也和上学时学的表述方法一致。go语言依然为了兼容32位系统和64位系统，提供了两种复数基本类型complex128(64位实数和64位虚数,默认)和complex64(32位实数和32位虚数).</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> complexVal <span class="keyword">complex128</span> = <span class="number">58</span>+<span class="number">8i</span></div></pre></td></tr></table></figure>
+<h3 id="3-字符串"><a href="#3-字符串" class="headerlink" title="3) 字符串"></a>3) 字符串</h3><p>字符串类型的声明有两种方式双引号(“”)和反引号(``)，两者的区别在于单引号可跨行，所见即所得，类似python中的三引号表示。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">var</span> s <span class="keyword">string</span> = <span class="string">"a"</span></div><div class="line"> <span class="keyword">var</span> ss <span class="keyword">string</span> =<span class="string">`a</span></div><div class="line"> b`</div><div class="line">fmt.Println(s)</div><div class="line">fmt.Println(ss)</div></pre></td></tr></table></figure>
 <blockquote>
-<p>具体实现tryAcquire和tryRelease可以参考Juc包中的ReentrantReadWriteLock类中读锁的实现</p>
+<p>基础类型的零值：<br>数值类型为 0，<br>布尔类型为 false，<br>字符串为 “”（空字符串）。</p>
+<h2 id="其他类型"><a href="#其他类型" class="headerlink" title="其他类型"></a>其他类型</h2></blockquote>
+<h3 id="1-数组"><a href="#1-数组" class="headerlink" title="1. 数组"></a>1. 数组</h3><p>同其他语言差不多，区别在于声明是需要声明容量，声明后不可扩缩容<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> array [<span class="number">10</span>]<span class="keyword">int32</span></div><div class="line"><span class="comment">//多维数组</span></div><div class="line">b := [<span class="number">2</span>][<span class="number">4</span>]<span class="keyword">int</span>&#123;[<span class="number">4</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,[<span class="number">4</span>]<span class="keyword">int</span>&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>数组声明中需要注意的是，数组容量的声明需要写在类型的前边，否则会报错。不像java中即可以写在前边也可以写在后边<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//编译错误</span></div><div class="line"> <span class="keyword">var</span> array <span class="keyword">int</span>[<span class="number">32</span>]</div></pre></td></tr></table></figure></p>
 </blockquote>
-<p>总的来说AQS用模板方法的方式，定义了通过Cas获取和释放锁的流程，以及对于等待节点的操作。而我们在使用已AQS为框架自实现锁时，只需要专注于获取锁和释放锁的具体细节实现，即可完成自定义锁的功能。</p>
+<h3 id="2-切片-slice"><a href="#2-切片-slice" class="headerlink" title="2. 切片(slice)"></a>2. 切片(slice)</h3><p>刚看到slice的时候，第一反应是python中的slice特性，两者有一些相似之处，也有不同之处。切片为数组元素提供动态大小的、灵活的视角,设计思想上python和go对于切片是一样的。区别在于python中slice更加灵活一些支持三个参数的切片处理（起止以及步长处理），而go中暂时支持起止处理。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//python实现</span></div><div class="line">li = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">r = li[<span class="number">1</span>:<span class="number">5</span>:<span class="number">2</span>]  <span class="comment">// [2,4]</span></div><div class="line"><span class="comment">//go实现</span></div><div class="line">a := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</div><div class="line">b := a[<span class="number">1</span>:<span class="number">3</span>] <span class="comment">//[2,3,4]</span></div></pre></td></tr></table></figure></p>
+<p>go中的切片可以理解为<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">struct</span>&#123;</div><div class="line">	<span class="keyword">var</span> a [N]<span class="keyword">int</span></div><div class="line">        <span class="comment">//start end 为前必后开区间，同python</span></div><div class="line">	<span class="keyword">var</span> start <span class="keyword">int</span></div><div class="line">	<span class="keyword">var</span> end <span class="keyword">int</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里需要注意的是如下情况<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">6</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</div><div class="line">b := a[<span class="number">0</span>:]</div><div class="line">c := a[<span class="number">0</span>:]</div><div class="line"></div><div class="line">b[<span class="number">5</span>] = <span class="number">1</span></div><div class="line">fmt.Println(c[<span class="number">5</span>]) <span class="comment">//6</span></div><div class="line"></div><div class="line">b = <span class="built_in">append</span>(b, <span class="number">7</span>)</div><div class="line">b[<span class="number">1</span>] = <span class="number">9</span></div><div class="line">fmt.Println(c[<span class="number">1</span>]) <span class="comment">//2</span></div></pre></td></tr></table></figure></p>
+<p>从上面代码的输出可以看到，在不发生扩容情况下，两个切片b和c底层都指向了数组a（地址引用），当我们修改切片b的index为5的数值后，切片c对应index结果也会改变。就像go指南中描述的一样，切片并不存储任何数据，它只是描述了底层数组中的一段。但是当我们向容量已满的切片b追加元素后，会触发扩容，扩容大致如下图，导致切片b的底层数组成了有变新的数组，所以在改变切片b的内数据后，切片c中数据不会发生改变。</p>
+<p><img src="http://image.stxl117.top/slice扩容.jpg" alt="切片扩容"></p>
+<blockquote>
+<p>这里还需要注意的是，切片触发扩容规则如下：<br>1.切片每次新增个数不超过原来的1倍，且每次增加数不超过1024个，且增加后总长度小于1024个，这种情况下扩容后为原来的2倍<br>2.切片一次新增个数超过原来1倍，但不超过1024个，且增加后总长度小于1024个，这种情况下扩容后比实际具有的总长度还要大1<br>3.原切片长度超过1024时，一次增加容量不是2倍而是0.25倍，每次超过预定的都是0.25累乘,如果增加数量大于0.25增量，就是增加量+1</p>
+</blockquote>
+<h3 id="3-字典"><a href="#3-字典" class="headerlink" title="3.字典"></a>3.字典</h3><p>采用哈希方式存储的数据类型，同java中的map,python中的字典。区别在于我们获取字典内数据值时，返回值有一些差异，如下代码<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dictDemo := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span> &#123;<span class="string">"test"</span>:<span class="number">1</span>&#125;</div><div class="line"><span class="comment">//value为key对应的值，contain为boolean型，true为dictDemo包含key为test的键，false为不包含</span></div><div class="line">value,contain= dict[<span class="string">"test"</span>]</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参考内容：<br>1.<a href="https://tour.go-zh.org/" target="_blank" rel="external">go语法指南</a></p>
+<ol>
+<li>《go web编程》</li>
+</ol>
+</blockquote>
 
       
       
@@ -334,17 +339,24 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">J.U.C</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/go//" class="article-tag-list-link color3">go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -394,7 +406,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://stxl117.top/2018/05/AQS源码分析-md/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://stxl117.top/2020/02/go2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -408,18 +420,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2018/06/大麦网数据分析/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          大麦网数据分析
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/2018技术读书计划及笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2018读书计划及笔记</div>
+    <a href="/2020/02/go1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">go学习笔记(一)——环境搭建</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -471,7 +474,7 @@ if(true){
   	repo: 'skystmm.github.io',
   	owner: 'skystmm',
   	admin: ['skystmm'],
-  	id: 'Tue May 15 2018 22:45:58 GMT+0800',
+  	id: 'Tue Feb 11 2020 15:37:55 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container')
