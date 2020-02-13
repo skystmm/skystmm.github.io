@@ -21,18 +21,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://stxl117.top">
-  <title>胖小天</title>
+  <title>go学习笔记(三)——语法 | 胖小天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vtarget接口文档v1.0   修改记录 版本 日期     创建 v1.0 2019-1-5    1.请求加密和验签（暂不做）2.标准输出信息返回统一结构| 参数名称 | 参数类型 |  备注 || ——- | ——– | —- || code | int | 错误码  || reason | String | 描述信息 || data | Object |  请求返回结果数据（无数据结果">
-<meta property="og:type" content="website">
-<meta property="og:title" content="胖小天">
-<meta property="og:url" content="https://stxl117.top/photos/vtarget接口.html">
+  <meta name="description" content="1.变量变量是每种语言都不可或缺的声明方式，go提供了以下几种声明方式12345var a stringvar a string = &quot;a&quot;var a = &quot;b&quot;a := &quot;c&quot; //只能在函数内使用var a,b,c string //同类型多变量的声明  需要注意的是，在go语言中声明的变量如果在接下来作用域中不使用，编译时会报xxx declared and not used错  除了上">
+<meta name="keywords" content="go">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go学习笔记(三)——语法">
+<meta property="og:url" content="https://stxl117.top/2020/02/go3/index.html">
 <meta property="og:site_name" content="胖小天">
-<meta property="og:description" content="vtarget接口文档v1.0   修改记录 版本 日期     创建 v1.0 2019-1-5    1.请求加密和验签（暂不做）2.标准输出信息返回统一结构| 参数名称 | 参数类型 |  备注 || ——- | ——– | —- || code | int | 错误码  || reason | String | 描述信息 || data | Object |  请求返回结果数据（无数据结果">
-<meta property="og:updated_time" content="2019-01-06T07:00:11.185Z">
+<meta property="og:description" content="1.变量变量是每种语言都不可或缺的声明方式，go提供了以下几种声明方式12345var a stringvar a string = &quot;a&quot;var a = &quot;b&quot;a := &quot;c&quot; //只能在函数内使用var a,b,c string //同类型多变量的声明  需要注意的是，在go语言中声明的变量如果在接下来作用域中不使用，编译时会报xxx declared and not used错  除了上">
+<meta property="og:image" content="http://image.stxl117.top/基础语法.jpg">
+<meta property="og:image" content="http://image.stxl117.top/go关键字.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-0f889ad2474c6f6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-6419a0a64784ee09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-03dad36379f6c116.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2020-02-13T12:14:10.628Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="胖小天">
-<meta name="twitter:description" content="vtarget接口文档v1.0   修改记录 版本 日期     创建 v1.0 2019-1-5    1.请求加密和验签（暂不做）2.标准输出信息返回统一结构| 参数名称 | 参数类型 |  备注 || ——- | ——– | —- || code | int | 错误码  || reason | String | 描述信息 || data | Object |  请求返回结果数据（无数据结果">
+<meta name="twitter:title" content="go学习笔记(三)——语法">
+<meta name="twitter:description" content="1.变量变量是每种语言都不可或缺的声明方式，go提供了以下几种声明方式12345var a stringvar a string = &quot;a&quot;var a = &quot;b&quot;a := &quot;c&quot; //只能在函数内使用var a,b,c string //同类型多变量的声明  需要注意的是，在go语言中声明的变量如果在接下来作用域中不使用，编译时会报xxx declared and not used错  除了上">
+<meta name="twitter:image" content="http://image.stxl117.top/基础语法.jpg">
   
     <link rel="alternative" href="/atom.xml" title="胖小天" type="application/atom+xml">
   
@@ -199,107 +206,101 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-go3" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      go学习笔记(三)——语法
+    </h1>
+  
+
+        
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+        
+        <a href="/2020/02/go3/" class="archive-article-date">
+  	<time datetime="2020-02-13T12:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-13</time>
+</a>
+          
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.9k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">7分</span>
+      </span>
+    </span>
+</div>
+
+          
+        
+
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="vtarget接口文档v1-0"><a href="#vtarget接口文档v1-0" class="headerlink" title="vtarget接口文档v1.0"></a>vtarget接口文档v1.0</h1><table>
-<thead>
-<tr>
-<th>修改记录</th>
-<th>版本</th>
-<th>日期</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>创建</td>
-<td>v1.0</td>
-<td>2019-1-5</td>
-</tr>
-</tbody>
-</table>
-<h2 id="1-请求加密和验签（暂不做）"><a href="#1-请求加密和验签（暂不做）" class="headerlink" title="1.请求加密和验签（暂不做）"></a>1.请求加密和验签（暂不做）</h2><h2 id="2-标准输出信息"><a href="#2-标准输出信息" class="headerlink" title="2.标准输出信息"></a>2.标准输出信息</h2><p>返回统一结构<br>| 参数名称 | 参数类型 |  备注 |<br>| ——- | ——– | —- |<br>| code | int | 错误码  |<br>| reason | String | 描述信息 |<br>| data | Object |  请求返回结果数据（无数据结果返回时不传） |</p>
+        <p><img src="http://image.stxl117.top/基础语法.jpg" alt="基础语法.jpg"></p>
+<p><img src="http://image.stxl117.top/go关键字.png" alt="go预留关键字.png"></p>
+<h2 id="1-变量"><a href="#1-变量" class="headerlink" title="1.变量"></a>1.变量</h2><p>变量是每种语言都不可或缺的声明方式，go提供了以下几种声明方式<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a <span class="keyword">string</span></div><div class="line"><span class="keyword">var</span> a <span class="keyword">string</span> = <span class="string">"a"</span></div><div class="line"><span class="keyword">var</span> a = <span class="string">"b"</span></div><div class="line">a := <span class="string">"c"</span> <span class="comment">//只能在函数内使用</span></div><div class="line"><span class="keyword">var</span> a,b,c <span class="keyword">string</span> <span class="comment">//同类型多变量的声明</span></div></pre></td></tr></table></figure></p>
 <blockquote>
-<p><strong><em>所有接口的数据结果均遵从本结果返回，接口信息中的返回结果均为data中的信息</em></strong></p>
+<p>需要注意的是，在go语言中声明的变量如果在接下来作用域中不使用，编译时会报<strong>xxx declared and not used</strong>错</p>
 </blockquote>
-<h2 id="接口信息"><a href="#接口信息" class="headerlink" title="接口信息"></a>接口信息</h2><p>1.微信授权</p>
-<p>url:</p>
-<p>/wechat/user/login</p>
-<p>入参:<br>| 参数名称 | 参数类型 | 备注                                                                                                          |<br>| ——– | ——– | ————————————————————————————————————- |<br>| code     | string   | 临时登录凭证code 。开发者需要在开发者服务器后台调用 code2Session，使用 code 换取 openid 和 session_key 等信息 |</p>
-<p>返回结果:</p>
-<p>结果示例：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">成功</div><div class="line">&#123;"code": 200, "reason": "success"&#125;</div><div class="line"></div><div class="line">session中会有uid(用户id)，sessionKey(微信提供的sessionKey)</div><div class="line"></div><div class="line">失败</div><div class="line">&#123;"code": 401, "reason": "授权失败"&#125;</div></pre></td></tr></table></figure>
-<p>2.获取用户信息（待定要不要做）<br>url:</p>
-<p>/wechat/user/detail</p>
-<p>入参: 无</p>
-<p>返回结果:<br>| 参数名称    | 参数类型 | 备注                                     |<br>| ———– | ——– | —————————————- |<br>| uid         | String   | 用户ID                                   |<br>| userName    | String   | 用户名                                   |<br>| nickName    | String   | 请求返回结果数据（无数据结果返回时不传） |<br>| mail        | String   | 邮箱                                     |<br>| sendTag     | int      | 发送标识（0为关闭，1为打开）             |<br>| firstUpdate | int      | userName是否可修改标识（0为可修改，1为不可修改）|</p>
-<p>结果示例：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"><span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line"><span class="attr">"reason"</span>: <span class="string">"successs"</span>,</div><div class="line"><span class="attr">"data"</span>:&#123;</div><div class="line">    <span class="attr">"uid"</span>:<span class="string">"用户ID"</span>,</div><div class="line">    <span class="attr">"userName"</span>:<span class="string">"用户名"</span>,</div><div class="line">    <span class="attr">"nickName"</span>:<span class="string">"昵称"</span>,</div><div class="line">    <span class="attr">"mail"</span>:<span class="string">"邮箱"</span>,</div><div class="line">    <span class="attr">"sendTag"</span>:<span class="string">"发送标识（0为关闭，1为打开）"</span>,</div><div class="line">    <span class="attr">"firstUpdate"</span>:<span class="string">"userName是否可修改标识（0为可修改，1为不可修改）"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>3.新增目标：</p>
-<p>url:</p>
-<p>/wechat/target/add</p>
-<p>入参:<br>| 参数名称      | 参数类型 | 备注                     |<br>| ————- | ——– | ———————— |<br>| targetType    | int      | 目标类型，见状态码表     |<br>| targetContent | String   | 目标内容                 |<br>| targetCycle   | int      | 目标执行周期，件状态码表 |<br>| targetDegree  | int      | 执行次数                 |</p>
-<p>返回结果:</p>
-<p>结果示例:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>4.获取今日未打卡/已打卡信息（首屏查询）</p>
-<p>url:</p>
-<p>/wechat/target/searchToday</p>
-<p>入参：<br>| 参数名称 | 参数类型 | 备注                             |<br>| ——– | ——– | ——————————– |<br>| status   | int      | 今日打卡状态（0未完成，1已完成） |</p>
-<p>返回结果:<br>| 参数名称      | 参数类型 | 备注   |<br>| ————- | ——– | —— |<br>| id            | long     | 目标ID |<br>| targetContent | string   | 内容   |<br>| status        | int      | 今日打卡状态（0未完成，1已完成）       |</p>
-<p>返回示例：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span>,</div><div class="line">	<span class="attr">"data"</span>: [&#123;</div><div class="line">		<span class="attr">"id"</span>: <span class="number">2</span>,</div><div class="line">		<span class="attr">"targetType"</span>: <span class="number">1</span>,</div><div class="line">		<span class="attr">"targetContent"</span>: <span class="string">"读书(页)"</span>,</div><div class="line">		<span class="attr">"status"</span>:<span class="number">0</span></div><div class="line">	&#125;, &#123;</div><div class="line">		<span class="attr">"id"</span>: <span class="number">3</span>,</div><div class="line">		<span class="attr">"targetType"</span>: <span class="number">1</span>,</div><div class="line">		<span class="attr">"targetContent"</span>: <span class="string">"读书(页)"</span>,</div><div class="line">    <span class="attr">"status"</span>:<span class="number">0</span></div><div class="line">	&#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>5.获取目标列表</p>
-<p>url:</p>
-<p>/wechat/target/search</p>
-<p>入参:<br>| 参数名称 | 参数类型 | 备注                                   |<br>| ——– | ——– | ————————————– |<br>| status   | int      | 任务状态（0进行中，10已达成，1已过期） |</p>
-<p>返回结果:<br>| 参数名称       | 参数类型 | 备注                                   |<br>| ————– | ——– | ————————————– |<br>| id             | long     | 目标ID                                 |<br>| status         | int      | 任务状态（0进行中，10已达成，1已过期） |<br>| targetType     | int      | 目标类型,详见类型码表                  |<br>| targetContent  | String   | 目标内容                               |<br>| completedCount | int      | 已打卡次数                             |<br>| missCount      | int      | 错过次数                               |</p>
-<p>返回示例：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span>,</div><div class="line">	<span class="attr">"data"</span>: [&#123;</div><div class="line">		<span class="attr">"id"</span>: <span class="number">2</span>,</div><div class="line">		<span class="attr">"targetType"</span>: <span class="number">1</span>,</div><div class="line">		<span class="attr">"targetContent"</span>: <span class="string">"读书(页)"</span>,</div><div class="line">		<span class="attr">"completedCount"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"missCount"</span>:<span class="number">2</span></div><div class="line">	&#125;, &#123;</div><div class="line">		<span class="attr">"id"</span>: <span class="number">3</span>,</div><div class="line">		<span class="attr">"targetType"</span>: <span class="number">1</span>,</div><div class="line">		<span class="attr">"targetContent"</span>: <span class="string">"读书(页)"</span>,</div><div class="line">		<span class="attr">"completedCount"</span>: <span class="number">4</span>,</div><div class="line">    <span class="attr">"missCount"</span>:<span class="number">2</span></div><div class="line">	&#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>6.获取目标详情：</p>
-<p>url:</p>
-<p>/wechat/target/detail</p>
-<p>入参: (目标ID)</p>
-<table>
-<thead>
-<tr>
-<th>参数名称</th>
-<th>参数类型</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>long</td>
-<td>目标ID</td>
-</tr>
-</tbody>
-</table>
-<p>返回结果:<br>| 参数名称        | 参数类型 | 备注         |<br>| ————— | ——– | ———— |<br>| id              | long     | 目标ID       |<br>| targetType      | int      | 目标类型     |<br>| targetContent   | string   | 目标内容     |<br>| compleltedCount | int      | 完成次数     |<br>| missCount       | int      | 错过次数     |<br>| todoList        | Array    | 具体完成情况 |</p>
-<p>  todoList内容如下：<br>| 参数名称 | 参数类型 | 备注                                                |<br>| ——– | ——– | ————————————————— |<br>| date     | String   | 执行日期（yyyy-mm-dd）                              |<br>| status   | int      | 当日执行状态 (打卡类型，0未完成，1已错过，10已完成) |</p>
-<p>结果示例:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span>,</div><div class="line">	<span class="attr">"data"</span>: &#123;</div><div class="line">		<span class="attr">"id"</span>: <span class="number">2</span>,</div><div class="line">		<span class="attr">"targetType"</span>: <span class="number">1</span>,</div><div class="line">		<span class="attr">"targetContent"</span>: <span class="string">"读书(页)"</span>,</div><div class="line">		<span class="attr">"targetCount"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"todoList"</span>:[&#123;<span class="attr">"date"</span>:<span class="string">"yyyy-mm-dd"</span>,<span class="attr">"status"</span>:<span class="number">1</span>&#125;]</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>7.获取目标类型字典</p>
-<p>url:</p>
-<p>/wechat/target/dict</p>
-<p>入参：</p>
-<p>返回结果：<br>| 参数名称 | 参数类型 | 备注                 |<br>| ——– | ——– | ——————– |<br>| type     | int      | 目标类型，见状态码表 |<br>| name     | String   | 类型名称             |</p>
-<p>结果示例:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span>,</div><div class="line">  <span class="attr">"data"</span> :[&#123;<span class="attr">"type"</span>:<span class="number">1</span>,<span class="attr">"name"</span>:<span class="string">"读书"</span>&#125;,&#123;<span class="attr">"type"</span>:<span class="number">2</span>,<span class="attr">"name"</span>:<span class="string">"运动"</span>&#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>8.目标删除</p>
-<p>url:</p>
-<p>/wechat/target/delete</p>
-<p>入参<br>| 参数名称 | 参数类型 | 备注   |<br>| ——– | ——– | —— |<br>| id      | long     | 目标ID |</p>
-<p>返回结果</p>
-<p>结果示例:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>9.目标打卡</p>
-<p>url:</p>
-<p>/wechat/mark/mark</p>
-<p>入参:<br>| 参数名称 | 参数类型 | 备注   |<br>| ——– | ——– | —— |<br>| tid      | long     | 目标ID |</p>
-<p>返回结果：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">	<span class="attr">"code"</span>: <span class="number">200</span>,</div><div class="line">	<span class="attr">"reason"</span>: <span class="string">"sucess"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="相关状态码表"><a href="#相关状态码表" class="headerlink" title="相关状态码表"></a>相关状态码表</h2><p>目标类型码表<br>| 状态码 | 名称     |<br>| —— | ——– |<br>| 1      | 读书     |<br>| 2      | 写作     |<br>| 3      | 运动     |<br>| 4      | 饮食     |<br>| 5      | 生活习惯 |<br>| 6      | 文娱     |<br>| 7      | 理财     |</p>
-<p>执行周期码表<br>| 状态码 | 名称     |<br>| —— | ——– |<br>| 1      | 按日执行 |<br>| 2      | 按周执行 |<br>| 3      | 按月执行 |</p>
-<p>常见错误码表<br>| 状态码 | 名称         |<br>| —— | ———— |<br>| 200    | 成功         |<br>| 401    | 未登录       |<br>| 404    | 数据为空     |<br>| 500    | 系统内部错误 |<br>| 101    | 参数错误     |</p>
+<p>除了上述几种声明，go语言还可用分组声明的方式<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span>(</div><div class="line"> a <span class="keyword">int</span> =<span class="number">1</span></div><div class="line"> b <span class="keyword">string</span> = <span class="string">"a"</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>同时  go中还有一个特殊的变量，匿名变量(_)在表示接收但不会使用的变量<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dictValue := <span class="keyword">map</span>(<span class="keyword">string</span>)<span class="keyword">int</span>&#123;<span class="string">"test"</span>:<span class="number">1</span>&#125;</div><div class="line">value,_ := dictValue[<span class="string">"test"</span>]</div></pre></td></tr></table></figure></p>
+<p>当然除了上面的使用方式，匿名变量还有其他的作用，在稍后会做解释。</p>
+<h2 id="2-常量"><a href="#2-常量" class="headerlink" title="2.常量"></a>2.常量</h2><p>常量可以是字符、字符串、布尔值或数值。不支持 推断赋值（:=）<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> constValue <span class="keyword">int</span> =<span class="number">1</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="keyword">const</span>(</div><div class="line">	black = <span class="number">0</span></div><div class="line">	red = <span class="literal">iota</span></div><div class="line">	_</div><div class="line">	blue</div><div class="line">	green =<span class="number">4</span></div><div class="line">	organge,pink =<span class="literal">iota</span> ,<span class="literal">iota</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	fmt.Println(<span class="string">"black value: "</span>,black)</div><div class="line">	fmt.Println(<span class="string">"red value: "</span>,red)</div><div class="line">	fmt.Println(<span class="string">"blue value: "</span>,blue)</div><div class="line">	fmt.Println(<span class="string">"green value: "</span>,green)</div><div class="line">	fmt.Println(<span class="string">"organge value: "</span>,organge)</div><div class="line">	fmt.Println(<span class="string">"pink value: "</span>,pink)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/7504708-0f889ad2474c6f6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="输出结果"></p>
+<p>从上面的代码中，可以看到常量也是支持分组定义和匿名变量的。还有一个很陌生的itoa。<br>iota代表了<strong>const声明块的行索引（下标从0开始）</strong>，还有就是我们看到_和blue并没有赋值，输出的时候结果blue输出的3，这里是const的特性<strong>第一个常量必须指定一个表达式，后续的常量如果没有表达式，则和上一行的表达式相同</strong>。</p>
+<h2 id="3-指针"><a href="#3-指针" class="headerlink" title="3.指针"></a>3.指针</h2><p>除了go语言没有提供指针运算，其余和C语言中的指针一致——保存了值的内存地址。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p *<span class="keyword">int</span>  <span class="comment">//零值为nil</span></div><div class="line"></div><div class="line">i := <span class="number">42</span></div><div class="line">p = &amp;i</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>1.<code>&amp;</code> 操作符会生成一个指向其操作数的指针;<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">2.由于go中函数都是值传递，所以经常使用指针传递的方式在函数中修改原有对象信息</div><div class="line"></div><div class="line"></div><div class="line">## 4.流程控制</div><div class="line"></div><div class="line">### a.条件语句</div><div class="line">条件语句主要有```if...else...```和```switch```。</div><div class="line">```if...else...```语句和其他语言的没有什么区别，go中增加在if语句定义变量，该变量的作用域为```if...else```内</div><div class="line"></div><div class="line">```switch```语句，与其他语言最大的差异是，只会执行第一个命中```case```条件的程序段，不需要额外的`braek`跳出。</div><div class="line">```go</div><div class="line">   package main</div><div class="line"></div><div class="line">import (</div><div class="line">	&quot;fmt&quot;</div><div class="line">	&quot;runtime&quot;</div><div class="line">)</div><div class="line"></div><div class="line">func main() &#123;</div><div class="line">	fmt.Print(&quot;Go runs on &quot;)</div><div class="line">	switch os := runtime.GOOS; os &#123;</div><div class="line">	case &quot;windows&quot;:</div><div class="line">		fmt.Println(&quot;windows10.&quot;)</div><div class="line">		//fallthrough</div><div class="line">	case &quot;darwin&quot;:</div><div class="line">		fmt.Println(&quot;OS X.&quot;)</div><div class="line">	case &quot;linux&quot;:</div><div class="line">		fmt.Println(&quot;Linux.&quot;)</div><div class="line">	default:</div><div class="line">		fmt.Printf(&quot;%s.\n&quot;, os)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>fallthrough</strong>关键字可以使命中后的case继续执行</p>
+</blockquote>
+<h3 id="b-循环"><a href="#b-循环" class="headerlink" title="b.循环"></a>b.循环</h3><p>go中只有一种循环的写法<figure class="highlight plain"><figcaption><span>```语句，基本语法同java和python。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```go</div><div class="line">    for &lt;初始化语句&gt;;&lt;条件语句&gt;;&lt;后置语句&gt;&#123;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>break</code>和<code>continue</code>效果与其他语言一样，不做介绍</p>
+<p>e.g. <a href="https://github.com/skystmm/learn-go/blob/master/exercise/loopandfunc/exercise-loops-and-func.go" target="_blank" rel="external">for循环例子</a></p>
+</blockquote>
+<h2 id="5-包"><a href="#5-包" class="headerlink" title="5.包"></a>5.包</h2><p>go程序是由多个包构成的，其中每个可执行的go程序都是从main包开始的，main保重还需要有程序入口main函数，相当于java中的 <figure class="highlight plain"><figcaption><span>static void main(String [] args) ```方法和python中的``` if __name__ == "main " ```函数，关于go中的main函数会在函数中介绍。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">go程序中引入包使用``` import ```关键字，和python，java中用法类似；同时go中import依然支持分组的写法</div><div class="line">``` go</div><div class="line">    package main</div><div class="line">    import (</div><div class="line">       _  &quot;strings&quot;</div><div class="line">       &quot;fmt&quot;</div><div class="line">       . &quot;os&quot;</div><div class="line">       http &quot;net/http&quot;</div><div class="line">   )</div></pre></td></tr></table></figure></p>
+<p>上面的代码中对于包的倒入有了几种不同方式，使用匿名(_)接包名导入的方式，表示导入该包，但是不可使用其导出方法，但会执行该包中的init方法；点操作是一种便捷方式，使用点操作导入的包，在使用其导出方法的的时候，可以不使用包名，直接使用导出的函数进行调用；最后<figure class="highlight plain"><figcaption><span>http "net/http" ```是给引入包起别名的一种方式，类似Python中的``` import xxx as xx ```。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; 注意：</div><div class="line">1.大写字母开头的变量和函数是可导出的，即其他包可以读取，是公用变量，公有函数；</div><div class="line">2.小写字母开头的不可导出，是私有变量，私有函数。</div><div class="line"></div><div class="line">## 6.函数</div><div class="line">函数同java中的方法，python中的函数，声明如下所示</div><div class="line">```go</div><div class="line">   func &lt;func_name&gt;(param pramType ,...)(result reusltType,...)&#123;</div><div class="line">      //函数内部处理</div><div class="line">     // 有返回值时</div><div class="line">     return xxx,xxx</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>与java不同的是，go中的函数可以有多个返回值，同时生命时返回值在入参的后边（有点像scala的语法）。</p>
+<blockquote>
+<p>几个特殊的函数<br>main函数：go程序的入口函数，每个go包只能有1个或0个main函数<br>init函数：包导入的时候的初始化操作函数，有点像java中的构造函数<br>panic和revocer函数：go中的异常处理函数，类似 throw 和catch机制</p>
+</blockquote>
+<h3 id="defer关键字"><a href="#defer关键字" class="headerlink" title="defer关键字"></a>defer关键字</h3><p>在函数中可以使用defer关键字帮我们处理一些资源关闭和return前处理，defer的功能很像java中<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">```go</div><div class="line">package main</div><div class="line"></div><div class="line">import . &quot;fmt&quot;</div><div class="line"></div><div class="line">func main()&#123;</div><div class="line">	Println(&quot;first&quot;)</div><div class="line">    defer Println(&quot;six&quot;)</div><div class="line">	Println(&quot;second&quot;)</div><div class="line">    defer Println(&quot;five&quot;)</div><div class="line">	Println(&quot;third&quot;)</div><div class="line">	defer Println(&quot;four&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7504708-6419a0a64784ee09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="执行结果"></p>
+<h3 id="函数闭包"><a href="#函数闭包" class="headerlink" title="函数闭包"></a>函数闭包</h3><p>闭包是一个函数值，它引用了其函数体之外的变量，该函数可以访问并赋予其引用的变量的值。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">adder</span><span class="params">()</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</div><div class="line">	sum := <span class="number">0</span></div><div class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(x <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</div><div class="line">		sum += x</div><div class="line">		<span class="keyword">return</span> sum</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	pos, neg := adder(), adder()</div><div class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</div><div class="line">		fmt.Println(</div><div class="line">			pos(i),</div><div class="line">			neg(<span class="number">-2</span>*i),</div><div class="line">		)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="7-结构体"><a href="#7-结构体" class="headerlink" title="7.结构体"></a>7.结构体</h2><p>上次听到结构体这个名词还是在大一学c语言的时候，之后这个词的出镜率基本为0。go中的结构体声明和c异曲同工。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> &lt;structName&gt; <span class="keyword">struct</span> &#123;</div><div class="line">	&lt;propertyName&gt; &lt;propertyType&gt;</div><div class="line">	....</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在go结构体重有一种特殊的写法，如下代码所示<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> Human <span class="keyword">struct</span> &#123;</div><div class="line">	name <span class="keyword">string</span></div><div class="line">	sex  <span class="keyword">bool</span></div><div class="line">	age  <span class="keyword">int</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> Employee <span class="keyword">struct</span> &#123;</div><div class="line">	Human</div><div class="line">	salary <span class="keyword">float32</span></div><div class="line">	deaprt <span class="keyword">string</span></div><div class="line">	age    <span class="keyword">int</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	employee := Employee&#123;Human: Human&#123;name: <span class="string">"Sky"</span>, sex: <span class="literal">true</span>&#125;, salary: <span class="number">100.00</span>&#125;</div><div class="line">	employee.age = <span class="number">30</span></div><div class="line">	employee.Human.age = <span class="number">30</span></div><div class="line">	employee.deaprt = <span class="string">"go learn"</span></div><div class="line">	fmt.Println(employee)</div><div class="line"></div><div class="line">	employee.name = <span class="string">"Test"</span></div><div class="line">	fmt.Println(employee)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7504708-03dad36379f6c116.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="执行结果"></p>
+<p>上面代码中，声明了Human和Employee两个结构体，在Employee结构体通过匿名的方式引入了Human，这里可以理解成一种继承，当我们初始化Employee的变量employee 时，employee会拥有Human的所有属性；但是当父亲结构体和子结构体拥有相同的属性时，子结构体会覆盖服结构体的属性；如果需要修改父中的同名属性，如main函数第3行所示。<strong>go中可以通过结构体声明匿名的结构体属性，来实现继承。</strong></p>
+<h2 id="8-方法（method）"><a href="#8-方法（method）" class="headerlink" title="8.方法（method）"></a>8.方法（method）</h2><p>方法就是一类带特殊的<em>接收者</em>参数的<strong>函数</strong>。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> Human <span class="keyword">struct</span> &#123;</div><div class="line">	name <span class="keyword">string</span></div><div class="line">	sex  <span class="keyword">bool</span></div><div class="line">	age  <span class="keyword">int</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(human Human)</span> <span class="title">CheckSex</span><span class="params">()</span> <span class="title">string</span></span> &#123;</div><div class="line">	<span class="keyword">if</span> human.sex == <span class="literal">true</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"男"</span></div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"女"</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	boy := Human&#123;<span class="string">"Tom"</span>, <span class="literal">true</span>, <span class="number">30</span>&#125;</div><div class="line">	girl := Human&#123;<span class="string">"Luck"</span>, <span class="literal">false</span>, <span class="number">18</span>&#125;</div><div class="line"></div><div class="line">	fmt.Println(<span class="string">"Tom sex :"</span>, boy.CheckSex())</div><div class="line">	fmt.Println(<span class="string">"Luck sex :"</span>, girl.CheckSex())</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="9-interface"><a href="#9-interface" class="headerlink" title="9.interface"></a>9.interface</h2><p>接口是由一组方法签名定义的集合。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> &lt;interfaceName&gt; <span class="keyword">interface</span> &#123;</div><div class="line">	&lt;funcNmae&gt;( params)(results)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接口也是值。它们可以像其它值一样传递。接口值可以用作函数的参数或返回值,保存了一个具体底层类型的具体值。</p>
+<p>接口值调用方法时会执行其底层类型的同名方法。</p>
+<blockquote>
+<p><a href="https://github.com/skystmm/learn-go" target="_blank" rel="external">文中代码实例</a></p>
+</blockquote>
 
       
       
@@ -347,7 +348,29 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/go//" class="article-tag-list-link color3">go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -397,7 +420,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://stxl117.top/photos/vtarget接口.html" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://stxl117.top/2020/02/go3/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -409,6 +432,17 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/go2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">go学习笔记(二)——基本数据类型</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+
+</nav>
+
 
 
 <aside class="wrap-side-operation">
@@ -431,7 +465,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vtarget接口文档v1-0"><span class="toc-number">1.</span> <span class="toc-text">vtarget接口文档v1.0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-请求加密和验签（暂不做）"><span class="toc-number">1.1.</span> <span class="toc-text">1.请求加密和验签（暂不做）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-标准输出信息"><span class="toc-number">1.2.</span> <span class="toc-text">2.标准输出信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口信息"><span class="toc-number">1.3.</span> <span class="toc-text">接口信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关状态码表"><span class="toc-number">1.4.</span> <span class="toc-text">相关状态码表</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-变量"><span class="toc-number">1.</span> <span class="toc-text">1.变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-常量"><span class="toc-number">2.</span> <span class="toc-text">2.常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-指针"><span class="toc-number">3.</span> <span class="toc-text">3.指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#b-循环"><span class="toc-number">3.1.</span> <span class="toc-text">b.循环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-包"><span class="toc-number">4.</span> <span class="toc-text">5.包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#defer关键字"><span class="toc-number">4.1.</span> <span class="toc-text">defer关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数闭包"><span class="toc-number">4.2.</span> <span class="toc-text">函数闭包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-结构体"><span class="toc-number">5.</span> <span class="toc-text">7.结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-方法（method）"><span class="toc-number">6.</span> <span class="toc-text">8.方法（method）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-interface"><span class="toc-number">7.</span> <span class="toc-text">9.interface</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -467,7 +501,7 @@ if(true){
   	repo: 'skystmm.github.io',
   	owner: 'skystmm',
   	admin: ['skystmm'],
-  	id: 'Sat Feb 01 2020 22:21:27 GMT+0800',
+  	id: 'Thu Feb 13 2020 20:10:30 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container')
@@ -520,7 +554,7 @@ gitalk.render('gitalk-container')
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
