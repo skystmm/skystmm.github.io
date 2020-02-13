@@ -255,7 +255,7 @@ var _hmt = _hmt || [];
 <p>从上面的代码中，可以看到常量也是支持分组定义和匿名变量的。还有一个很陌生的itoa。<br>iota代表了<strong>const声明块的行索引（下标从0开始）</strong>，还有就是我们看到_和blue并没有赋值，输出的时候结果blue输出的3，这里是const的特性<strong>第一个常量必须指定一个表达式，后续的常量如果没有表达式，则和上一行的表达式相同</strong>。</p>
 <h2 id="3-指针"><a href="#3-指针" class="headerlink" title="3.指针"></a>3.指针</h2><p>除了go语言没有提供指针运算，其余和C语言中的指针一致——保存了值的内存地址。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p *<span class="keyword">int</span>  <span class="comment">//零值为nil</span></div><div class="line"></div><div class="line">i := <span class="number">42</span></div><div class="line">p = &amp;i</div></pre></td></tr></table></figure></p>
 <blockquote>
-<p>1.<code>&amp;</code> 操作符会生成一个指向其操作数的指针;<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">2.由于go中函数都是值传递，所以经常使用指针传递的方式在函数中修改原有对象信息</div><div class="line"></div><div class="line"></div><div class="line">## 4.流程控制</div><div class="line"></div><div class="line">### a.条件语句</div><div class="line">条件语句主要有```if...else...```和```switch```。</div><div class="line">```if...else...```语句和其他语言的没有什么区别，go中增加在if语句定义变量，该变量的作用域为```if...else```内</div><div class="line"></div><div class="line">```switch```语句，与其他语言最大的差异是，只会执行第一个命中```case```条件的程序段，不需要额外的`braek`跳出。</div><div class="line">```go</div><div class="line">   package main</div><div class="line"></div><div class="line">import (</div><div class="line">	&quot;fmt&quot;</div><div class="line">	&quot;runtime&quot;</div><div class="line">)</div><div class="line"></div><div class="line">func main() &#123;</div><div class="line">	fmt.Print(&quot;Go runs on &quot;)</div><div class="line">	switch os := runtime.GOOS; os &#123;</div><div class="line">	case &quot;windows&quot;:</div><div class="line">		fmt.Println(&quot;windows10.&quot;)</div><div class="line">		//fallthrough</div><div class="line">	case &quot;darwin&quot;:</div><div class="line">		fmt.Println(&quot;OS X.&quot;)</div><div class="line">	case &quot;linux&quot;:</div><div class="line">		fmt.Println(&quot;Linux.&quot;)</div><div class="line">	default:</div><div class="line">		fmt.Printf(&quot;%s.\n&quot;, os)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>1.<code>&amp;</code> 操作符会生成一个指向其操作数的指针;<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&gt;2.由于go中函数都是值传递，所以经常使用指针传递的方式在函数中修改原有对象信息</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">## 4.流程控制</div><div class="line"></div><div class="line">### a.条件语句</div><div class="line">条件语句主要有```if...else...```和```switch```。</div><div class="line">```if...else...```语句和其他语言的没有什么区别，go中增加在if语句定义变量，该变量的作用域为```if...else```内</div><div class="line"></div><div class="line">```switch```语句，与其他语言最大的差异是，只会执行第一个命中```case```条件的程序段，不需要额外的`braek`跳出。</div><div class="line">```go</div><div class="line">   package main</div><div class="line"></div><div class="line">import (</div><div class="line">	&quot;fmt&quot;</div><div class="line">	&quot;runtime&quot;</div><div class="line">)</div><div class="line"></div><div class="line">func main() &#123;</div><div class="line">	fmt.Print(&quot;Go runs on &quot;)</div><div class="line">	switch os := runtime.GOOS; os &#123;</div><div class="line">	case &quot;windows&quot;:</div><div class="line">		fmt.Println(&quot;windows10.&quot;)</div><div class="line">		//fallthrough</div><div class="line">	case &quot;darwin&quot;:</div><div class="line">		fmt.Println(&quot;OS X.&quot;)</div><div class="line">	case &quot;linux&quot;:</div><div class="line">		fmt.Println(&quot;Linux.&quot;)</div><div class="line">	default:</div><div class="line">		fmt.Printf(&quot;%s.\n&quot;, os)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><strong>fallthrough</strong>关键字可以使命中后的case继续执行</p>
 </blockquote>
 <h3 id="b-循环"><a href="#b-循环" class="headerlink" title="b.循环"></a>b.循环</h3><p>go中只有一种循环的写法<figure class="highlight plain"><figcaption><span>```语句，基本语法同java和python。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```go</div><div class="line">    for &lt;初始化语句&gt;;&lt;条件语句&gt;;&lt;后置语句&gt;&#123;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
@@ -1503,11 +1503,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1519,7 +1515,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
+                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1535,7 +1539,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1547,10 +1551,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">年度总结</a>
               </li>
              
@@ -1559,11 +1559,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工作相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">比赛</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">比赛</a>
+                <a href="javascript:void(0)" class="js-tag color5">工作相关</a>
               </li>
             
             <div class="clearfix"></div>
