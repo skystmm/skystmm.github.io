@@ -266,7 +266,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>git config receive.denyCurrentBranch ignore</p>
 </blockquote>
-<h3 id="2-提交到仓库后自动部署"><a href="#2-提交到仓库后自动部署" class="headerlink" title="2.提交到仓库后自动部署"></a>2.提交到仓库后自动部署</h3><p>在仓库.git目录下的hooks目录下创建post-recieve文件，来设定提交后部署操作，脚本可参考下面的脚本内容’<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>!/bin/sh</div><div class="line">BASE_HOME=&lt;发布路径&gt;</div><div class="line">git --work-tree=$&#123;BASE_HOME&#125; --git-dir=/home/git/blog.git checkout -f</div></pre></td></tr></table></figure></p>
+<h3 id="2-提交到仓库后自动部署"><a href="#2-提交到仓库后自动部署" class="headerlink" title="2.提交到仓库后自动部署"></a>2.提交到仓库后自动部署</h3><p>在仓库.git目录下的hooks目录下创建post-recieve文件，来设定提交后部署操作，脚本可参考下面的脚本内容’<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></div><div class="line">BASE_HOME=&lt;发布路径&gt;</div><div class="line">git --work-tree=$&#123;BASE_HOME&#125; --git-dir=/home/git/blog.git checkout -f</div></pre></td></tr></table></figure></p>
 <p>最后在hexo的根目录下的_config.yml中添加新建仓库即可。</p>
 
       
@@ -465,28 +465,22 @@ var _hmt = _hmt || [];
   
 
   
-
-  
-       <div id="gitalk-container"></div>
-       <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if(true){
-	var gitalk = new Gitalk({
-  	clientID: '4ee668b42dbdfe2ccd86',
-  	clientSecret: 'c0b80ca2bdde655aba753981a5a974a76f6830c5',
-  	repo: 'skystmm.github.io',
-  	owner: 'skystmm',
-  	admin: ['skystmm'],
-  	id: 'Sun Nov 11 2018 17:48:09 GMT+0800',
-  	distractionFreeMode: 'true'
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://stxl117.top/2018/11/git-server/",
+  owner: 'true',
+  repo: 'skystmm.github.io',
+  oauth: {
+    client_id: '4ee668b42dbdfe2ccd86',
+    client_secret: 'c0b80ca2bdde655aba753981a5a974a76f6830c5',
+  },
 })
-gitalk.render('gitalk-container')
-}
+gitment.render('gitment-ctn')
 </script>
+  
 
   
 
@@ -600,7 +594,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,15 +622,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,10 +642,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习路径</a>
               </li>
              
@@ -656,11 +650,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">比赛</a>
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -669,6 +659,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">比赛</a>
               </li>
              
               <li class="article-tag-list-item">
