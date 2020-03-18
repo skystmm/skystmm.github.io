@@ -23,18 +23,18 @@
   <link rel="dns-prefetch" href="https://stxl117.top">
   <title>go学习笔记(四)——并发 | 胖小天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. goroutine什么是goroutinegoroutine是golang的最小执行单元，每个go程序至少会有一个主goroutine，这里可以类比成java中额主线程。为了更好的理解goroutine，可以将进程，线程和goroutine(其他语言中的协程)进行类比。 进程，线程和goroutine 进程是操作系统进行资源分配，调度和执行的基本单元。当操作系统分配一个进程时，会生成一个唯一">
+  <meta name="description" content="1. goroutine什么是goroutinegoroutine是golang的最小执行单元，每个go程序至少会有一个主goroutine，这里可以类比成java中额主线程。为了更好的理解goroutine，可以将进程，线程和goroutine(其他语言中的协程)进行类比。">
 <meta name="keywords" content="go">
 <meta property="og:type" content="article">
 <meta property="og:title" content="go学习笔记(四)——并发">
 <meta property="og:url" content="https://stxl117.top/2020/03/go4/index.html">
 <meta property="og:site_name" content="胖小天">
-<meta property="og:description" content="1. goroutine什么是goroutinegoroutine是golang的最小执行单元，每个go程序至少会有一个主goroutine，这里可以类比成java中额主线程。为了更好的理解goroutine，可以将进程，线程和goroutine(其他语言中的协程)进行类比。 进程，线程和goroutine 进程是操作系统进行资源分配，调度和执行的基本单元。当操作系统分配一个进程时，会生成一个唯一">
+<meta property="og:description" content="1. goroutine什么是goroutinegoroutine是golang的最小执行单元，每个go程序至少会有一个主goroutine，这里可以类比成java中额主线程。为了更好的理解goroutine，可以将进程，线程和goroutine(其他语言中的协程)进行类比。">
 <meta property="og:image" content="http://image.stxl117.top/ptcg.jpg">
-<meta property="og:updated_time" content="2020-03-18T12:28:28.731Z">
+<meta property="og:updated_time" content="2020-03-18T12:29:38.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go学习笔记(四)——并发">
-<meta name="twitter:description" content="1. goroutine什么是goroutinegoroutine是golang的最小执行单元，每个go程序至少会有一个主goroutine，这里可以类比成java中额主线程。为了更好的理解goroutine，可以将进程，线程和goroutine(其他语言中的协程)进行类比。 进程，线程和goroutine 进程是操作系统进行资源分配，调度和执行的基本单元。当操作系统分配一个进程时，会生成一个唯一">
+<meta name="twitter:description" content="1. goroutine什么是goroutinegoroutine是golang的最小执行单元，每个go程序至少会有一个主goroutine，这里可以类比成java中额主线程。为了更好的理解goroutine，可以将进程，线程和goroutine(其他语言中的协程)进行类比。">
 <meta name="twitter:image" content="http://image.stxl117.top/ptcg.jpg">
   
     <link rel="alternative" href="/atom.xml" title="胖小天" type="application/atom+xml">
@@ -254,6 +254,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="1-goroutine"><a href="#1-goroutine" class="headerlink" title="1. goroutine"></a>1. goroutine</h1><h2 id="什么是goroutine"><a href="#什么是goroutine" class="headerlink" title="什么是goroutine"></a>什么是goroutine</h2><p><code>goroutine</code>是golang的最小执行单元，每个go程序至少会有一个主goroutine，这里可以类比成java中额主线程。为了更好的理解goroutine，可以将进程，线程和goroutine(其他语言中的协程)进行类比。</p>
+<a id="more"></a>
 <h2 id="进程，线程和goroutine"><a href="#进程，线程和goroutine" class="headerlink" title="进程，线程和goroutine"></a>进程，线程和goroutine</h2><p><img src="http://image.stxl117.top/ptcg.jpg" alt="进程，线程和协程关系"></p>
 <p><strong>进程</strong>是操作系统进行资源分配，调度和执行的基本单元。当操作系统分配一个进程时，会生成一个唯一对应的PCB块以及为该进程分配专有的系统资源。后续操作系统的调度会通过对应的PCB块来进行。</p>
 <p><strong>线程</strong>是程序执行流的最小单元，一个标准的线程由线程ID，当前指令指针(PC），寄存器集合和堆栈组成。一般情况下进程与线程为1:n的关系，同一个进程生成的线程会共享改进程的堆上资源。通常情况线程的调度由操作系统内核态进行调度。</p>
@@ -635,6 +636,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">环境搭建</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
               </li>
              
@@ -643,7 +652,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,11 +660,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">go</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">环境搭建</a>
+                <a href="javascript:void(0)" class="js-tag color3">刷题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -667,6 +672,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习路径</a>
               </li>
              
@@ -675,23 +684,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">刷题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">比赛</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">年度总结</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">比赛</a>
               </li>
              
               <li class="article-tag-list-item">
