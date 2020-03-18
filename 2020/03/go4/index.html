@@ -21,48 +21,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://stxl117.top">
-  <title>2019再见2020你好 | 胖小天</title>
+  <title>go学习笔记(四)——并发 | 胖小天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在罗同学的推荐下，看了《拍出绝世光线：摄影师的完美用光技巧解密》一书，看书的过程中觉得自己打通了任督二脉，可是实践后。。。然后千辛万苦挑出来了上面两张照片，当然也要感谢罗同学的友情配合，还有对于我这令人发指的人像水平的包容，以及孜孜不倦的鼓励。虽然依然没什么进步，但是还是要在这立个Flag——2020至少能拍出能看的人像吧。">
-<meta name="keywords" content="年度总结,随笔">
+  <meta name="description" content="1. goroutine什么是goroutinegoroutine是golang的最小执行单元，每个go程序至少会有一个主goroutine，这里可以类比成java中额主线程。为了更好的理解goroutine，可以将进程，线程和goroutine(其他语言中的协程)进行类比。 进程，线程和goroutine 进程是操作系统进行资源分配，调度和执行的基本单元。当操作系统分配一个进程时，会生成一个唯一">
+<meta name="keywords" content="go">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019再见2020你好">
-<meta property="og:url" content="https://stxl117.top/2020/01/summary2019-md/index.html">
+<meta property="og:title" content="go学习笔记(四)——并发">
+<meta property="og:url" content="https://stxl117.top/2020/03/go4/index.html">
 <meta property="og:site_name" content="胖小天">
-<meta property="og:description" content="在罗同学的推荐下，看了《拍出绝世光线：摄影师的完美用光技巧解密》一书，看书的过程中觉得自己打通了任督二脉，可是实践后。。。然后千辛万苦挑出来了上面两张照片，当然也要感谢罗同学的友情配合，还有对于我这令人发指的人像水平的包容，以及孜孜不倦的鼓励。虽然依然没什么进步，但是还是要在这立个Flag——2020至少能拍出能看的人像吧。">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-fca6136f9b9e0c63.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-f330d679911f166e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-1449ef0bbabd72af.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-e5bb333acfae781c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-abfa68955ba88946.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-af514b7a65f58a7f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-e9ab79ce1fc1c093.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-df9dfe4dcaa6ba67.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-cccf2a82a16df1a2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-4a46f245046f2af0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-65f00789bd4eb385.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-347a3f37461030c1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-10c7844189bede22.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-057b44a0d49d457d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-720793261e0fe303.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-15444dd32c8a3657.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-2f76114591dae0dd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-268a1994eace289b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-cdadd7fc4fb4e889.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-c5933ff1f3e52c7a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-3a1e06bab71fb244.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-4ad3461e88f29e97.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-266b98452c9d73d5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-e1125a544a39da4f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-40cf7a6d62a1bd6e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-e5009d3308c2cfd9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-7a371e3ba5a14844.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7504708-911d55e9700d5351.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2020-01-31T09:47:58.326Z">
+<meta property="og:description" content="1. goroutine什么是goroutinegoroutine是golang的最小执行单元，每个go程序至少会有一个主goroutine，这里可以类比成java中额主线程。为了更好的理解goroutine，可以将进程，线程和goroutine(其他语言中的协程)进行类比。 进程，线程和goroutine 进程是操作系统进行资源分配，调度和执行的基本单元。当操作系统分配一个进程时，会生成一个唯一">
+<meta property="og:image" content="http://image.stxl117.top/ptcg.jpg">
+<meta property="og:updated_time" content="2020-03-18T12:28:28.731Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019再见2020你好">
-<meta name="twitter:description" content="在罗同学的推荐下，看了《拍出绝世光线：摄影师的完美用光技巧解密》一书，看书的过程中觉得自己打通了任督二脉，可是实践后。。。然后千辛万苦挑出来了上面两张照片，当然也要感谢罗同学的友情配合，还有对于我这令人发指的人像水平的包容，以及孜孜不倦的鼓励。虽然依然没什么进步，但是还是要在这立个Flag——2020至少能拍出能看的人像吧。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7504708-fca6136f9b9e0c63.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="go学习笔记(四)——并发">
+<meta name="twitter:description" content="1. goroutine什么是goroutinegoroutine是golang的最小执行单元，每个go程序至少会有一个主goroutine，这里可以类比成java中额主线程。为了更好的理解goroutine，可以将进程，线程和goroutine(其他语言中的协程)进行类比。 进程，线程和goroutine 进程是操作系统进行资源分配，调度和执行的基本单元。当操作系统分配一个进程时，会生成一个唯一">
+<meta name="twitter:image" content="http://image.stxl117.top/ptcg.jpg">
   
     <link rel="alternative" href="/atom.xml" title="胖小天" type="application/atom+xml">
   
@@ -229,14 +202,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-summary2019-md" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-go4" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      2019再见2020你好
+      go学习笔记(四)——并发
     </h1>
   
 
@@ -250,8 +223,8 @@ var _hmt = _hmt || [];
   </a>
 
         
-        <a href="/2020/01/summary2019-md/" class="archive-article-date">
-  	<time datetime="2020-01-10T13:54:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-10</time>
+        <a href="/2020/03/go4/" class="archive-article-date">
+  	<time datetime="2020-03-18T12:26:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-18</time>
 </a>
           
           <div style="margin-top:10px;">
@@ -259,7 +232,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.3k字</span>
+        <span class="post-count">1.7k字</span>
       </span>
     </span>
 
@@ -268,7 +241,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
 </div>
@@ -280,52 +253,57 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在罗同学的推荐下，看了《拍出绝世光线：摄影师的完美用光技巧解密》一书，看书的过程中觉得自己打通了任督二脉，可是实践后。。。然后千辛万苦挑出来了上面两张照片，当然也要感谢罗同学的友情配合，还有对于我这令人发指的人像水平的包容，以及孜孜不倦的鼓励。虽然依然没什么进步，但是还是要在这立个Flag——2020至少能拍出能看的人像吧。</p>
-<a id="more"></a>
-<p> <img src="https://upload-images.jianshu.io/upload_images/7504708-fca6136f9b9e0c63.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1月.爱读书的罗同学.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-f330d679911f166e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1月.被摆拍.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-1449ef0bbabd72af.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2月.烟雨西湖.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-e5bb333acfae781c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2月.西湖雾影.jpg"></p>
-<p>都说晴西湖不如雨西湖，雨西湖不如雾西湖。西湖改变了之前我对阴天雨天的态度，之前一到阴雨天只想待在家中，享受被窝和睡眠，而看到了烟雨中的西湖却是另一番风味。当然能领略这不一样的西湖还有一个很大的原因，杭州的雨真的是多。稍显夸张的说杭州一年下雨的天数，感觉可以比得上兰州十年的下雨的天数了。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-abfa68955ba88946.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5月.箱根.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-af514b7a65f58a7f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5月.日枝神社.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-e9ab79ce1fc1c093.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5月.信仰打卡.jpg"></p>
-<p>五一罗同学和我密谋了我们的honeymoon,当然也是罗同学带着我第一次走出了国门，当时的我那叫一个紧张，当然也有那么一点小兴奋。我们的第一次共同出国旅行，选择了相对难度不大的日本。当然日本的铁路交通还是给我们好好地上了一课，出门做错地铁做过站成了日常。印象最深的是我们在镰仓的时候，在镰仓社区中找到了一家很幽静的餐厅吃饭，老板是一对中年夫妻，他们不会中文，和我们一样只会蹩脚的英语，沟通都有点困难，但是这一餐给我的感觉却是最不一样的。</p>
+        <h1 id="1-goroutine"><a href="#1-goroutine" class="headerlink" title="1. goroutine"></a>1. goroutine</h1><h2 id="什么是goroutine"><a href="#什么是goroutine" class="headerlink" title="什么是goroutine"></a>什么是goroutine</h2><p><code>goroutine</code>是golang的最小执行单元，每个go程序至少会有一个主goroutine，这里可以类比成java中额主线程。为了更好的理解goroutine，可以将进程，线程和goroutine(其他语言中的协程)进行类比。</p>
+<h2 id="进程，线程和goroutine"><a href="#进程，线程和goroutine" class="headerlink" title="进程，线程和goroutine"></a>进程，线程和goroutine</h2><p><img src="http://image.stxl117.top/ptcg.jpg" alt="进程，线程和协程关系"></p>
+<p><strong>进程</strong>是操作系统进行资源分配，调度和执行的基本单元。当操作系统分配一个进程时，会生成一个唯一对应的PCB块以及为该进程分配专有的系统资源。后续操作系统的调度会通过对应的PCB块来进行。</p>
+<p><strong>线程</strong>是程序执行流的最小单元，一个标准的线程由线程ID，当前指令指针(PC），寄存器集合和堆栈组成。一般情况下进程与线程为1:n的关系，同一个进程生成的线程会共享改进程的堆上资源。通常情况线程的调度由操作系统内核态进行调度。</p>
+<p><strong>协程(goroutine)</strong>是更轻量级的线程，或者可以理解为用户态的线程。协程的调度实现答题可以分为两种，一种是用户态的调度实现，比如python中有名的gevent，就是通过用户态调度器实现协程间的调度，这种调度方式存在的一个弊端是由于调度完全是在用户态进行的，所以内核线程与协程的映射关系为1:N,即一个线程内的协程都是交替执行，不能并发；而golang则是在此基础上进行了优化，采用两级调度模型，实现了协程的并发，所以goroutine和内核线程的对应关系为n:m。</p>
 <blockquote>
-<p>友情提示: 去镰仓打卡灌篮高手，出了一出车站的路口，沿着海边往前走一点，还有个几乎一摸一样的路口，那里基本就没有什么游客拍照了，可以尽情的打卡。</p>
+<p>1.参考文章2中对于两级调度并发有更进一步的讲解<br>2.随着这两年互联网的发展，越来越多的语言开始对协程进行了支持，从最开始Python2的greenlet,gevent(线程和协程的对应关系为1:N,用户级线程模型)到Python3在语言层面进行了支持。java中也有kilim和Quasar进行了支持。</p>
 </blockquote>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-df9dfe4dcaa6ba67.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7月.夏之荷.jpg"></p>
-<p>小区里的荷花，住了第二年终于是拍到了，之前总是在上班路上看到，到了周末就宅宅宅的错过花期。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-cccf2a82a16df1a2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8月.台风后的聚贤亭.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-4a46f245046f2af0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8月.聚贤亭·夜.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-65f00789bd4eb385.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8月.雷峰塔·夜.jpg"></p>
-<p>哈哈哈，终于把聚贤亭四季和夜景凑齐了，之前的春秋冬，加上今年的夏日台风过后和夜景，算是完成了去年立下的一个flag。再附赠一张雷峰塔吧，不过还是要吐槽下自己，有一次没有带脚架，只能找台子，然后这树叶就没得办法了。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-347a3f37461030c1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8月.忽地笑.jpg"></p>
-<p>一直以为这是彼岸花，结果用识花小程序一扫，才知道黄色的叫忽地笑，红色和白色的才是彼岸花。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-10c7844189bede22.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9月.滨江灯光秀.jpg"></p>
-<p>又又又没带脚架，幸好滨江江边跑道的护栏给力，才能靠着护栏拍出来。说起来约饭后遛弯，刚好碰上了灯光秀，运气是满满的</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-057b44a0d49d457d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9月.满陇桂雨.jpg"></p>
-<p>慕名而来的满陇桂雨，竟然是传说中儿童公园。最喜欢的就是杭州的九月底十月初，不经意的呼吸中会有香甜的桂花香，吸入鼻腔是很幸福的体验。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-720793261e0fe303.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9月.引客松.jpg"></p>
-<p>大学同学相识十年聚会，终于不在武汉，返到来了一次黄山行。为了爬山提前开始跑步，锻炼身体。然后很好的印证的减肥就是管住嘴，迈开腿的说法。不过黄山归来，运动没能坚持，结果体重再一次到了新高。。。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-15444dd32c8a3657.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9月.角落君.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-2f76114591dae0dd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9月.香克斯.jpg"></p>
-<p>小痰盂的初次使用，拍拍家里的小摆件。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-268a1994eace289b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10月.北回归线.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-cdadd7fc4fb4e889.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10月.博朗大道.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-c5933ff1f3e52c7a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10月.多良车站.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-3a1e06bab71fb244.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10月.高雄love观景台.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-4ad3461e88f29e97.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10月.七星潭.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-266b98452c9d73d5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10月.垦丁夕阳.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-e1125a544a39da4f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10月.垦丁夕阳.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-40cf7a6d62a1bd6e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10月.环岛梦.jpg"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-e5009d3308c2cfd9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10月.瑞穗农场.jpg"></p>
-<p>和罗同学2019的第二次出行，台湾一个我心心念念的地方，不知道为什么总觉得去过了台湾，才算是有机会看遍祖国的大好山河。这次行程是我们从日本回来不久就开始筹划的，也正因为筹划的早才得以成行。可以说是真的运气好。十一长假没有了人山人海，比肩接踵的人流；有的是刚刚好的旅人，和形形色色的当地美食。如果你有个机车梦，一定要去台湾；如果你是个老饕，也一定要来台湾；如果你喜欢历史鼓动，台湾也是很好的选择。</p>
-<p>在花莲碰到了台风，虽然当天只能冒雨随便走走，但是也要感谢台风天，没有台风天就不会有这么多碧天晴空。虽然因为台风，没能去成太鲁阁，但是却和太鲁族的原著民一起了解了他们的风土人情，失之桑榆收之东隅大抵如此吧。如有有机会希望可以和两三好友一起，一人一车一起再次环岛。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-7a371e3ba5a14844.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="12月.白塔枫叶.jpg"></p>
-<p>12月的杭城，还是一片晚秋的景色。家门口不经意间还有一抹桂花香，银杏也是刚刚才落了地，腊梅还没有来，红叶却是布满了山涧。暖阳午后一抹红叶，一缕斜阳。杭城的四季都是这么的诗情画意。</p>
-<p>2019就这样结束了，人生的31年也开始了。终于不在口头上抵触30了，反正都已经31了。2020还是要继续努力呀。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7504708-911d55e9700d5351.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="彩蛋.jpg"><br>最后附上罗同学2019大作一张。</p>
+<h1 id="2-go关键字"><a href="#2-go关键字" class="headerlink" title="2. go关键字"></a>2. go关键字</h1><p><code>go</code>关键字是golang提供的生成和使用goroutine的关键字，如下代码<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">  fmt.Println(<span class="string">"new goroutine"</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">go</span> test()</div></pre></td></tr></table></figure></p>
+<p><code>test</code>函数将在一个新建的goroutine中执行。由于golang在语言层面对于goroutine进行了支持，所以不用想在java中通过实现<code>Runnable</code>接口或者继承<code>Thread</code>后，还要显示的调用<code>start</code>方法才可以在新线程中执行相应的功能。同时由于goroutine的上下文切换开销和所需的内存空间更小(2k)，相同性能的机器可以支撑的goroutine数量远远多于可以支持的线程数量。</p>
+<h1 id="3-chan关键字"><a href="#3-chan关键字" class="headerlink" title="3. chan关键字"></a>3. chan关键字</h1><p>golang将CSP模型作为其并发的基础。正如golang著名的口号一样：<em>“不要以共享内存的方式来通信，相反，要通过通信来共享内存”</em>。既然要用通信的方式来共享内存，所以go就有了channel的出现，来支持已通信的方式共享内存。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">channel = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span> ,n)</div><div class="line">channel &lt;- <span class="number">1</span> <span class="comment">//将信息写入channel</span></div><div class="line">i := &lt;-channel <span class="comment">//从channel中读取信息</span></div></pre></td></tr></table></figure></p>
+<p>对于channel如何为golang的并发保驾护航，将在后面进行详细描述。</p>
+<h1 id="4-select关键字"><a href="#4-select关键字" class="headerlink" title="4. select关键字"></a>4. select关键字</h1><p>第一次看到<code>select</code>这个关键字的时候，第一反应就是经典的select模型。对想的没错，golang中将通信过程中的通过<code>select</code>进行了语言层面支持了通信层面的多路复用器。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span>&#123;</div><div class="line">    <span class="keyword">case</span> &lt;-ch:</div><div class="line">    <span class="comment">//TODO</span></div><div class="line">    <span class="keyword">case</span> xxx:</div><div class="line">    <span class="comment">//TODO</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到golang中对于<code>select</code>的使用和前文中提到的<code>swtich</code>的关键字使用方法类似。</p>
+<h1 id="5-go的内存模型"><a href="#5-go的内存模型" class="headerlink" title="5. go的内存模型"></a>5. go的内存模型</h1><p>类似于java中的JMM,go也通过定制内存模型，保证并发的正确性。类比于JMM中的happens-before原则，go中的happens-before原则如下，使用a<code>-&gt;</code>b标识a操作happens-before b操作。大体上go的内存模型可以分为以下几类</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><ol>
+<li>被引入包的init函数优先于本包的所有方法<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> p</div><div class="line"><span class="keyword">import</span> q</div><div class="line"><span class="comment">//q.init -&gt; p.*</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>2.导入的所有包的init函数-&gt;main函数的执行</p>
+<h2 id="goroutine相关"><a href="#goroutine相关" class="headerlink" title="goroutine相关"></a>goroutine相关</h2><ol>
+<li><p>goroutine的创建 -&gt; 其执行</p>
+</li>
+<li><p>goroutine无法确保在程序中的任何事件发生之前退出</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">go</span> test()</div><div class="line">  fmt.Println(<span class="string">"mian func"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">  fmt.Println(<span class="string">"test"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">//test不一定能输出</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="channel管道"><a href="#channel管道" class="headerlink" title="channel管道"></a>channel管道</h2><p>5.一个goroutine向一个channel发送数据 -&gt;另一个goroutine从本channel中接收数据</p>
+<p>6.当channel执行关闭操作后，channel中已有数据仍可被获取，获取完后，在进行获取则为零值。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ch = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span> ,<span class="number">5</span>)</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++&#123;</div><div class="line">		ch &lt;- i</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">close</span>(ch)</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++&#123;</div><div class="line">		fmt.Println(&lt;-ch)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//结果 0 1 2 3 4 0 0 0 0 0</span></div></pre></td></tr></table></figure></p>
+<p>7.无缓存的channel的获取数据会阻塞到向channel中发送数据<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ch = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125; ,<span class="number">0</span>)</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span>&#123;</div><div class="line">		fmt.Println(<span class="string">"step one"</span>)</div><div class="line">		ch&lt;- <span class="keyword">struct</span>&#123;&#125;&#123;&#125;</div><div class="line">	&#125;()</div><div class="line">	&lt;-ch</div><div class="line">	fmt.Println(<span class="string">"step two"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>可以用无缓存的channel来实现锁机制</p>
+</blockquote>
+<p>8.对于一个容量为N的channel第k次接收数据 -&gt;该channel的第k+n次发送</p>
+<blockquote>
+<p>保证被消费，channel满了后会阻塞，直到有被消费调的信息，类比java中的BlockingQuene</p>
+</blockquote>
+<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><blockquote>
+<p>又见CAS<br><code>sync</code>包提供了两种锁 :<code>sync.Mutex</code>和<code>sync.WRMutex</code><br> <code>sync.Mutex</code>独占锁<br> <code>sync.WRMutex</code>读写锁<br>类比Java中相应lock实现,区别go中锁不可重入</p>
+</blockquote>
+<p>9.对于任何 sync.Mutex 或 sync.RWMutex 类型的变量 l 以及 n &lt; m ，对 l.Unlock() 的第 n 次调用在对 l.Lock() 的第 m 次调用返回前发生。</p>
+<p>10.对于任何 sync.RWMutex 类型的变量 l 对 l.RLock 的调用，存在一个这样的 n，使得 l.RLock 在对 l.Unlock 的第 n 次调用之后发生（返回），且与其相匹配的 l.RUnlock 在对 l.Lock的第 n+1 次调用之前发生。</p>
+<h2 id="Once类型——单例好帮手"><a href="#Once类型——单例好帮手" class="headerlink" title="Once类型——单例好帮手"></a>Once类型——单例好帮手</h2><p>11.通过 once.Do(f) 对 f() 的单次调用在对任何其它的 once.Do(f) 调用返回之前发生（返回）。</p>
+<blockquote>
+<p>1.懒汉式在go中的最佳实践，思路同java中的线程安全的懒汉式单例<br>2.sync 包通过 Once 类型为存在多个Go程的初始化提供了安全的机制。 多个线程可为特定的 f 执行 once.Do(f)，但只有一个会运行 f()，而其它调用会一直阻塞，直到 f() 返回。</p>
+</blockquote>
+<h1 id="goroutine和channel随想"><a href="#goroutine和channel随想" class="headerlink" title="goroutine和channel随想"></a>goroutine和channel随想</h1><p>1.<a href="http://shouce.jb51.net/gopl-zh/ch9/ch9-07.html" target="_blank" rel="external"> 示例: 并发的非阻塞缓存</a><br>2.java中可以通过ForkJoinPool来实现两级线程模型自定义调度器来实现可并发的java协程？</p>
+<blockquote>
+<p>e.g.1目录文件遍历和空间统计</p>
+<p>参考内容：<br><a href="https://golang.org/ref/mem" target="_blank" rel="external">go内存模型-en</a><br><a href="https://go-zh.org/ref/mem" target="_blank" rel="external">go内存模型-zh</a><br><a href="https://juejin.im/entry/5b2878c7f265da5977596ae2" target="_blank" rel="external">Goroutine并发调度模型深度解析&amp;手撸一个协程池</a><br><a href="https://juejin.im/post/5decff136fb9a016544bce67" target="_blank" rel="external">深入理解golang之channel</a></p>
+</blockquote>
 
       
       
@@ -378,11 +356,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">年度总结</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
         		</li>
       		
 		</ul>
@@ -394,7 +368,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/other//" class="article-tag-list-link color1">other</a>
+        			<a href="/categories/go//" class="article-tag-list-link color3">go</a>
         		</li>
       		
 		</ul>
@@ -449,7 +423,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://stxl117.top/2020/01/summary2019-md/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://stxl117.top/2020/03/go4/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -463,18 +437,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2020/01/build-gitlab/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Gitlab搭建和基本操作
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/tianchi/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">第五届天池中间件比赛初赛总结</div>
+    <a href="/2020/02/lfu/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">从lintcode LFU引发的思考</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -503,7 +468,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-goroutine"><span class="toc-number">1.</span> <span class="toc-text">1. goroutine</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是goroutine"><span class="toc-number">1.1.</span> <span class="toc-text">什么是goroutine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程，线程和goroutine"><span class="toc-number">1.2.</span> <span class="toc-text">进程，线程和goroutine</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-go关键字"><span class="toc-number">2.</span> <span class="toc-text">2. go关键字</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-chan关键字"><span class="toc-number">3.</span> <span class="toc-text">3. chan关键字</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-select关键字"><span class="toc-number">4.</span> <span class="toc-text">4. select关键字</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-go的内存模型"><span class="toc-number">5.</span> <span class="toc-text">5. go的内存模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化"><span class="toc-number">5.1.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#goroutine相关"><span class="toc-number">5.2.</span> <span class="toc-text">goroutine相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#channel管道"><span class="toc-number">5.3.</span> <span class="toc-text">channel管道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#锁"><span class="toc-number">5.4.</span> <span class="toc-text">锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Once类型——单例好帮手"><span class="toc-number">5.5.</span> <span class="toc-text">Once类型——单例好帮手</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#goroutine和channel随想"><span class="toc-number">6.</span> <span class="toc-text">goroutine和channel随想</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -539,7 +504,7 @@ if(true){
   	repo: 'skystmm.github.io',
   	owner: 'skystmm',
   	admin: ['skystmm'],
-  	id: 'Fri Jan 10 2020 21:54:33 GMT+0800',
+  	id: 'Wed Mar 18 2020 20:26:14 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container')
