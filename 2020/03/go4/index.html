@@ -31,7 +31,7 @@
 <meta property="og:site_name" content="胖小天">
 <meta property="og:description" content="1. goroutine什么是goroutinegoroutine是golang的最小执行单元，每个go程序至少会有一个主goroutine，这里可以类比成java中额主线程。为了更好的理解goroutine，可以将进程，线程和goroutine(其他语言中的协程)进行类比。">
 <meta property="og:image" content="http://image.stxl117.top/ptcg.jpg">
-<meta property="og:updated_time" content="2020-03-18T12:29:38.843Z">
+<meta property="og:updated_time" content="2020-05-16T12:35:39.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go学习笔记(四)——并发">
 <meta name="twitter:description" content="1. goroutine什么是goroutinegoroutine是golang的最小执行单元，每个go程序至少会有一个主goroutine，这里可以类比成java中额主线程。为了更好的理解goroutine，可以将进程，线程和goroutine(其他语言中的协程)进行类比。">
@@ -269,18 +269,10 @@ var _hmt = _hmt || [];
 <h1 id="4-select关键字"><a href="#4-select关键字" class="headerlink" title="4. select关键字"></a>4. select关键字</h1><p>第一次看到<code>select</code>这个关键字的时候，第一反应就是经典的select模型。对想的没错，golang中将通信过程中的通过<code>select</code>进行了语言层面支持了通信层面的多路复用器。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span>&#123;</div><div class="line">    <span class="keyword">case</span> &lt;-ch:</div><div class="line">    <span class="comment">//TODO</span></div><div class="line">    <span class="keyword">case</span> xxx:</div><div class="line">    <span class="comment">//TODO</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>可以看到golang中对于<code>select</code>的使用和前文中提到的<code>swtich</code>的关键字使用方法类似。</p>
 <h1 id="5-go的内存模型"><a href="#5-go的内存模型" class="headerlink" title="5. go的内存模型"></a>5. go的内存模型</h1><p>类似于java中的JMM,go也通过定制内存模型，保证并发的正确性。类比于JMM中的happens-before原则，go中的happens-before原则如下，使用a<code>-&gt;</code>b标识a操作happens-before b操作。大体上go的内存模型可以分为以下几类</p>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><ol>
-<li>被引入包的init函数优先于本包的所有方法<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> p</div><div class="line"><span class="keyword">import</span> q</div><div class="line"><span class="comment">//q.init -&gt; p.*</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>1.被引入包的init函数优先于本包的所有方法<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> p</div><div class="line"><span class="keyword">import</span> q</div><div class="line"><span class="comment">//q.init -&gt; p.*</span></div></pre></td></tr></table></figure></p>
 <p>2.导入的所有包的init函数-&gt;main函数的执行</p>
-<h2 id="goroutine相关"><a href="#goroutine相关" class="headerlink" title="goroutine相关"></a>goroutine相关</h2><ol>
-<li><p>goroutine的创建 -&gt; 其执行</p>
-</li>
-<li><p>goroutine无法确保在程序中的任何事件发生之前退出</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">go</span> test()</div><div class="line">  fmt.Println(<span class="string">"mian func"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">  fmt.Println(<span class="string">"test"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">//test不一定能输出</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
+<h2 id="goroutine相关"><a href="#goroutine相关" class="headerlink" title="goroutine相关"></a>goroutine相关</h2><p>3.goroutine的创建 -&gt; 其执行</p>
+<p>4.goroutine无法确保在程序中的任何事件发生之前退出<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">go</span> test()</div><div class="line">  fmt.Println(<span class="string">"mian func"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">  fmt.Println(<span class="string">"test"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">//test不一定能输出</span></div></pre></td></tr></table></figure></p>
 <h2 id="channel管道"><a href="#channel管道" class="headerlink" title="channel管道"></a>channel管道</h2><p>5.一个goroutine向一个channel发送数据 -&gt;另一个goroutine从本channel中接收数据</p>
 <p>6.当channel执行关闭操作后，channel中已有数据仍可被获取，获取完后，在进行获取则为零值。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ch = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span> ,<span class="number">5</span>)</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++&#123;</div><div class="line">		ch &lt;- i</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">close</span>(ch)</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++&#123;</div><div class="line">		fmt.Println(&lt;-ch)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//结果 0 1 2 3 4 0 0 0 0 0</span></div></pre></td></tr></table></figure></p>
 <p>7.无缓存的channel的获取数据会阻塞到向channel中发送数据<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ch = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125; ,<span class="number">0</span>)</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span>&#123;</div><div class="line">		fmt.Println(<span class="string">"step one"</span>)</div><div class="line">		ch&lt;- <span class="keyword">struct</span>&#123;&#125;&#123;&#125;</div><div class="line">	&#125;()</div><div class="line">	&lt;-ch</div><div class="line">	fmt.Println(<span class="string">"step two"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -645,14 +637,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -661,7 +645,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">环境搭建</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,7 +669,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">go</a>
+                <a href="javascript:void(0)" class="js-tag color3">刷题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -682,10 +678,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">刷题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,11 +693,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">比赛</a>
+                <a href="javascript:void(0)" class="js-tag color5">年度总结</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">年度总结</a>
+                <a href="javascript:void(0)" class="js-tag color3">比赛</a>
               </li>
              
               <li class="article-tag-list-item">
