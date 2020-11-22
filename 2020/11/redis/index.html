@@ -23,20 +23,20 @@
   <link rel="dns-prefetch" href="https://stxl117.top">
   <title>redis笔记 | 胖小天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="redis基础知识 数据结构底层数据结构SDS双向链表压缩列表跳跃表Hash表整数数组对外数据结构string list map set sorted set  rehash如何触发和渐进式机制  rehash触发根据负载因子阈值进行触发，不同于java中hashMap ，reids默认提供两个扩容负载因子阈值分别为1和5；  当负载系数达到1时， 如果当前redis server没有执行AOF">
+  <meta name="description" content="redis基础知识">
 <meta name="keywords" content="reids,技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis笔记">
 <meta property="og:url" content="https://stxl117.top/2020/11/redis/index.html">
 <meta property="og:site_name" content="胖小天">
-<meta property="og:description" content="redis基础知识 数据结构底层数据结构SDS双向链表压缩列表跳跃表Hash表整数数组对外数据结构string list map set sorted set  rehash如何触发和渐进式机制  rehash触发根据负载因子阈值进行触发，不同于java中hashMap ，reids默认提供两个扩容负载因子阈值分别为1和5；  当负载系数达到1时， 如果当前redis server没有执行AOF">
+<meta property="og:description" content="redis基础知识">
 <meta property="og:image" content="http://image.stxl117.top/redis.jpg">
 <meta property="og:image" content="http://image.stxl117.top/rdb.png">
 <meta property="og:image" content="http://image.stxl117.top/ms.png">
-<meta property="og:updated_time" content="2020-11-22T13:54:31.274Z">
+<meta property="og:updated_time" content="2020-11-22T13:56:20.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis笔记">
-<meta name="twitter:description" content="redis基础知识 数据结构底层数据结构SDS双向链表压缩列表跳跃表Hash表整数数组对外数据结构string list map set sorted set  rehash如何触发和渐进式机制  rehash触发根据负载因子阈值进行触发，不同于java中hashMap ，reids默认提供两个扩容负载因子阈值分别为1和5；  当负载系数达到1时， 如果当前redis server没有执行AOF">
+<meta name="twitter:description" content="redis基础知识">
 <meta name="twitter:image" content="http://image.stxl117.top/redis.jpg">
   
     <link rel="alternative" href="/atom.xml" title="胖小天" type="application/atom+xml">
@@ -255,8 +255,8 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h1 id="redis基础知识"><a href="#redis基础知识" class="headerlink" title="redis基础知识"></a>redis基础知识</h1><p><img src="http://image.stxl117.top/redis.jpg" alt="redis思维导图.jpg"></p>
+        <h1 id="redis基础知识"><a href="#redis基础知识" class="headerlink" title="redis基础知识"></a>redis基础知识</h1><a id="more"></a>
+<p><img src="http://image.stxl117.top/redis.jpg" alt="redis思维导图.jpg"></p>
 <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="底层数据结构"><a href="#底层数据结构" class="headerlink" title="底层数据结构"></a>底层数据结构</h3><h4 id="SDS"><a href="#SDS" class="headerlink" title="SDS"></a>SDS</h4><h4 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h4><h4 id="压缩列表"><a href="#压缩列表" class="headerlink" title="压缩列表"></a>压缩列表</h4><h4 id="跳跃表"><a href="#跳跃表" class="headerlink" title="跳跃表"></a>跳跃表</h4><h4 id="Hash表"><a href="#Hash表" class="headerlink" title="Hash表"></a>Hash表</h4><h4 id="整数数组"><a href="#整数数组" class="headerlink" title="整数数组"></a>整数数组</h4><h3 id="对外数据结构"><a href="#对外数据结构" class="headerlink" title="对外数据结构"></a>对外数据结构</h3><p>string</p>
 <p>list</p>
 <p>map</p>
@@ -697,19 +697,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">环境搭建</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,6 +722,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">go</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -749,15 +749,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">reids</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">

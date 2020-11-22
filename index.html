@@ -240,133 +240,10 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h1 id="redis基础知识"><a href="#redis基础知识" class="headerlink" title="redis基础知识"></a>redis基础知识</h1><p><img src="http://image.stxl117.top/redis.jpg" alt="redis思维导图.jpg"></p>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="底层数据结构"><a href="#底层数据结构" class="headerlink" title="底层数据结构"></a>底层数据结构</h3><h4 id="SDS"><a href="#SDS" class="headerlink" title="SDS"></a>SDS</h4><h4 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h4><h4 id="压缩列表"><a href="#压缩列表" class="headerlink" title="压缩列表"></a>压缩列表</h4><h4 id="跳跃表"><a href="#跳跃表" class="headerlink" title="跳跃表"></a>跳跃表</h4><h4 id="Hash表"><a href="#Hash表" class="headerlink" title="Hash表"></a>Hash表</h4><h4 id="整数数组"><a href="#整数数组" class="headerlink" title="整数数组"></a>整数数组</h4><h3 id="对外数据结构"><a href="#对外数据结构" class="headerlink" title="对外数据结构"></a>对外数据结构</h3><p>string</p>
-<p>list</p>
-<p>map</p>
-<p>set</p>
-<p>sorted set</p>
-<blockquote>
-<p>rehash如何触发和渐进式机制</p>
-<ol>
-<li><p>rehash触发根据负载因子阈值进行触发，不同于java中hashMap ，reids默认提供两个扩容负载因子阈值分别为1和5；</p>
-</li>
-<li><p>当负载系数达到1时， 如果当前redis server没有执行AOF重写或者RDB备份，会触发扩容</p>
-</li>
-<li><p>当负载系数达到5时，此时会立即触发阔扩容</p>
-</li>
-<li><p>rehash流程</p>
-</li>
-<li><p>rehash时会维护两个hash桶，一个是扩容前的老hash桶，一个是扩容后的新Hash桶</p>
-</li>
-<li><p>渐进式扩容方式为：</p>
-</li>
-<li><p>设置rehashIndex为0 表示开始扩容</p>
-</li>
-<li>当在rehash过程中，有客户端命令执行时，除了进行正常的操作外，还会将当前rehashindex对应的桶中数据迁移到新hash桶中，rehashindex 加一</li>
-<li>当没有命令执行时，redis服务也会使用定时任务，执行迁移过程（每次执行不超过1ms）</li>
-<li><p>当所有老hash桶中数据都迁移完成时 rehashindex设置为-1表名迁移结束</p>
-</li>
-<li><p>缩容[待学习]</p>
-</li>
-</ol>
-</blockquote>
-<h2 id="IO模型"><a href="#IO模型" class="headerlink" title="IO模型"></a>IO模型</h2><p>6.0以前 单线程多路复用</p>
-<p>6.0以后 多线程多路复用</p>
-<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><h3 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h3><p><strong>redis中提供三种AOF的策略</strong>：</p>
-<ol>
-<li>always ——每次执行完写命令后立即写入AOF文件</li>
-<li>every second ——每次执行完写命令后，先交AOF信息写到buffer中，每秒redis将buffer中的AOF信息写入到AOF日志中</li>
-<li>no —— buffer写入AOF中的操作交友操作系统执行</li>
-</ol>
-<p>三种方式数据丢失情况有少到多，性能消耗由多到少</p>
-<p>AOF的缺点：恢复时需要回放所有命令，相对恢复时间较长；由于记录每次操作，文件相对较大</p>
-<p>由于AOF写存在对于相同Key的多次操作，相对会有重复和冗余，所以redis提供了AOF重写机制，来减小文件大小和回访时重复执行命令的问题</p>
-<p><strong>AOF重写流程大致如下</strong>：</p>
-<p>主进程fork出 bgrewriteaof进程，并将页表复制给子进程，子进程根据页表数据进行aof重写合并</p>
-<p>操作过程中的写入命令，主进程将写到AOF重写缓冲中，也将共享给bgrewirteaof进程，自己成两者一起进行合并，生成洗的Aof日志并落盘</p>
-<p>触发方法：</p>
-<ol>
-<li>手动执行bgrewriteaof命令</li>
-<li>server周期性执行，满足以下条件会触发</li>
-</ol>
-<ul>
-<li>没有BGSAVE命令（RDB持久化）/AOF持久化在执行；</li>
-<li>没有BGREWRITEAOF在进行；</li>
-<li>当前AOF文件大小要大于<code>server.aof_rewrite_min_size</code>（默认为1MB），或者在<code>redis.conf</code>配置了<code>auto-aof-rewrite-min-size</code>大小；</li>
-<li>当前AOF文件大小和最后一次重写后的大小之间的比率等于或者等于指定的增长百分比（在配置文件设置了<code>auto-aof-rewrite-percentage</code>参数，不设置默认为100%）</li>
-</ul>
-<h3 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h3><p>redis中提供两个命令触发RDB备份 <code>save</code> 和<code>bgsave</code> 。</p>
-<p><code>save</code> 命令是由主线程执行的对当前redis内存进行快照，执行时会阻塞主线程</p>
-<p><code>bgsave</code> 命令则是由fork出子进程进行内存快照，除了fork过程，不会阻塞主线程执行命令；同时在进行快照过程中新处理的命令通过COW方式复制副本给子进程，来保证最后的一致性</p>
-<p><img src="http://image.stxl117.top/rdb.png" alt="image.png" title="RDB"></p>
-<p>同时Redis可以在配置文件中配置rdb的策略</p>
-<p><code>save 900 1</code></p>
-<p><code>save 300 10</code></p>
-<p><code>save 60 10000</code>    </p>
-<p>来配置rdb策略，上面命令900秒内少于1次变更操作就会触发一次主线程的rdb，以此类推。总体来说是server本身根据自身繁忙程度来确定什么时间进行备份。</p>
-<h3 id="混合模式"><a href="#混合模式" class="headerlink" title="混合模式"></a>混合模式</h3><p>上面记录了AOF和RDB的基本处理逻辑，会发现AOF和RDB各有各的优点，但也有各自的不足之处。例如AOF可以做到数据最少丢失，但是恢复时需要进行命令回放，速度会比较慢；而RDB则是通过快照的方式进行备份，恢复速度快，但是备份间隔期间出现宕机会丢失从上次备份到当前时间点的数据。可以看到二者有互补的地方，所有redis 4.0后支持了 RDB和AOF的混合模式保证数据可靠性</p>
-<blockquote>
-<p>选择什么样的备份策略还是要看业务形态等因素</p>
-</blockquote>
-<h2 id="高可用"><a href="#高可用" class="headerlink" title="高可用"></a>高可用</h2><h3 id="1-主从"><a href="#1-主从" class="headerlink" title="1. 主从"></a>1. 主从</h3><p><strong>主从同步流程</strong></p>
-<p><strong><img src="http://image.stxl117.top/ms.png" alt="redisms.png" title="redisms.png"></strong></p>
-<p><strong>同步方式： 全量同步（rdb），长连接命令传输，增量同步（重连后）</strong></p>
-<blockquote>
-<p>repl_backlog_buffer和replication buffer的区别</p>
-<p>repl_backlog_buffer 为了主从差异数据设计的环形缓冲队列，只要有从库链接就会产生，所有从库共享</p>
-<p>replication buffer 每个redis client的链接创建一个缓冲区，对于主从同步情况的特殊叫法，一般流程为Redis将返回数据写到该buffer中，然后再从该buffer中获取数据写入到对应的socket中返回给从库</p>
-</blockquote>
-<h4 id="哨兵"><a href="#哨兵" class="headerlink" title="哨兵"></a>哨兵</h4><p><strong>作用</strong></p>
-<ol>
-<li>监听</li>
-</ol>
-<p>主观下线：单个哨兵监听超时</p>
-<p>客观下线：主观下线的数量大于等于配置的quorum值</p>
-<ol>
-<li><p>选主</p>
-</li>
-<li><p>筛选：当先在线且网络通信质量比较好的从库</p>
-</li>
-<li><p>打分</p>
-</li>
-<li><p>配置项中优先级最高的实例</p>
-</li>
-<li>slave_replication_offset最大的</li>
-<li><p>runId最小的</p>
-</li>
-<li><p>通知</p>
-</li>
-</ol>
-<p><strong>本质：**</strong>哨兵是一个特定模式的redis实例**</p>
-<h4 id="哨兵集群"><a href="#哨兵集群" class="headerlink" title="哨兵集群"></a>哨兵集群</h4><p><strong>基本信息</strong></p>
-<p>通过配置主库信息，链接主库，并通过pub/sub机制获取其他哨兵服务抵制并发布自身ip信息，达到组网目的</p>
-<p>从库信息通过使用INFO命令从主库中获得</p>
-<p>客户端获取信息通过哨兵的pub/sub方式获取变更信息</p>
-<p><strong>哨兵集群选主——类似raft</strong></p>
-<p>选票大于等于配置的quorum值，且大于等于集群节点 N/2 + 1票</p>
-<h4 id="redis-cluster"><a href="#redis-cluster" class="headerlink" title="redis cluster"></a>redis cluster</h4><p>水平扩展</p>
-<p>去中心化</p>
-<p>路由寻址：crc16的slot</p>
-<p>数据迁移： move,ask,asking</p>
-<h2 id="淘汰策略"><a href="#淘汰策略" class="headerlink" title="淘汰策略"></a>淘汰策略</h2><p>对于redis提供的缓存淘汰策略，大致可以分为三类</p>
-<ol>
-<li>无缓存清理策略(noeviction) :不会进行缓存淘汰，使用本策略时，当redis内存达到阈值后，将会拒绝后续的写请求，直接返回错误</li>
-<li>对于有过期时间的Key的淘汰策略:其中包含四种淘汰策略volitile-radom,volitile-ttl,volitile-lru,volitile-lfu</li>
-<li>全局key淘汰策略:allkeys-lru,allkeys-lfu,allkeys-random</li>
-</ol>
-<p><strong>关于lru实现和一般lru算法不同的地方</strong>：</p>
-<blockquote>
-<p>LRU是对最近最不常使用的节点进行淘汰的策略，一般使用hashMap和双向链表实现</p>
-</blockquote>
-<p>由于redis中存在海量的key,同时内存也属于稀缺资源，如果维护一个全局双向链表将会产生很大的内存开销，所以redis对lru进行优化,采用了近似LRU进行缓存淘汰，可以参考<a href="https://zhuanlan.zhihu.com/p/34133067" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/34133067</a></p>
-<p><strong>LFU[待补充]</strong></p>
-<blockquote>
-<p>LFU是对最近使用频率最小的节点进行淘汰的策略，一般使用hashMap和小根堆实现</p>
-</blockquote>
-<h1 id="redis使用姿势"><a href="#redis使用姿势" class="headerlink" title="redis使用姿势"></a>redis使用姿势</h1><p><a href="https://mp.weixin.qq.com/s/wT3i12HV_6ev5HSPJ9ANRg" target="_blank" rel="external">高并发和海量数据下的 9 个 Redis 经典案例剖析！</a><br><a href="https://juejin.im/post/6844903859383451656" target="_blank" rel="external">咆哮位图</a></p>
-
+        <h1 id="redis基础知识"><a href="#redis基础知识" class="headerlink" title="redis基础知识"></a>redis基础知识</h1>
+        
+          <a class="article-more-a" href="/2020/11/redis/#more">more >></a>
+        
       
       
       
@@ -1569,19 +1446,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">环境搭建</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1598,6 +1471,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">go</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">J.U.C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1621,15 +1498,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">reids</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
