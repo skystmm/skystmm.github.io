@@ -6,23 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://stxl117.top">
-  <title>前端获取实时数据探索 | 胖小天</title>
+  <title>胖小天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端获取实时数据探索背景介绍最近在工作中，有个需求是前端需要获取实时展示最新的n条报警数据。使用http的请求响应，一问一答方式获取数据时，就出现可能部分数据获取不到的问题，然后在网上寻找和咨询老同事相关解决方案的时候，发现有使用DWR的方式进行向前端推送的解决方案，">
-<meta property="og:type" content="article">
-<meta property="og:title" content="前端获取实时数据探索">
-<meta property="og:url" content="https://stxl117.top/2018/01/06/%E5%89%8D%E7%AB%AF%E8%8E%B7%E5%8F%96%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2/index.html">
+  <meta name="description" content="混迹在互联网中的码农一枚，喜摄影，爱生活">
+<meta property="og:type" content="website">
+<meta property="og:title" content="胖小天">
+<meta property="og:url" content="https://stxl117.top/page/4/index.html">
 <meta property="og:site_name" content="胖小天">
-<meta property="og:description" content="前端获取实时数据探索背景介绍最近在工作中，有个需求是前端需要获取实时展示最新的n条报警数据。使用http的请求响应，一问一答方式获取数据时，就出现可能部分数据获取不到的问题，然后在网上寻找和咨询老同事相关解决方案的时候，发现有使用DWR的方式进行向前端推送的解决方案，">
+<meta property="og:description" content="混迹在互联网中的码农一枚，喜摄影，爱生活">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://stxl117.top/images/ajax.png">
-<meta property="article:published_time" content="2018-01-06T14:05:33.000Z">
-<meta property="article:modified_time" content="2022-10-06T14:41:15.940Z">
 <meta property="article:author" content="胖小天">
-<meta property="article:tag" content="java">
-<meta property="article:tag" content="工作相关">
+<meta property="article:tag" content="golang,java,python">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://stxl117.top/images/ajax.png">
   
     <link rel="alternative" href="/atom.xml" title="胖小天" type="application/atom+xml">
   
@@ -170,20 +165,22 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-前端获取实时数据探索" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-python环境搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
         
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      前端获取实时数据探索
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/06/python%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">python环境搭建</a>
     </h1>
   
 
         
-        <a href="/2018/01/06/%E5%89%8D%E7%AB%AF%E8%8E%B7%E5%8F%96%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2/" class="archive-article-date">
-  	<time datetime="2018-01-06T14:05:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-06</time>
+        <a href="/2017/12/06/python%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2017-12-06T14:38:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-06</time>
 </a>
         <!-- 需要添加的位置 -->
         <!-- 开始添加字数统计-->
@@ -196,18 +193,17 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前端获取实时数据探索"><a href="#前端获取实时数据探索" class="headerlink" title="前端获取实时数据探索"></a>前端获取实时数据探索</h1><h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>最近在工作中，有个需求是前端需要获取实时展示最新的n条报警数据。使用http的请求响应，一问一答方式获取数据时，就出现可能部分数据获取不到的问题，然后在网上寻找和咨询老同事相关解决方案的时<br>候，发现有使用DWR的方式进行向前端推送的解决方案，</p>
-<span id="more"></span>
-
-<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><h3 id="1-ajax订阅ActiveMQ"><a href="#1-ajax订阅ActiveMQ" class="headerlink" title="1.ajax订阅ActiveMQ"></a>1.ajax订阅ActiveMQ</h3><p>ajax订阅activeMQ获取实时数据的流程如下<br><img src="/../../images/ajax.png" alt="ajax订阅activeMQ数据流程图"></p>
-<p>使用ajax直接获取ActiveMQ topic中的数据，可以在activeMQ 官网中，找到Demo。需要在相应的页面中引入amq.js,amq_jquery_adapter.js以及jquery-1.4.2.min.js三个js文件，并且在后端添加相应的servlet配置。</p>
-<p>demo中给出的配置如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>AjaxServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.apache.activemq.web.AjaxServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">async-supported</span>&gt;</span>true<span class="tag">&lt;/<span class="name">async-supported</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">       	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>AjaxServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">       	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/amq/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- activeMQ 服务地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>org.apache.activemq.brokerURL<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>tcp://127.0.0.1:61616<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>同时我们需要在项目中引入对应版本的activeMQ-web.jar。来提供对订阅MQ的支持，这样在相应页面添加对应的Js订阅代码，就可以实现使用ajax订阅activeMQ topic进行消费的目的。</p>
-<p>虽然这样就可以解决问题，但是总觉得将MQ地址直接配置到web.xml中，这种实现方式很不优雅，通过对AjaxServlet以及其父类源码阅读，发现在创建MQ连接的方式有两种，一种是通过获取获取servlet上下文中初始化时添加的全局参数org.apache.activemq.brokerURL，来创建和MQ的连接，就是上面看到的配置文件中的方法，还有一种是从serlvet上下文中获取创建连接的工厂类进行创建。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//从servlet上下文中获取连接工厂的属性名</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">CONNECTION_FACTORY_ATTRIBUTE</span> <span class="operator">=</span> <span class="string">&quot;org.apache.activemq.connectionFactory&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">initConnectionFactory</span><span class="params">(ServletContext servletContext)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (factory == <span class="literal">null</span>) &#123;</span><br><span class="line">			<span class="comment">//获取servlet上下文中的连接工厂实例</span></span><br><span class="line">            factory = (ActiveMQConnectionFactory)servletContext.getAttribute(CONNECTION_FACTORY_ATTRIBUTE);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (factory == <span class="literal">null</span>) &#123; <span class="comment">//连接工厂实例为null时，获取brokeURL等参数信息，并新建连接工厂实例</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">brokerURL</span> <span class="operator">=</span> getInitParameter(servletContext, BROKER_URL_INIT_PARAM);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (brokerURL == <span class="literal">null</span>) &#123;</span><br><span class="line">                LOG.debug(<span class="string">&quot;Couldn&#x27;t find &quot;</span> + BROKER_URL_INIT_PARAM + <span class="string">&quot; param, trying to find a broker embedded in a local VM&quot;</span>);</span><br><span class="line">                <span class="type">BrokerService</span> <span class="variable">broker</span> <span class="operator">=</span> BrokerRegistry.getInstance().findFirst();</span><br><span class="line">                <span class="keyword">if</span> (broker == <span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalStateException</span>(<span class="string">&quot;missing brokerURL (specified via &quot;</span> + BROKER_URL_INIT_PARAM + <span class="string">&quot; init-Param) or embedded broker&quot;</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    brokerURL = <span class="string">&quot;vm://&quot;</span> + broker.getBrokerName();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            LOG.debug(<span class="string">&quot;Using broker URL: &quot;</span> + brokerURL);</span><br><span class="line">            <span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> getInitParameter(servletContext, USERNAME_INIT_PARAM);</span><br><span class="line">            <span class="type">String</span> <span class="variable">password</span> <span class="operator">=</span> getInitParameter(servletContext, PASSWORD_INIT_PARAM);</span><br><span class="line">            <span class="type">ActiveMQConnectionFactory</span> <span class="variable">amqfactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ActiveMQConnectionFactory</span>(username, password, brokerURL);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Set prefetch policy for factory</span></span><br><span class="line">            <span class="keyword">if</span> (servletContext.getInitParameter(CONNECTION_FACTORY_PREFETCH_PARAM) != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">prefetch</span> <span class="operator">=</span> Integer.valueOf(getInitParameter(servletContext, CONNECTION_FACTORY_PREFETCH_PARAM)).intValue();</span><br><span class="line">                amqfactory.getPrefetchPolicy().setAll(prefetch);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Set optimize acknowledge setting</span></span><br><span class="line">            <span class="keyword">if</span> (servletContext.getInitParameter(CONNECTION_FACTORY_OPTIMIZE_ACK_PARAM) != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="type">boolean</span> <span class="variable">optimizeAck</span> <span class="operator">=</span> Boolean.valueOf(getInitParameter(servletContext, CONNECTION_FACTORY_OPTIMIZE_ACK_PARAM)).booleanValue();</span><br><span class="line">                amqfactory.setOptimizeAcknowledge(optimizeAck);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            factory = amqfactory;</span><br><span class="line"></span><br><span class="line">            servletContext.setAttribute(CONNECTION_FACTORY_ATTRIBUTE, factory);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>从上面源码的ajaxServlet初始化方法中可以看到，首先从servlet的上下文中尝试获取ActiveMQConnectionFactory,如果没有设置则才会从上下文中找brokerURl进行初始化，所以我们可以继承AjaxServlet，然后在继承的servlet的init方法中按照需要创建ActiveMQConnectionFactory实例，然后将工厂实例添加到servlet上下文中供创建MQ连接使用。</p>
-<h3 id="2-使用websocket实时获取报警数据"><a href="#2-使用websocket实时获取报警数据" class="headerlink" title="2.使用websocket实时获取报警数据"></a>2.使用websocket实时获取报警数据</h3><h3 id="3-websocket订阅ActiveMQ"><a href="#3-websocket订阅ActiveMQ" class="headerlink" title="3.websocket订阅ActiveMQ"></a>3.websocket订阅ActiveMQ</h3><h4 id="1-基于stomp协议"><a href="#1-基于stomp协议" class="headerlink" title="1)基于stomp协议"></a>1)基于stomp协议</h4><h4 id="2-基于mqtt协议"><a href="#2-基于mqtt协议" class="headerlink" title="2)基于mqtt协议"></a>2)基于mqtt协议</h4><h2 id="几种方案分析"><a href="#几种方案分析" class="headerlink" title="几种方案分析"></a>几种方案分析</h2>
+        <h1 id="Python-安装笔记"><a href="#Python-安装笔记" class="headerlink" title="Python 安装笔记"></a>Python 安装笔记</h1><h2 id="1-下载源码包"><a href="#1-下载源码包" class="headerlink" title="1.下载源码包"></a>1.下载源码包</h2><blockquote>
+<p>wget <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz">https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz</a></p>
+</blockquote>
+<p>如果没有wget则可通过</p>
+<blockquote>
+<p>yum install wget</p>
+</blockquote>
+<p>安装wget</p>
+        
+          <a class="article-more-a" href="/2017/12/06/python%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/#more">more >></a>
+        
       
 
       
@@ -220,31 +216,28 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境搭建</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工作相关</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">树莓派</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-    <a class="cloud-tie-join-count" href="/2018/01/06/%E5%89%8D%E7%AB%AF%E8%8E%B7%E5%8F%96%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2/" style="color:gray;font-size:14px;">
-      <span class="icon-smile"></span>
-      <span id="busuanzi_container_page_pv">
-        阅读量(<span id="busuanzi_value_page_pv"></span>)
-      </span>
-    </a>
-    
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
+        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
@@ -252,84 +245,16 @@ var _hmt = _hmt || [];
 
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/06/python%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://stxl117.top/2018/01/06/%E5%89%8D%E7%AB%AF%E8%8E%B7%E5%8F%96%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/01/28/2018%E6%8A%80%E6%9C%AF%E8%AF%BB%E4%B9%A6%E8%AE%A1%E5%88%92%E5%8F%8A%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          2018读书计划及笔记
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/12/06/python%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">python环境搭建</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -344,34 +269,19 @@ var _hmt = _hmt || [];
         </div>
         
         
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%8E%B7%E5%8F%96%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2"><span class="toc-number">1.</span> <span class="toc-text">前端获取实时数据探索</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.</span> <span class="toc-text">解决思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ajax%E8%AE%A2%E9%98%85ActiveMQ"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.ajax订阅ActiveMQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8websocket%E5%AE%9E%E6%97%B6%E8%8E%B7%E5%8F%96%E6%8A%A5%E8%AD%A6%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.使用websocket实时获取报警数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-websocket%E8%AE%A2%E9%98%85ActiveMQ"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.websocket订阅ActiveMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9F%BA%E4%BA%8Estomp%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">1)基于stomp协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9F%BA%E4%BA%8Emqtt%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2)基于mqtt协议</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">几种方案分析</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
     </div>
 </aside>
 
 
 
-  
-  
-  
+
 
   
-
   
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
   
-
 
 
           </div>
@@ -402,8 +312,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
