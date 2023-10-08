@@ -13,5 +13,5 @@ Disallow: /vendors/
 Disallow: /fancybox/
 
 # 记得替换成你的域名
-Sitemap: http://stxl117.top/sitemap.xml
-Sitemap: http://stxl117.top/baidusitemap.xml
+Sitemap: https://stxl117.top/sitemap.xml
+Sitemap: https://stxl117.top/baidusitemap.xml
