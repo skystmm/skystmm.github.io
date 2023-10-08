@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://stxl117.top/2022/10/29/mq/</loc>
+    
+    <lastmod>2023-10-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://stxl117.top/2023/07/04/go-generics/</loc>
     
     <lastmod>2023-10-08</lastmod>
@@ -122,15 +131,6 @@
     <loc>https://stxl117.top/2018/11/11/git-server/</loc>
     
     <lastmod>2022-12-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://stxl117.top/2022/10/29/mq/</loc>
-    
-    <lastmod>2022-10-29</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
