@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://stxl117.top/2023/09/27/go-context/</loc>
+    <lastmod>2023-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://stxl117.top/2023/07/04/go-generics/</loc>
+    <lastmod>2023-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://stxl117.top/2023/10/08/program-design/</loc>
+    <lastmod>2023-10-08</lastmod>
+  </url>
+  <url>
     <loc>https://stxl117.top/2020/02/07/go1/</loc>
     <lastmod>2023-10-08</lastmod>
   </url>
@@ -10,10 +22,6 @@
   </url>
   <url>
     <loc>https://stxl117.top/2022/10/29/mq/</loc>
-    <lastmod>2023-10-08</lastmod>
-  </url>
-  <url>
-    <loc>https://stxl117.top/2023/07/04/go-generics/</loc>
     <lastmod>2023-10-08</lastmod>
   </url>
   <url>
@@ -30,10 +38,6 @@
   </url>
   <url>
     <loc>https://stxl117.top/2020/03/18/go4/</loc>
-    <lastmod>2023-10-08</lastmod>
-  </url>
-  <url>
-    <loc>https://stxl117.top/2023/09/27/go-context/</loc>
     <lastmod>2023-10-08</lastmod>
   </url>
   <url>
