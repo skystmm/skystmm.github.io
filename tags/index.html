@@ -9,7 +9,7 @@
 <meta property="article:author" content="胖小天">
 <meta property="article:tag" content="go语言,系统架构设计,日常感悟">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://stxl117.top/images/timg.jpg"><link rel="shortcut icon" href="/images/timg.jpg"><link rel="canonical" href="https://stxl117.top/tags/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+<meta name="twitter:image" content="https://stxl117.top/images/timg.jpg"><link rel="shortcut icon" href="/images/timg.jpg"><link rel="canonical" href="https://stxl117.top/tags/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?e2b757cd921b05a4a8e6ae397b676a5b";
@@ -22,7 +22,7 @@
   localSearch: undefined,
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -43,11 +43,9 @@
   copyright: {"limitCount":50,"languages":{"author":"作者: 胖小天","link":"链接: ","source":"来源: 胖小天","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
   lightbox: 'fancybox',
   Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
   islazyload: false,
@@ -64,84 +62,77 @@
   isHighlightShrink: false,
   isToc: false,
   postUpdate: '2023-10-07 22:11:59'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
         }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
         }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
 
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
         }
-        return item.value
-      }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = url
-      if (id) link.id = id
-      link.onerror = reject
-      link.onload = link.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        link.onload = link.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(link)
-    })
-  
-      win.activateDarkMode = function () {
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
         document.documentElement.setAttribute('data-theme', 'dark')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
           document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
         }
       }
-      win.activateLightMode = function () {
+      win.activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
           document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
@@ -149,9 +140,9 @@
       }
       const t = saveToLocal.get('theme')
     
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
       const asideStatus = saveToLocal.get('aside-status')
       if (asideStatus !== undefined) {
         if (asideStatus === 'hide') {
@@ -161,13 +152,13 @@
         }
       }
     
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
       }
-    }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/timg.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/golang/"><span> Go学习笔记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"><span> 系统设计</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 推荐链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/%20%7CT%7C%20fas%20fa-heart"><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url('/images/top.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="胖小天"><span class="site-name">胖小天</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/golang/"><span> Go学习笔记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"><span> 系统设计</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 推荐链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/%20%7CT%7C%20fas%20fa-heart"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">tags</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="tag-cloud-list is-center"><a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.43em; color: rgb(182, 36, 61)">读书笔记</a><a href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" style="font-size: 1.43em; color: rgb(43, 168, 87)">年度总结</a><a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.88em; color: rgb(135, 192, 129)">随笔</a><a href="/tags/java/" style="font-size: 2.1em; color: rgb(33, 181, 185)">java</a><a href="/tags/git/" style="font-size: 1.43em; color: rgb(123, 127, 174)">git</a><a href="/tags/docker/" style="font-size: 1.2em; color: rgb(176, 134, 160)">docker</a><a href="/tags/tomcat/" style="font-size: 1.65em; color: rgb(30, 142, 151)">tomcat</a><a href="/tags/%E6%BA%90%E7%A0%81/" style="font-size: 1.88em; color: rgb(196, 69, 0)">源码</a><a href="/tags/hexo/" style="font-size: 1.2em; color: rgb(22, 54, 154)">hexo</a><a href="/tags/golang/" style="font-size: 2.1em; color: rgb(172, 98, 4)">golang</a><a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 1.43em; color: rgb(10, 76, 38)">环境搭建</a><a href="/tags/aigc/" style="font-size: 1.43em; color: rgb(14, 153, 157)">aigc</a><a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 1.2em; color: rgb(150, 188, 59)">总结</a><a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 1.2em; color: rgb(137, 52, 188)">刷题</a><a href="/tags/pulsar/" style="font-size: 1.2em; color: rgb(66, 185, 120)">pulsar</a><a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 1.2em; color: rgb(70, 39, 96)">系统设计</a><a href="/tags/python/" style="font-size: 1.65em; color: rgb(11, 24, 27)">python</a><a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 1.2em; color: rgb(29, 14, 135)">树莓派</a><a href="/tags/reids/" style="font-size: 1.2em; color: rgb(109, 10, 166)">reids</a><a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/" style="font-size: 1.2em; color: rgb(76, 35, 85)">学习路径</a><a href="/tags/%E8%B5%84%E6%96%99/" style="font-size: 1.2em; color: rgb(131, 113, 52)">资料</a><a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 1.43em; color: rgb(45, 187, 136)">爬虫</a><a href="/tags/%E6%AF%94%E8%B5%9B/" style="font-size: 1.2em; color: rgb(135, 147, 144)">比赛</a><a href="/tags/%E5%B7%A5%E4%BD%9C%E7%9B%B8%E5%85%B3/" style="font-size: 1.2em; color: rgb(86, 136, 104)">工作相关</a><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" style="font-size: 1.2em; color: rgb(117, 2, 197)">年终总结</a></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/timg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">胖小天</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/skystmm"><i class="fab fa-github"></i><span>github主页</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/skystmmm" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:stskymm@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">一切随缘，着力即差 <p> 听雨等风看世界，做人行事过生活<p> 互联网大厂码农<p> 学习笔记记录<p>摄影分享</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/2024_1/" title="2024随想（一）"><img src="https://image.stxl117.top/img-20231126-16.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024随想（一）"/></a><div class="content"><a class="title" href="/2024/06/14/2024_1/" title="2024随想（一）">2024随想（一）</a><time datetime="2024-06-14T13:07:42.000Z" title="发表于 2024-06-14 21:07:42">2024-06-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/22/docker-cmd/" title="docker常用命令">docker常用命令</a><time datetime="2023-11-22T15:00:54.000Z" title="发表于 2023-11-22 23:00:54">2023-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/09/langchan/" title="langchain学习笔记"><img src="https://image.stxl117.top/60ce389749983705adfa9bebad6b65b8662e1767.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="langchain学习笔记"/></a><div class="content"><a class="title" href="/2023/10/09/langchan/" title="langchain学习笔记">langchain学习笔记</a><time datetime="2023-10-09T14:50:53.000Z" title="发表于 2023-10-09 22:50:53">2023-10-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/08/program-design/" title="&lt;System Desgin Interview -An insider's guide&gt;笔记"><img src="https://img2.doubanio.com/view/subject/l/public/s34342891.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="&lt;System Desgin Interview -An insider's guide&gt;笔记"/></a><div class="content"><a class="title" href="/2023/10/08/program-design/" title="&lt;System Desgin Interview -An insider's guide&gt;笔记">&lt;System Desgin Interview -An insider's guide&gt;笔记</a><time datetime="2023-10-08T08:43:08.000Z" title="发表于 2023-10-08 16:43:08">2023-10-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/27/go-context/" title="Go学习笔记（六）——context"><img src="https://www.programaenlinea.net/wp-content/uploads/2020/04/golang-2-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Go学习笔记（六）——context"/></a><div class="content"><a class="title" href="/2023/09/27/go-context/" title="Go学习笔记（六）——context">Go学习笔记（六）——context</a><time datetime="2023-09-27T12:34:37.000Z" title="发表于 2023-09-27 20:34:37">2023-09-27</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4595233_jtcjyr413m.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4595233_5h709e5k5fi.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/timg.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/golang/"><i class="fa-fw iconfont icon-go"></i><span> Go学习笔记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"><i class="fa-fw iconfont icon-jiagou"></i><span> 系统设计</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 推荐链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url('/images/top.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="胖小天"><span class="site-name">胖小天</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/golang/"><i class="fa-fw iconfont icon-go"></i><span> Go学习笔记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"><i class="fa-fw iconfont icon-jiagou"></i><span> 系统设计</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 推荐链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">tags</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="tag-cloud-list is-center"><a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.43em; color: rgb(184, 55, 80)">读书笔记</a><a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.88em; color: rgb(49, 93, 73)">随笔</a><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" style="font-size: 1.2em; color: rgb(149, 154, 10)">年终总结</a><a href="/tags/java/" style="font-size: 2.1em; color: rgb(119, 186, 1)">java</a><a href="/tags/git/" style="font-size: 1.43em; color: rgb(95, 50, 176)">git</a><a href="/tags/docker/" style="font-size: 1.2em; color: rgb(113, 122, 107)">docker</a><a href="/tags/tomcat/" style="font-size: 1.65em; color: rgb(38, 164, 7)">tomcat</a><a href="/tags/%E6%BA%90%E7%A0%81/" style="font-size: 1.88em; color: rgb(83, 46, 97)">源码</a><a href="/tags/golang/" style="font-size: 2.1em; color: rgb(168, 64, 7)">golang</a><a href="/tags/hexo/" style="font-size: 1.2em; color: rgb(172, 172, 192)">hexo</a><a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 1.43em; color: rgb(79, 2, 129)">环境搭建</a><a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 1.2em; color: rgb(175, 87, 140)">总结</a><a href="/tags/aigc/" style="font-size: 1.43em; color: rgb(151, 53, 141)">aigc</a><a href="/tags/pulsar/" style="font-size: 1.2em; color: rgb(129, 199, 25)">pulsar</a><a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 1.2em; color: rgb(8, 131, 91)">刷题</a><a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 1.2em; color: rgb(55, 139, 143)">系统设计</a><a href="/tags/python/" style="font-size: 1.65em; color: rgb(124, 40, 102)">python</a><a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 1.2em; color: rgb(47, 131, 7)">树莓派</a><a href="/tags/reids/" style="font-size: 1.2em; color: rgb(137, 74, 170)">reids</a><a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 1.43em; color: rgb(39, 91, 141)">爬虫</a><a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/" style="font-size: 1.2em; color: rgb(161, 126, 87)">学习路径</a><a href="/tags/%E8%B5%84%E6%96%99/" style="font-size: 1.2em; color: rgb(77, 104, 23)">资料</a><a href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" style="font-size: 1.43em; color: rgb(33, 134, 49)">年度总结</a><a href="/tags/%E5%B7%A5%E4%BD%9C%E7%9B%B8%E5%85%B3/" style="font-size: 1.2em; color: rgb(109, 110, 143)">工作相关</a><a href="/tags/%E6%AF%94%E8%B5%9B/" style="font-size: 1.2em; color: rgb(104, 170, 190)">比赛</a></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/timg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">胖小天</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/skystmm"><i class="fab fa-github"></i><span>github主页</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/skystmm" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:stskymm@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.xiaohongshu.com/user/profile/5e5e56c90000000001005e5b?xhsshare=CopyLink&amp;appuid=5e5e56c90000000001005e5b&amp;apptime=1719056661&amp;share_id=dd68814526c447bb8acab7a682b84af9" target="_blank" title="小红书"><i class="iconfont icon-xiaohongshu" style="color: #FF0000;"></i></a><a class="social-icon" href="https://500px.com.cn/skystmm" target="_blank" title="500px"><i class="iconfont icon-px"></i></a><a class="social-icon" href="https://v.douyin.com/i68XehFV/" target="_blank" title="抖音"><i class="iconfont icon-douyinzhanghao"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">一切随缘，着力即差 <p> 听雨等风看世界，做人行事过生活<p> ⌨️互联网码农，有限的生命中探索更多可能性 <p>📷风光摄影|人像学习ing<p>🙌🏻乐高机械组拼装<p>🐾夜游西湖爱好者<p>🚲十年后再入坑的老菜腿</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/06/14/2024_1/" title="2024随想（一）"><img src="https://image.stxl117.top/img-20231126-16.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024随想（一）"/></a><div class="content"><a class="title" href="/2024/06/14/2024_1/" title="2024随想（一）">2024随想（一）</a><time datetime="2024-06-14T13:07:42.000Z" title="发表于 2024-06-14 21:07:42">2024-06-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/22/docker-cmd/" title="docker常用命令">docker常用命令</a><time datetime="2023-11-22T15:00:54.000Z" title="发表于 2023-11-22 23:00:54">2023-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/09/langchan/" title="langchain学习笔记"><img src="https://image.stxl117.top/60ce389749983705adfa9bebad6b65b8662e1767.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="langchain学习笔记"/></a><div class="content"><a class="title" href="/2023/10/09/langchan/" title="langchain学习笔记">langchain学习笔记</a><time datetime="2023-10-09T14:50:53.000Z" title="发表于 2023-10-09 22:50:53">2023-10-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/08/program-design/" title="&lt;System Desgin Interview -An insider's guide&gt;笔记"><img src="https://img2.doubanio.com/view/subject/l/public/s34342891.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="&lt;System Desgin Interview -An insider's guide&gt;笔记"/></a><div class="content"><a class="title" href="/2023/10/08/program-design/" title="&lt;System Desgin Interview -An insider's guide&gt;笔记">&lt;System Desgin Interview -An insider's guide&gt;笔记</a><time datetime="2023-10-08T08:43:08.000Z" title="发表于 2023-10-08 16:43:08">2023-10-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/27/go-context/" title="Go学习笔记（六）——context"><img src="https://www.programaenlinea.net/wp-content/uploads/2020/04/golang-2-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Go学习笔记（六）——context"/></a><div class="content"><a class="title" href="/2023/09/27/go-context/" title="Go学习笔记（六）——context">Go学习笔记（六）——context</a><time datetime="2023-09-27T12:34:37.000Z" title="发表于 2023-09-27 20:34:37">2023-09-27</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             <a class="card-more-btn" href="/categories/" title="查看更多">
@@ -175,8 +166,8 @@
             </div>
             <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/aigc/"><span class="card-category-list-name">aigc</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/docker/"><span class="card-category-list-name">docker</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/git/"><span class="card-category-list-name">git</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/golang/"><span class="card-category-list-name">golang</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/hexo/"><span class="card-category-list-name">hexo</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/java/"><span class="card-category-list-name">java</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/other/"><span class="card-category-list-name">other</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/python/"><span class="card-category-list-name">python</span><span class="card-category-list-count">3</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 1.2em; color: #999da3">环境搭建</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/" style="font-size: 1.1em; color: #999">学习路径</a> <a href="/tags/pulsar/" style="font-size: 1.1em; color: #999">pulsar</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.2em; color: #999da3">读书笔记</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 1.2em; color: #999da3">爬虫</a> <a href="/tags/java/" style="font-size: 1.5em; color: #99a9bf">java</a> <a href="/tags/tomcat/" style="font-size: 1.3em; color: #99a1ac">tomcat</a> <a href="/tags/aigc/" style="font-size: 1.2em; color: #999da3">aigc</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E7%9B%B8%E5%85%B3/" style="font-size: 1.1em; color: #999">工作相关</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.4em; color: #99a5b6">随笔</a> <a href="/tags/hexo/" style="font-size: 1.1em; color: #999">hexo</a> <a href="/tags/docker/" style="font-size: 1.1em; color: #999">docker</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 1.1em; color: #999">刷题</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 1.1em; color: #999">树莓派</a> <a href="/tags/python/" style="font-size: 1.3em; color: #99a1ac">python</a> <a href="/tags/reids/" style="font-size: 1.1em; color: #999">reids</a> <a href="/tags/golang/" style="font-size: 1.5em; color: #99a9bf">golang</a> <a href="/tags/%E8%B5%84%E6%96%99/" style="font-size: 1.1em; color: #999">资料</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 1.1em; color: #999">系统设计</a> <a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" style="font-size: 1.1em; color: #999">年终总结</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 1.1em; color: #999">总结</a> <a href="/tags/%E6%BA%90%E7%A0%81/" style="font-size: 1.4em; color: #99a5b6">源码</a> <a href="/tags/%E6%AF%94%E8%B5%9B/" style="font-size: 1.1em; color: #999">比赛</a> <a href="/tags/git/" style="font-size: 1.2em; color: #999da3">git</a> <a href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" style="font-size: 1.2em; color: #999da3">年度总结</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">31</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2018-07-10T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">30.4k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-06-22T07:52:38.099Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2024 By 胖小天</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href="http://www.beian.gov.cn/" target="_blank">浙ICP备20016472号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.2em; color: #999da3">读书笔记</a> <a href="/tags/java/" style="font-size: 1.5em; color: #99a9bf">java</a> <a href="/tags/hexo/" style="font-size: 1.1em; color: #999">hexo</a> <a href="/tags/%E8%B5%84%E6%96%99/" style="font-size: 1.1em; color: #999">资料</a> <a href="/tags/python/" style="font-size: 1.3em; color: #99a1ac">python</a> <a href="/tags/golang/" style="font-size: 1.5em; color: #99a9bf">golang</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 1.2em; color: #999da3">爬虫</a> <a href="/tags/%E6%AF%94%E8%B5%9B/" style="font-size: 1.1em; color: #999">比赛</a> <a href="/tags/%E6%BA%90%E7%A0%81/" style="font-size: 1.4em; color: #99a5b6">源码</a> <a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" style="font-size: 1.1em; color: #999">年终总结</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 1.1em; color: #999">树莓派</a> <a href="/tags/tomcat/" style="font-size: 1.3em; color: #99a1ac">tomcat</a> <a href="/tags/aigc/" style="font-size: 1.2em; color: #999da3">aigc</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.4em; color: #99a5b6">随笔</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/" style="font-size: 1.1em; color: #999">学习路径</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 1.1em; color: #999">刷题</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 1.2em; color: #999da3">环境搭建</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" style="font-size: 1.1em; color: #999">系统设计</a> <a href="/tags/pulsar/" style="font-size: 1.1em; color: #999">pulsar</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 1.1em; color: #999">总结</a> <a href="/tags/reids/" style="font-size: 1.1em; color: #999">reids</a> <a href="/tags/docker/" style="font-size: 1.1em; color: #999">docker</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E7%9B%B8%E5%85%B3/" style="font-size: 1.1em; color: #999">工作相关</a> <a href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" style="font-size: 1.2em; color: #999da3">年度总结</a> <a href="/tags/git/" style="font-size: 1.2em; color: #999da3">git</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">31</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2018-07-10T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">30.4k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-06-22T11:58:46.134Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2024 By 胖小天</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href="http://www.beian.gov.cn/" target="_blank">浙ICP备20016472号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
   const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
   if ($mermaid.length === 0) return
   const runMermaid = () => {
@@ -209,7 +200,7 @@
     window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
   }
 
-  btf.addModeChange('mermaid', runMermaid)
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
 
   window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
 })()</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
