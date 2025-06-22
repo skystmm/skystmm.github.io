@@ -6,7 +6,7 @@
   <link href="https://stxl117.top/atom.xml" rel="self"/>
   
   <link href="https://stxl117.top/"/>
-  <updated>2025-02-15T13:57:32.842Z</updated>
+  <updated>2025-06-22T08:55:59.791Z</updated>
   <id>https://stxl117.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于anythingLLM搭建本地知识库`</title>
+    <link href="https://stxl117.top/2025/06/22/%E5%9F%BA%E4%BA%8EanythingLLM%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    <id>https://stxl117.top/2025/06/22/%E5%9F%BA%E4%BA%8EanythingLLM%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93/</id>
+    <published>2025-06-22T08:54:35.000Z</published>
+    <updated>2025-06-22T08:55:59.791Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>书接上文，我们完成了deepseek模型的本地化部署，并通过pageAssist插件构建了我们第一个本地化聊天Agent。今天我们则通过anythingLLM 工具，从0到1搭建专属知识问答Agent。本文搭建过程无需任何编码经验</p></blockquote><h2 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h2><p>访问<a href="https://anythingllm.com/">anythingLLM官网</a>，点击“Download for Desktop”按钮，并根据要安装的电脑的操作系统选择对应版本的anything LLM安装包下载</p><p><img src="https://gfupsplgl5.feishu.cn/space/api/box/stream/download/asynccode/?code=MWNhNTgzZWNkMWVlMjBmYjRmNzU0Mjg2MmRjMWFmMmNfM2gwNkM2N2loM3BLQ0ZJV2JqbnZUTVgxRVc5TlE3NzZfVG9rZW46SjNDaGJURXZQbzJSNmp4clNSM2N0aFRCbnhkXzE3NTA1ODI1NTY6MTc1MDU4NjE1Nl9WNA"></p><p><img src="https://gfupsplgl5.feishu.cn/space/api/box/stream/download/asynccode/?code=YTE2YzU4YWNmNWQ2Zjg5ZDRkNjBkMmE2MDY0NWI2Yzlfc2JFU2Z6OGdqdkFkbGJ5Q2Voelg1Tlh2dVhWdkIzM1dfVG9rZW46UW5oTGJnV3N4b0pveEd4czhUNWNSZ0N1bnVlXzE3NTA1ODI1NTY6MTc1MDU4NjE1Nl9WNA"></p><p>下载完成后，根据安装导引进行anythingLLM的安装</p><h2 id="基础配置及使用"><a href="#基础配置及使用" class="headerlink" title="基础配置及使用"></a>基础配置及使用</h2><blockquote><p><a href="https://docs.anythingllm.com/configuration">https://docs.anythingllm.com/configuration</a></p></blockquote><h3 id="工作区基础配置"><a href="#工作区基础配置" class="headerlink" title="工作区基础配置"></a>工作区基础配置</h3><p><img src="https://gfupsplgl5.feishu.cn/space/api/box/stream/download/asynccode/?code=NTdmY2YwMzA4NDhiMWFmMmFjZjQ0ZGYyMTIzYzI3NzBfTFd0aXJTT0hNdUZaZ0djMmU3RUpRZTkxeG41VEt2Q01fVG9rZW46SGVzNWJDRk1Jb0tJaG14bDRLcmNHTjZnbm9kXzE3NTA1ODI1NTY6MTc1MDU4NjE1Nl9WNA"></p><p>第一次打开AnythingLLM可以通过新建工作区 来建立自己专属的工作区，创建完成后，可以点击工作区名称右侧的“齿轮”按钮进入工作区设置页面，在“聊天设置”选项卡汇总进行模型基础信息设置</p><p><img src="https://gfupsplgl5.feishu.cn/space/api/box/stream/download/asynccode/?code=NWJjYzdmMjMyOWU1NjI3MTA2MWMwODliZDgwYjQ3MGFfaHNDQ3M2M0dOQnRZd3BPemx6dVl0U2NwM0M2aG5xb2FfVG9rZW46UnpOeWJDQmN0b2hXenB4STNnTmM2UkhTbkxnXzE3NTA1ODI1NTY6MTc1MDU4NjE1Nl9WNA"></p><p><img src="https://gfupsplgl5.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTBiOWZmZGI2ZmVmOGQzYmY5MzM0MDJlNmZjYjg0NjZfbmNTek9MQVB4Tlp0OWNtVnF6dkFNTzdibHEydFR1N05fVG9rZW46UzJKNGJwMnpVb205Vnh4cUVyemNtTTBIblVoXzE3NTA1ODI1NTY6MTc1MDU4NjE1Nl9WNA"></p><p>本次我们设置基座模型为Qwq-32B的本地版本，所以<code>工作区LLM提供者</code>选择<code>Ollama</code>,模型选择已经下载好的<code>Qwq-32B</code>(Ollama 安装及下载本地模型可以参考<a href="https://gfupsplgl5.feishu.cn/docx/XSjid7Ji4ogoHxxvbcZcC8EQnhc">基于deepseek本地化对话机器人搭建</a>)，如果使用其他公用模型可以<code>工作区LLM提供者</code> 选择相应的模型信息，并配置相应AK&#x2F;SK信息，AnythingLLM中基本涵盖了目前流行的模型信息。</p><h3 id="构建个人知识库"><a href="#构建个人知识库" class="headerlink" title="构建个人知识库"></a>构建个人知识库</h3><p><img src="https://gfupsplgl5.feishu.cn/space/api/box/stream/download/asynccode/?code=Y2Y2ZDA5NDIwZWZkMjFiZjNhZTkxY2FiOTI5OWIxODRfckFTN1VTWk9zNGRvdXZBbnNRU2dlN3E3QzJneGR0QndfVG9rZW46RE9FU2JEZ3pxbzdOM1h4Y2hac2M1dm52blRnXzE3NTA1ODI1NTY6MTc1MDU4NjE1Nl9WNA"></p><p>通过工作区名称右侧的“上传”按钮拉起知识库上传面板</p><p><img src="https://gfupsplgl5.feishu.cn/space/api/box/stream/download/asynccode/?code=YjU1MDYzYjU3OWEyYzkwZGU4MTVhOTBhNmUyYjYzNDFfY2x5RWZlQVpuWWVHME02U25teUx5WXlBSXZrR0tYbXNfVG9rZW46TnRsSGJpencyb0YxdTN4UGdua2NxMVgxbkZnXzE3NTA1ODI1NTY6MTc1MDU4NjE1Nl9WNA"></p><p>anythingLLM支持文档上传和通过连接获取一些渠道的数据（目前支持github,gitlab,youtube以及网页爬取），点击上传 并选择相应文件后，等待上传完成后，点击发布到工作区后，在点击“Save and Embed” 即可对上传文件进行向量化处理，等待embed完成后，工作区就可以使用相应知识库来帮助问答。</p><p><img src="https://gfupsplgl5.feishu.cn/space/api/box/stream/download/asynccode/?code=NzFhMzI3OWFjNjI0ZmM3MTNiNjIyNDQ4NzFjNjcwNmFfVUhESEp2YWN1djMzVVd4TXM4dkMybnZoeEd3N1B5akRfVG9rZW46T3g4YmJUNk1jb2Zzcnd4REdiSGMxUEZ1bm1mXzE3NTA1ODI1NTY6MTc1MDU4NjE1Nl9WNA"></p><p><img src="https://gfupsplgl5.feishu.cn/space/api/box/stream/download/asynccode/?code=ODFmNWEzZWJiZWI1YTgyZjhmN2MyMGFlYTc4MTQ0NzlfWW1IZHBaQ0VKekRuU2N0VmJ0SXVhZWJsbUtZRjg0UzhfVG9rZW46WDZlVmJ6WGVob0tCcVJ4VVlvcWN6QWJQblJOXzE3NTA1ODI1NTY6MTc1MDU4NjE1Nl9WNA"></p><h3 id="开启对话"><a href="#开启对话" class="headerlink" title="开启对话"></a>开启对话</h3><p><img src="https://gfupsplgl5.feishu.cn/space/api/box/stream/download/asynccode/?code=OGJlMjdjNjE2MTA5NGY2YzdhYzEzNWNhZWRkYWE3Y2ZfR09ETGZtd1pVamwwZW1xZkx2OU5TM2llUnpyYVFaekhfVG9rZW46RWNMbGJZb1FPb0VJWFZ4bEVsQ2NTMmlJbmFlXzE3NTA1ODI1NTY6MTc1MDU4NjE1Nl9WNA"></p><h2 id="一些其他扩展"><a href="#一些其他扩展" class="headerlink" title="一些其他扩展"></a>一些其他扩展</h2><h3 id="联网搜索配置"><a href="#联网搜索配置" class="headerlink" title="联网搜索配置"></a>联网搜索配置</h3><p><img src="https://gfupsplgl5.feishu.cn/space/api/box/stream/download/asynccode/?code=Yjg0YTlmZTQ5ODQ3ZmZiOWU0MmUxYThiM2U3MGZlYzBfWVNWNkpsa3FYMnV3OHlldW5FSzAxRXRNNVFLSWNnWmFfVG9rZW46Q0plWWJUb0VXb2pCMER4RlY5N2NSWlowbmJnXzE3NTA1ODI1NTY6MTc1MDU4NjE1Nl9WNA"></p><p>跳转至AnythingLLM的通用配置，目前提供以下</p><p><img src="https://gfupsplgl5.feishu.cn/space/api/box/stream/download/asynccode/?code=YTAwOTdkZjZkOGZiNTYwMDJkYjQyYjE1ZjQ1YzRlNzVfSmRqM1V0UGlINTBqdWdkNjljc0EzenlIVVZ4WURNRDdfVG9rZW46SXVyeGI4V1NKbzAwbWV4TjJTZWNCbzcxbnFLXzE3NTA1ODI1NTY6MTc1MDU4NjE1Nl9WNA"></p><p>anythingLLM默认网络搜索为关闭状态，需要手动打开，并选择要使用的搜索插件并完成对应配置，即可体验问答搜索能力。完成配置后需要再右上角点击save按钮才可生效。</p><h3 id="自定义插件"><a href="#自定义插件" class="headerlink" title="自定义插件"></a>自定义插件</h3><blockquote><p><a href="https://docs.anythingllm.com/agent/custom/developer-guide">https://docs.anythingllm.com/agent/custom/developer-guide</a></p></blockquote><p>仅提供anythingLLM 定制插件开发文档，细节不在本文中赘述</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;书接上文，我们完成了deepseek模型的本地化部署，并通过pageAssist插件构建了我们第一个本地化聊天Agent。今天我们则通过anythingLLM 工具，从0到1搭建专属知识问答Agent。本文搭建过程无需任何编码经验&lt;/p&gt;
+&lt;/bl</summary>
+      
+    
+    
+    
+    <category term="LLM学习" scheme="https://stxl117.top/categories/LLM%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="deepseek" scheme="https://stxl117.top/tags/deepseek/"/>
+    
+    <category term="LLM学习" scheme="https://stxl117.top/tags/LLM%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>基于deepseek本地化对话机器人搭建</title>
