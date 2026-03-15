@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Skills 入门实战派：5 分钟让 Claude 输出&quot;有个性&quot; | 胖小天</title><meta name="author" content="胖小天,stskymm@gmail.com"><meta name="copyright" content="胖小天"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Skills 入门实战派：5 分钟让 Claude 输出”有个性”你有没有发现，让 Claude 写一个落地页，出来的东西几乎一模一样？ Inter 字体。紫色渐变。白底。极简动画。 一眼就能认出来——这是 AI 生成的。 问题不在 Claude。在于分布收敛。 模型在采样时，会倾向训练数据中出现频率最高的”安全选择”。这些选择通用、不出错、也不得罪人。 但对做产品的你来说，这种”AI 味”正在削">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Skills 入门实战派：5 分钟让 Claude 输出&quot;有个性&quot;">
+<meta property="og:url" content="https://stxl117.top/2026/03/03/skill_1/index.html">
+<meta property="og:site_name" content="胖小天">
+<meta property="og:description" content="Skills 入门实战派：5 分钟让 Claude 输出”有个性”你有没有发现，让 Claude 写一个落地页，出来的东西几乎一模一样？ Inter 字体。紫色渐变。白底。极简动画。 一眼就能认出来——这是 AI 生成的。 问题不在 Claude。在于分布收敛。 模型在采样时，会倾向训练数据中出现频率最高的”安全选择”。这些选择通用、不出错、也不得罪人。 但对做产品的你来说，这种”AI 味”正在削">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://stxl117.top/images/timg.jpg">
+<meta property="article:published_time" content="2026-03-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-15T14:43:56.563Z">
+<meta property="article:author" content="胖小天">
+<meta property="article:tag" content="Agent学习">
+<meta property="article:tag" content="AI_Infra">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://stxl117.top/images/timg.jpg"><link rel="shortcut icon" href="/images/timg.jpg"><link rel="canonical" href="https://stxl117.top/2026/03/03/skill_1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: '',
+  enable_page_level_ads: 'true'
+});</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e2b757cd921b05a4a8e6ae397b676a5b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 胖小天","link":"链接: ","source":"来源: 胖小天","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Skills 入门实战派：5 分钟让 Claude 输出"有个性"',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-03-15 22:43:56'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4595233_jtcjyr413m.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4595233_5h709e5k5fi.css"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2643226752809773" crossorigin="anonymous"></script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="胖小天" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/timg.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/golang/"><i class="fa-fw iconfont icon-go"></i><span> Go学习笔记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"><i class="fa-fw iconfont icon-jiagou"></i><span> 系统设计</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E9%9A%8F%E7%AC%94/"><i class="fa-fw fas fa-folder-open"></i><span> 随笔</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 推荐链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/top.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="胖小天"><span class="site-name">胖小天</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/golang/"><i class="fa-fw iconfont icon-go"></i><span> Go学习笔记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"><i class="fa-fw iconfont icon-jiagou"></i><span> 系统设计</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E9%9A%8F%E7%AC%94/"><i class="fa-fw fas fa-folder-open"></i><span> 随笔</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 推荐链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Skills 入门实战派：5 分钟让 Claude 输出&quot;有个性&quot;</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-02T16:00:00.000Z" title="发表于 2026-03-03 00:00:00">2026-03-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-15T14:43:56.563Z" title="更新于 2026-03-15 22:43:56">2026-03-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ai/">ai</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Skills 入门实战派：5 分钟让 Claude 输出&quot;有个性&quot;"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Skills-入门实战派：5-分钟让-Claude-输出”有个性”"><a href="#Skills-入门实战派：5-分钟让-Claude-输出”有个性”" class="headerlink" title="Skills 入门实战派：5 分钟让 Claude 输出”有个性”"></a>Skills 入门实战派：5 分钟让 Claude 输出”有个性”</h1><p>你有没有发现，让 Claude 写一个落地页，出来的东西几乎一模一样？</p>
+<p>Inter 字体。紫色渐变。白底。极简动画。</p>
+<p>一眼就能认出来——这是 AI 生成的。</p>
+<p>问题不在 Claude。在于<strong>分布收敛</strong>。</p>
+<p>模型在采样时，会倾向训练数据中出现频率最高的”安全选择”。这些选择通用、不出错、也不得罪人。</p>
+<p>但对做产品的你来说，这种”AI 味”正在削弱品牌辨识度。</p>
+<p>好消息是：Claude <strong>高度可引导</strong>。</p>
+<p>告诉它”别用 Inter”，输出立刻改善。</p>
+<p>问题是，每次都要重复这些指令，太累。</p>
+<hr>
+<h2 id="Skills-是什么"><a href="#Skills-是什么" class="headerlink" title="Skills 是什么"></a>Skills 是什么</h2><p>一句话：<strong>按需加载的领域知识包</strong>。</p>
+<p>你把常用的指令、约束、最佳实践写成 Markdown 文件，放到指定目录。Claude 会在需要时自动读取，用完即走。</p>
+<p>这不是插件，不需要写代码，不需要调 API。</p>
+<p>就是一份文档。</p>
+<p>但这份文档，能让你从”每次都要说一遍”变成”说一次，永久生效”。</p>
+<hr>
+<h2 id="Skills-的原理：三级渐进加载"><a href="#Skills-的原理：三级渐进加载" class="headerlink" title="Skills 的原理：三级渐进加载"></a>Skills 的原理：三级渐进加载</h2><p>为什么 Skills 能做到”按需加载”而不撑爆上下文？</p>
+<p>因为 Anthropic 设计了一个<strong>三级渐进式加载机制</strong>。</p>
+<h3 id="第一级：元数据（始终在线）"><a href="#第一级：元数据（始终在线）" class="headerlink" title="第一级：元数据（始终在线）"></a>第一级：元数据（始终在线）</h3><p>Skills 目录下的每个 <code>.md</code> 文件，开头都有 YAML 元数据：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">frontend-design</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">Apply</span> <span class="string">custom</span> <span class="string">design</span> <span class="string">aesthetics</span> <span class="string">to</span> <span class="string">frontend</span> <span class="string">code.</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>这两个字段——<code>name</code> 和 <code>description</code>——是 Skills 的”入场券”。</p>
+<p>Claude 在每次对话开始时，会扫描所有 Skills 的元数据。这些信息<strong>始终在上下文中</strong>，但只占 ~100 token。</p>
+<h3 id="第二级：Skill-正文（触发后加载）"><a href="#第二级：Skill-正文（触发后加载）" class="headerlink" title="第二级：Skill 正文（触发后加载）"></a>第二级：Skill 正文（触发后加载）</h3><p>当你提到”帮我写个前端页面”，Claude 会根据 <code>description</code> 判断：这个 Skill 相关吗？</p>
+<p>如果相关，才会真正读取 Skill 的正文内容。</p>
+<p>这就是为什么 <code>description</code> 写法很关键——它决定了 Claude 能不能”想起来”这个 Skill。</p>
+<p><strong>好的 description 应该包含：</strong></p>
+<ul>
+<li>这个 Skill 做什么</li>
+<li>什么场景应该触发它</li>
+<li>关键词或触发短语</li>
+</ul>
+<p><strong>差的 description：</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">description:</span> <span class="string">Design</span> <span class="string">guidelines</span> <span class="string">for</span> <span class="string">frontend.</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>好的 description：</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">description:</span> <span class="string">Apply</span> <span class="string">custom</span> <span class="string">design</span> <span class="string">aesthetics</span> <span class="string">to</span> <span class="string">frontend</span> <span class="string">code.</span></span><br><span class="line"><span class="string">Use</span> <span class="string">when</span> <span class="string">generating</span> <span class="string">HTML,</span> <span class="string">CSS,</span> <span class="string">React</span> <span class="string">components,</span> <span class="string">or</span> <span class="string">any</span> <span class="string">UI</span> <span class="string">work.</span></span><br><span class="line"><span class="attr">Triggers:</span> <span class="string">&quot;设计页面&quot;</span><span class="string">、&quot;写个</span> <span class="string">landing</span> <span class="string">page&quot;、&quot;前端样式&quot;。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="第三级：引用资源（按需加载）"><a href="#第三级：引用资源（按需加载）" class="headerlink" title="第三级：引用资源（按需加载）"></a>第三级：引用资源（按需加载）</h3><p>复杂 Skill 可以附带 <code>references/</code> 目录，存放详细文档。</p>
+<p>正文里只写核心指引，细节链接到引用文件：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 品牌色彩系统</span></span><br><span class="line"></span><br><span class="line">详见 [<span class="string">references/colors.md</span>](<span class="link">references/colors.md</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Claude 只在真正需要时才去读取这些文件。</p>
+<p>这种设计让 Skills 可以<strong>无限扩展</strong>——正文 &lt;500 行，引用文件再多也不怕。</p>
+<h3 id="为什么这样设计"><a href="#为什么这样设计" class="headerlink" title="为什么这样设计"></a>为什么这样设计</h3><p><strong>上下文窗口是公共资源。</strong></p>
+<p>它要容纳：system prompt、对话历史、其他 Skills 的元数据、你的请求。</p>
+<p>Skills 的三级加载，本质是在做<strong>资源预算</strong>：</p>
+<ul>
+<li>元数据：必须时刻在场，所以要精简</li>
+<li>正文：触发后才加载，所以要聚焦</li>
+<li>引用：按需取用，所以可以详尽</li>
+</ul>
+<p>理解这个机制，你就能写出更高效的 Skills。</p>
+<hr>
+<h2 id="第一个-Skill：前端设计风格指南"><a href="#第一个-Skill：前端设计风格指南" class="headerlink" title="第一个 Skill：前端设计风格指南"></a>第一个 Skill：前端设计风格指南</h2><p>创建文件 <code>.claude/skills/frontend-design.md</code>：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">frontend_design</span>&gt;</span></span></span><br><span class="line">Typography instantly signals quality. Avoid boring fonts.</span><br><span class="line"></span><br><span class="line">Never use: Inter, Roboto, Open Sans, Lato</span><br><span class="line"></span><br><span class="line">Good choices:</span><br><span class="line"><span class="bullet">-</span> Code aesthetic: JetBrains Mono, Fira Code</span><br><span class="line"><span class="bullet">-</span> Editorial: Playfair Display, Crimson Pro</span><br><span class="line"><span class="bullet">-</span> Technical: IBM Plex, Source Sans 3</span><br><span class="line"></span><br><span class="line">Use extremes: 100/200 vs 800/900 weight</span><br><span class="line">Size jumps of 3x+, not 1.5x</span><br><span class="line"></span><br><span class="line">Create atmosphere, avoid flat white backgrounds.</span><br><span class="line">Commit to a cohesive theme.</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">frontend_design</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>就这么多。</p>
+<p>下次让 Claude 写前端，它会自动加载这个 Skill。</p>
+<hr>
+<h2 id="效果对比"><a href="#效果对比" class="headerlink" title="效果对比"></a>效果对比</h2><p><strong>Before</strong>：默认输出</p>
+<ul>
+<li>Inter 字体</li>
+<li>紫色渐变</li>
+<li>白底</li>
+<li>标准布局</li>
+</ul>
+<p><strong>After</strong>：加载 Skill</p>
+<ul>
+<li>JetBrains Mono 或 Playfair Display</li>
+<li>深色主题或氛围感背景</li>
+<li>有层次的配色</li>
+<li>让人想多看两眼</li>
+</ul>
+<blockquote>
+<p>关键变化：从”安全但平庸”变成”有个性但仍然安全”。</p>
+</blockquote>
+<hr>
+<h2 id="Skills-的三个层次"><a href="#Skills-的三个层次" class="headerlink" title="Skills 的三个层次"></a>Skills 的三个层次</h2><h3 id="1-约束型"><a href="#1-约束型" class="headerlink" title="1. 约束型"></a>1. 约束型</h3><p>告诉 Claude <strong>避免什么</strong>。</p>
+<p>“不要用 Inter””不要紫色渐变””不要白底”。</p>
+<p>这是最容易上手的。</p>
+<h3 id="2-指引型"><a href="#2-指引型" class="headerlink" title="2. 指引型"></a>2. 指引型</h3><p>提供设计原则。</p>
+<p>“字体要有对比感””背景要有层次””配色要大胆”。</p>
+<p>给方向，不写死。</p>
+<h3 id="3-模板型"><a href="#3-模板型" class="headerlink" title="3. 模板型"></a>3. 模板型</h3><p>直接给可复用的代码模板。</p>
+<p>适合高度标准化的场景：组件库、API 设计、测试用例。</p>
+<hr>
+<h2 id="避坑指南"><a href="#避坑指南" class="headerlink" title="避坑指南"></a>避坑指南</h2><p><strong>不要塞太多内容</strong></p>
+<p>~400 token 是最佳区间。</p>
+<p>塞太多会稀释关键指令，效果反而变差。</p>
+<p><strong>不要写死 hex 颜色</strong></p>
+<p>写 <code>#1a1a2e</code> 不如写”深色主题，有科技感”。</p>
+<p>后者让 Claude 有发挥空间，输出更自然。</p>
+<p><strong>不要假设 Claude 有记忆</strong></p>
+<p>每次对话都是新的。</p>
+<p>Skill 的意义就在这里：把”要记住的东西”变成”随时可读取的文档”。</p>
+<hr>
+<h2 id="为什么这事儿值得做"><a href="#为什么这事儿值得做" class="headerlink" title="为什么这事儿值得做"></a>为什么这事儿值得做</h2><p>两个原因。</p>
+<p><strong>第一，上下文窗口是稀缺资源。</strong></p>
+<p>把所有指令塞进 system prompt，会占用 token，拖慢响应，甚至影响输出质量。</p>
+<p>Skills 是”按需加载”，用多少取多少。</p>
+<p><strong>第二，最佳实践值得沉淀。</strong></p>
+<p>你今天发现一个好用的 prompt，明天就会忘。</p>
+<p>写成 Skill，下次还能用。</p>
+<p>团队也能用。</p>
+<hr>
+<h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>试试看。</p>
+<p>用 5 分钟写一个 Skill，看看 Claude 的输出会不会不一样。</p>
+<p>你会发现，<strong>可引导性</strong>是 Claude 被低估的能力。</p>
+<p>只是之前，你不知道怎么高效利用它。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://stxl117.top">胖小天</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://stxl117.top/2026/03/03/skill_1/">https://stxl117.top/2026/03/03/skill_1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://stxl117.top" target="_blank">胖小天</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Agent%E5%AD%A6%E4%B9%A0/">Agent学习</a><a class="post-meta__tags" href="/tags/AI-Infra/">AI_Infra</a></div><div class="post_share"><div class="social-share" data-image="/images/timg.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wx.jpg" target="_blank"><img class="post-qr-code-img" src="/images/wx.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/images/zfb.jpg" target="_blank"><img class="post-qr-code-img" src="/images/zfb.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/03/05/skill_2/" title="企业级 Skills 架构派：把团队智慧编码成 AI 本能"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">企业级 Skills 架构派：把团队智慧编码成 AI 本能</div></div></a></div><div class="next-post pull-right"><a href="/2026/01/19/vscode%E6%90%AD%E5%BB%BAGO%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="VsCode搭建GO开发环境"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">VsCode搭建GO开发环境</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2026/03/05/skill_2/" title="企业级 Skills 架构派：把团队智慧编码成 AI 本能"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-05</div><div class="title">企业级 Skills 架构派：把团队智慧编码成 AI 本能</div></div></a></div><div><a href="/2026/03/05/openclaw_1/" title="养龙虾——让 AI 真正认识你"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-05</div><div class="title">养龙虾——让 AI 真正认识你</div></div></a></div><div><a href="/2026/03/06/openclaw_2/" title="训龙虾——打造你的 AI 分身"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-06</div><div class="title">训龙虾——打造你的 AI 分身</div></div></a></div><div><a href="/2026/03/12/openclaw_3/" title="一个人就是一个团队——OpenClaw 多 Agent 协作实战指南"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-12</div><div class="title">一个人就是一个团队——OpenClaw 多 Agent 协作实战指南</div></div></a></div><div><a href="/2026/03/14/openclaw_4/" title="OpenClaw 安全架构白皮书：从威胁模型到防御实践"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-14</div><div class="title">OpenClaw 安全架构白皮书：从威胁模型到防御实践</div></div></a></div><div><a href="/2026/03/10/agent_protocol/" title="AI Agent 的 USB-C —— 一文读懂四大协议"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-10</div><div class="title">AI Agent 的 USB-C —— 一文读懂四大协议</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/timg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">胖小天</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/skystmm"><i class="fab fa-github"></i><span>github主页</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/skystmm" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://www.xiaohongshu.com/user/profile/5e5e56c90000000001005e5b?xhsshare=CopyLink&amp;appuid=5e5e56c90000000001005e5b&amp;apptime=1719056661&amp;share_id=dd68814526c447bb8acab7a682b84af9" rel="external nofollow noreferrer" target="_blank" title="小红书"><i class="iconfont icon-xiaohongshu" style="color: #FF0000;"></i></a><a class="social-icon" href="https://500px.com.cn/skystmm" rel="external nofollow noreferrer" target="_blank" title="500px"><i class="iconfont icon-px"></i></a><a class="social-icon" href="https://v.douyin.com/i68XehFV/" rel="external nofollow noreferrer" target="_blank" title="抖音"><i class="iconfont icon-douyinzhanghao"></i></a><a class="social-icon" href="mailto:stskymm@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">一切随缘，着力即差 <p> 听雨等风看世界，做人行事过生活<p> ⌨️互联网码农，有限的生命中探索更多可能性 <p>📷风光摄影|人像学习ing<p>🙌🏻乐高机械组拼装<p>🐾夜游西湖爱好者<p>🚲十年后再入坑的老菜腿</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Skills-%E5%85%A5%E9%97%A8%E5%AE%9E%E6%88%98%E6%B4%BE%EF%BC%9A5-%E5%88%86%E9%92%9F%E8%AE%A9-Claude-%E8%BE%93%E5%87%BA%E2%80%9D%E6%9C%89%E4%B8%AA%E6%80%A7%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">Skills 入门实战派：5 分钟让 Claude 输出”有个性”</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Skills-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.</span> <span class="toc-text">Skills 是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Skills-%E7%9A%84%E5%8E%9F%E7%90%86%EF%BC%9A%E4%B8%89%E7%BA%A7%E6%B8%90%E8%BF%9B%E5%8A%A0%E8%BD%BD"><span class="toc-number">1.2.</span> <span class="toc-text">Skills 的原理：三级渐进加载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%BA%A7%EF%BC%9A%E5%85%83%E6%95%B0%E6%8D%AE%EF%BC%88%E5%A7%8B%E7%BB%88%E5%9C%A8%E7%BA%BF%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">第一级：元数据（始终在线）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%BA%A7%EF%BC%9ASkill-%E6%AD%A3%E6%96%87%EF%BC%88%E8%A7%A6%E5%8F%91%E5%90%8E%E5%8A%A0%E8%BD%BD%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">第二级：Skill 正文（触发后加载）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%BA%A7%EF%BC%9A%E5%BC%95%E7%94%A8%E8%B5%84%E6%BA%90%EF%BC%88%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD%EF%BC%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">第三级：引用资源（按需加载）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E6%A0%B7%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.4.</span> <span class="toc-text">为什么这样设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA-Skill%EF%BC%9A%E5%89%8D%E7%AB%AF%E8%AE%BE%E8%AE%A1%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97"><span class="toc-number">1.3.</span> <span class="toc-text">第一个 Skill：前端设计风格指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E5%AF%B9%E6%AF%94"><span class="toc-number">1.4.</span> <span class="toc-text">效果对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Skills-%E7%9A%84%E4%B8%89%E4%B8%AA%E5%B1%82%E6%AC%A1"><span class="toc-number">1.5.</span> <span class="toc-text">Skills 的三个层次</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BA%A6%E6%9D%9F%E5%9E%8B"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 约束型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8C%87%E5%BC%95%E5%9E%8B"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 指引型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%A8%A1%E6%9D%BF%E5%9E%8B"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. 模板型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97"><span class="toc-number">1.6.</span> <span class="toc-text">避坑指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%BA%8B%E5%84%BF%E5%80%BC%E5%BE%97%E5%81%9A"><span class="toc-number">1.7.</span> <span class="toc-text">为什么这事儿值得做</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-number">1.8.</span> <span class="toc-text">下一步</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/openclaw_4/" title="OpenClaw 安全架构白皮书：从威胁模型到防御实践">OpenClaw 安全架构白皮书：从威胁模型到防御实践</a><time datetime="2026-03-13T16:00:00.000Z" title="发表于 2026-03-14 00:00:00">2026-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/12/openclaw_3/" title="一个人就是一个团队——OpenClaw 多 Agent 协作实战指南">一个人就是一个团队——OpenClaw 多 Agent 协作实战指南</a><time datetime="2026-03-11T16:00:00.000Z" title="发表于 2026-03-12 00:00:00">2026-03-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/10/agent_protocol/" title="AI Agent 的 USB-C —— 一文读懂四大协议">AI Agent 的 USB-C —— 一文读懂四大协议</a><time datetime="2026-03-09T16:00:00.000Z" title="发表于 2026-03-10 00:00:00">2026-03-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/06/openclaw_2/" title="训龙虾——打造你的 AI 分身">训龙虾——打造你的 AI 分身</a><time datetime="2026-03-05T16:00:00.000Z" title="发表于 2026-03-06 00:00:00">2026-03-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/05/openclaw_1/" title="养龙虾——让 AI 真正认识你">养龙虾——让 AI 真正认识你</a><time datetime="2026-03-04T16:00:00.000Z" title="发表于 2026-03-05 00:00:00">2026-03-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2026 By 胖小天</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href="http://www.beian.gov.cn/" rel="external nofollow noreferrer" target="_blank">浙ICP备20016472号-1</a> | <a href="/privacy/" id="GrKSpPglkahcmqg2S13lrWGbg6c">隐私政策</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
