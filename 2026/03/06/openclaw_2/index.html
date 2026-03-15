@@ -1,0 +1,587 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>训龙虾——打造你的 AI 分身 | 胖小天</title><meta name="author" content="胖小天,stskymm@gmail.com"><meta name="copyright" content="胖小天"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="训龙虾——打造你的 AI 分身上一篇聊完养龙虾。 身份录入了，技能装好了。 你的龙虾已经能干活了。 但还有一个问题—— 每次对话，它都像第一次见面。 你说过的话，它不记得。 你交代过的偏好，它下次还问。 明明用一个 AI 用了 40 天，它还是那个刚出厂的样子。  智能体不会因为你用得更久而变聪明，但它周围的文件会变得更丰富、更精准。  今天这篇，解决的就是这个问题。  为什么你的 AI 总是”失">
+<meta property="og:type" content="article">
+<meta property="og:title" content="训龙虾——打造你的 AI 分身">
+<meta property="og:url" content="https://stxl117.top/2026/03/06/openclaw_2/index.html">
+<meta property="og:site_name" content="胖小天">
+<meta property="og:description" content="训龙虾——打造你的 AI 分身上一篇聊完养龙虾。 身份录入了，技能装好了。 你的龙虾已经能干活了。 但还有一个问题—— 每次对话，它都像第一次见面。 你说过的话，它不记得。 你交代过的偏好，它下次还问。 明明用一个 AI 用了 40 天，它还是那个刚出厂的样子。  智能体不会因为你用得更久而变聪明，但它周围的文件会变得更丰富、更精准。  今天这篇，解决的就是这个问题。  为什么你的 AI 总是”失">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://stxl117.top/images/timg.jpg">
+<meta property="article:published_time" content="2026-03-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-15T13:31:29.293Z">
+<meta property="article:author" content="胖小天">
+<meta property="article:tag" content="openclaw实践">
+<meta property="article:tag" content="Agent学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://stxl117.top/images/timg.jpg"><link rel="shortcut icon" href="/images/timg.jpg"><link rel="canonical" href="https://stxl117.top/2026/03/06/openclaw_2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: '',
+  enable_page_level_ads: 'true'
+});</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e2b757cd921b05a4a8e6ae397b676a5b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 胖小天","link":"链接: ","source":"来源: 胖小天","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '训龙虾——打造你的 AI 分身',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-03-15 21:31:29'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4595233_jtcjyr413m.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4595233_5h709e5k5fi.css"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2643226752809773" crossorigin="anonymous"></script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="胖小天" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/timg.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">55</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/golang/"><i class="fa-fw iconfont icon-go"></i><span> Go学习笔记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"><i class="fa-fw iconfont icon-jiagou"></i><span> 系统设计</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E9%9A%8F%E7%AC%94/"><i class="fa-fw fas fa-folder-open"></i><span> 随笔</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 推荐链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/top.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="胖小天"><span class="site-name">胖小天</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/golang/"><i class="fa-fw iconfont icon-go"></i><span> Go学习笔记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"><i class="fa-fw iconfont icon-jiagou"></i><span> 系统设计</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E9%9A%8F%E7%AC%94/"><i class="fa-fw fas fa-folder-open"></i><span> 随笔</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 推荐链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">训龙虾——打造你的 AI 分身</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-05T16:00:00.000Z" title="发表于 2026-03-06 00:00:00">2026-03-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-15T13:31:29.293Z" title="更新于 2026-03-15 21:31:29">2026-03-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ai/">ai</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="训龙虾——打造你的 AI 分身"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="训龙虾——打造你的-AI-分身"><a href="#训龙虾——打造你的-AI-分身" class="headerlink" title="训龙虾——打造你的 AI 分身"></a>训龙虾——打造你的 AI 分身</h1><p>上一篇聊完养龙虾。</p>
+<p>身份录入了，技能装好了。</p>
+<p>你的龙虾已经能干活了。</p>
+<p>但还有一个问题——</p>
+<p><strong>每次对话，它都像第一次见面。</strong></p>
+<p>你说过的话，它不记得。</p>
+<p>你交代过的偏好，它下次还问。</p>
+<p>明明用一个 AI 用了 40 天，它还是那个刚出厂的样子。</p>
+<blockquote>
+<p>智能体不会因为你用得更久而变聪明，但它周围的文件会变得更丰富、更精准。</p>
+</blockquote>
+<p>今天这篇，解决的就是这个问题。</p>
+<hr>
+<h2 id="为什么你的-AI-总是”失忆”"><a href="#为什么你的-AI-总是”失忆”" class="headerlink" title="为什么你的 AI 总是”失忆”"></a>为什么你的 AI 总是”失忆”</h2><p>先问一个问题：</p>
+<p><strong>第1天和第40天，用同一个模型，区别在哪？</strong></p>
+<p>答案是：<strong>区别在于一堆每周都在变丰富的 Markdown 文件。</strong></p>
+<p>模型还是那个模型。</p>
+<p>但你给它读的文件，变厚了。</p>
+<p>变精准了。</p>
+<p>更贴合你的需求了。</p>
+<p>这就是 OpenClaw 的核心设计——</p>
+<blockquote>
+<p>文件系统本身就是集成层。</p>
+</blockquote>
+<p>AI 不需要”记住”一切。</p>
+<p>它只需要在你开口时，读到正确的文件。</p>
+<hr>
+<h2 id="三层文件架构"><a href="#三层文件架构" class="headerlink" title="三层文件架构"></a>三层文件架构</h2><p>OpenClaw 的文件架构分三层：</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────────────┐</span><br><span class="line">│ 第一层：身份层                           │</span><br><span class="line">│ SOUL.md | <span class="type">IDENTITY</span>.md | <span class="type">USER</span>.md         │</span><br><span class="line">│ → 定义<span class="string">&quot;我是谁&quot;</span>                           │</span><br><span class="line">└─────────────────────────────────────────┘</span><br><span class="line">                  ▼</span><br><span class="line">┌─────────────────────────────────────────┐</span><br><span class="line">│ 第二层：操作层                           │</span><br><span class="line">│ AGENTS.md | <span class="type">HEARTBEAT</span>.md | <span class="type">角色专属指南  │</span></span><br><span class="line"><span class="type">│ → 定义&quot;怎么干活&quot;                         │</span></span><br><span class="line"><span class="type">└─────────────────────────────────────────┘</span></span><br><span class="line"><span class="type">                  ▼</span></span><br><span class="line"><span class="type">┌─────────────────────────────────────────┐</span></span><br><span class="line"><span class="type">│ 第三层：知识层                           │</span></span><br><span class="line"><span class="type">│ MEMORY</span>.md | <span class="type">每日日志 | shared</span>-context/   │</span><br><span class="line">│ → 定义<span class="string">&quot;记住什么&quot;</span>                         │</span><br><span class="line">└─────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p>上一篇，我们填了身份层。</p>
+<p>今天，重点聊聊操作层和知识层。</p>
+<hr>
+<h2 id="第一层：身份层（回顾）"><a href="#第一层：身份层（回顾）" class="headerlink" title="第一层：身份层（回顾）"></a>第一层：身份层（回顾）</h2><p>上一篇已经讲过，简单复习一下：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>定义什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>SOUL.md</strong></td>
+<td>AI 的灵魂——价值观、行为准则</td>
+</tr>
+<tr>
+<td><strong>IDENTITY.md</strong></td>
+<td>AI 的身份证——名字、emoji、头像</td>
+</tr>
+<tr>
+<td><strong>USER.md</strong></td>
+<td>用户档案——你是谁、偏好什么</td>
+</tr>
+</tbody></table>
+<p>这三个文件，决定了 AI 的”人设”。</p>
+<p>但光有人设不够。</p>
+<p>你还需要告诉它：<strong>每天醒来先干什么</strong>。</p>
+<hr>
+<h2 id="第二层：操作层"><a href="#第二层：操作层" class="headerlink" title="第二层：操作层"></a>第二层：操作层</h2><p>这是让 AI “会干活”的关键。</p>
+<h3 id="AGENTS-md：工作指南"><a href="#AGENTS-md：工作指南" class="headerlink" title="AGENTS.md：工作指南"></a>AGENTS.md：工作指南</h3><p>AGENTS.md 是 AI 每次启动时<strong>首先读取</strong>的文件。</p>
+<p>它定义了：</p>
+<ul>
+<li>每天要做哪些检查</li>
+<li>工作流程是什么</li>
+<li>有什么必须遵守的规则</li>
+</ul>
+<p>一个简单的示例：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># AGENTS.md</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 每日启动流程</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> 读取 MEMORY.md，回顾重要事项</span><br><span class="line"><span class="bullet">2.</span> 检查 HEARTBEAT.md，看看有没有定时任务</span><br><span class="line"><span class="bullet">3.</span> 检查昨天的日志，处理未完成事项</span><br><span class="line"></span><br><span class="line"><span class="section">## 工作规则</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 不主动发消息打扰用户</span><br><span class="line"><span class="bullet">-</span> 做完事后记录到日志</span><br><span class="line"><span class="bullet">-</span> 遇到不确定的事，先问</span><br></pre></td></tr></table></figure>
+
+<p>这个文件决定了 AI 的”工作习惯”。</p>
+<p>认真写。</p>
+<h3 id="HEARTBEAT-md：自愈机制"><a href="#HEARTBEAT-md：自愈机制" class="headerlink" title="HEARTBEAT.md：自愈机制"></a>HEARTBEAT.md：自愈机制</h3><p>HEARTBEAT.md 是一个<strong>定时检查清单</strong>。</p>
+<p>OpenClaw 会定期读取这个文件，执行里面的检查项。</p>
+<p>比如：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># HEARTBEAT.md</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 定时检查</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 检查浏览器是否还在运行</span><br><span class="line"><span class="bullet">-</span> 检查定时任务是否正常</span><br><span class="line"><span class="bullet">-</span> 检查有没有未处理的消息</span><br></pre></td></tr></table></figure>
+
+<p>这就像给 AI 装了一个”心跳检测”。</p>
+<p>出了问题，它能自己发现、自己处理。</p>
+<h3 id="角色专属指南：一人一岗"><a href="#角色专属指南：一人一岗" class="headerlink" title="角色专属指南：一人一岗"></a>角色专属指南：一人一岗</h3><p>如果你有多个智能体，每个都可以有自己的专属指南。</p>
+<p>比如：</p>
+<ul>
+<li><code>research-agent.md</code> — 研究智能体的工作流程</li>
+<li><code>gzh-agent.md</code> — 公众号智能体的发布规范</li>
+<li><code>xhs-agent.md</code> — 小红书智能体的内容风格</li>
+</ul>
+<p>这些文件定义了不同角色的”岗位说明书”。</p>
+<p><strong>怎么让 Agent 加载专属指南？</strong></p>
+<p>OpenClaw 用 Skill 机制来加载角色专属指南。</p>
+<p>每个智能体启动时，会自动扫描 <code>skills/</code> 目录下的 <code>.md</code> 文件。</p>
+<p>只要文件的 <code>description</code> 写对了，就会被识别并加载。</p>
+<p>一个示例：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">name: gzh-agent</span><br><span class="line">description: 公众号内容发布智能体。负责排版、发布、数据追踪。</span><br><span class="line"><span class="section">  触发场景：公众号相关任务。</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 公众号 Agent 工作指南</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 发布前检查</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 标题不超过 20 字</span><br><span class="line"><span class="bullet">-</span> 开头要有钩子</span><br><span class="line"><span class="bullet">-</span> 结尾要有行动召唤</span><br><span class="line"></span><br><span class="line"><span class="section">## 排版规范</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 每 3-4 行换段</span><br><span class="line"><span class="bullet">-</span> 关键词加粗</span><br><span class="line"><span class="bullet">-</span> 金句用引用框</span><br></pre></td></tr></table></figure>
+
+<p><strong>加载逻辑</strong>：</p>
+<ol>
+<li>Agent 启动时扫描 <code>skills/</code> 目录</li>
+<li>读取所有 <code>.md</code> 文件的 YAML 元数据</li>
+<li>根据 <code>description</code> 判断是否相关</li>
+<li>相关则加载正文，不相关则跳过</li>
+</ol>
+<p><strong>多 Agent 场景</strong>：</p>
+<p>你有三个 Agent：研究、公众号、小红书。</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">workspace/</span><br><span class="line">├── skills/</span><br><span class="line">│   ├── research-agent.<span class="built_in">md</span>    → 研究智能体专属</span><br><span class="line">│   ├── gzh-agent.<span class="built_in">md</span>         → 公众号智能体专属</span><br><span class="line">│   └── xhs-agent.<span class="built_in">md</span>         → 小红书智能体专属</span><br></pre></td></tr></table></figure>
+
+<p>每个 Agent 启动时，只加载和自己相关的 Skill。</p>
+<p>怎么判断相关？</p>
+<p><strong>方法一：关键词匹配</strong></p>
+<p>在 <code>description</code> 里写清楚触发词：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">description:</span> <span class="string">公众号智能体。触发词：公众号、文章、发布、排版。</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>方法二：工作区隔离</strong></p>
+<p>给不同 Agent 配置不同的工作区：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/workspace-research/</span>   → 研究智能体的工作区</span><br><span class="line"><span class="regexp">/workspace-gzh/</span>        → 公众号智能体的工作区</span><br><span class="line"><span class="regexp">/workspace-xhs/</span>        → 小红书智能体的工作区</span><br></pre></td></tr></table></figure>
+
+<p>每个工作区只放自己需要的 Skill 文件。</p>
+<p>Agent 只会读到属于它的指南。</p>
+<hr>
+<h2 id="第三层：知识层"><a href="#第三层：知识层" class="headerlink" title="第三层：知识层"></a>第三层：知识层</h2><p>这是让 AI “有记忆”的核心。</p>
+<h3 id="MEMORY-md：精华记忆"><a href="#MEMORY-md：精华记忆" class="headerlink" title="MEMORY.md：精华记忆"></a>MEMORY.md：精华记忆</h3><p>MEMORY.md 存的是<strong>值得长期记住的事</strong>。</p>
+<p>不是流水账。</p>
+<p>是<strong>经过提炼</strong>的重要信息：</p>
+<ul>
+<li>关键决策和原因</li>
+<li>用户的核心偏好</li>
+<li>项目的重要背景</li>
+<li>学到的教训</li>
+</ul>
+<p>一个示例：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># MEMORY.md</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 用户偏好</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 沟通风格：简洁直接，不废话</span><br><span class="line"><span class="bullet">-</span> 工作时间：早8点到晚11点</span><br><span class="line"><span class="bullet">-</span> 不喜欢：AI 味的词汇、套话</span><br><span class="line"></span><br><span class="line"><span class="section">## 重要项目</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> OpenClaw 进阶之路系列</span><br><span class="line"><span class="bullet">  -</span> 已发布：系列一（养龙虾）</span><br><span class="line"><span class="bullet">  -</span> 进行中：系列二（训龙虾）</span><br><span class="line"></span><br><span class="line"><span class="section">## 关键决策</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 2026-03-01：决定用公众号作为主阵地</span><br><span class="line"><span class="bullet">  -</span> 原因：读者群体匹配，排版友好</span><br></pre></td></tr></table></figure>
+
+<p><strong>写作原则</strong>：</p>
+<ul>
+<li>只写值得记住的事</li>
+<li>定期清理过期内容</li>
+<li>保持精简，不要变成流水账</li>
+</ul>
+<h3 id="每日日志：原始记录"><a href="#每日日志：原始记录" class="headerlink" title="每日日志：原始记录"></a>每日日志：原始记录</h3><p>每日日志存在 <code>memory/</code> 目录下，按日期命名：</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">memory/</span><br><span class="line">├── 2026<span class="string">-03</span><span class="string">-06</span>.md</span><br><span class="line">├── 2026<span class="string">-03</span><span class="string">-05</span>.md</span><br><span class="line">├── 2026<span class="string">-03</span><span class="string">-04</span>.md</span><br></pre></td></tr></table></figure>
+
+<p>它记录的是<strong>当天发生了什么</strong>：</p>
+<ul>
+<li>和 AI 讨论了什么</li>
+<li>做了哪些决定</li>
+<li>有什么临时想法</li>
+</ul>
+<p>这些原始记录，供日后回溯。</p>
+<p>不需要精雕细琢，记录下来就行。</p>
+<h3 id="自动化记忆系统：让-Agent-自己记账"><a href="#自动化记忆系统：让-Agent-自己记账" class="headerlink" title="自动化记忆系统：让 Agent 自己记账"></a>自动化记忆系统：让 Agent 自己记账</h3><p>你不需要每天手动写日志。</p>
+<p>Agent 可以自动帮你记。</p>
+<p><strong>配置方式</strong>：</p>
+<p>在 <code>AGENTS.md</code> 里加入这段：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># AGENTS.md</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 每次对话结束时</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> 将本次对话的关键内容追加到 <span class="code">`memory/YYYY-MM-DD.md`</span></span><br><span class="line"><span class="bullet">2.</span> 格式：</span><br><span class="line"><span class="bullet">   -</span> 讨论了什么</span><br><span class="line"><span class="bullet">   -</span> 做了什么决定</span><br><span class="line"><span class="bullet">   -</span> 有什么待办</span><br><span class="line"></span><br><span class="line"><span class="section">## 写入规则</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 不要写流水账，提炼要点</span><br><span class="line"><span class="bullet">-</span> 用简洁的列表格式</span><br><span class="line"><span class="bullet">-</span> 如果当天文件已存在，追加；不存在，新建</span><br></pre></td></tr></table></figure>
+
+<p>Agent 在每次对话结束时会读取这段指令，自动执行。</p>
+<p><strong>定期提炼到 MEMORY.md</strong>：</p>
+<p>在 <code>HEARTBEAT.md</code> 里配置定时任务：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># HEARTBEAT.md</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 每周日晚 22:00</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> 读取最近 7 天的日志</span><br><span class="line"><span class="bullet">2.</span> 识别以下内容：</span><br><span class="line"><span class="bullet">   -</span> 重复出现 3 次以上的偏好</span><br><span class="line"><span class="bullet">   -</span> 重要决策及原因</span><br><span class="line"><span class="bullet">   -</span> 学到的教训</span><br><span class="line"><span class="bullet">   -</span> 项目关键进展</span><br><span class="line"><span class="bullet">3.</span> 提议更新 MEMORY.md</span><br><span class="line"><span class="bullet">4.</span> 用户确认后写入</span><br></pre></td></tr></table></figure>
+
+<p><strong>触发词方式</strong>：</p>
+<p>也可以在 <code>AGENTS.md</code> 里定义触发词：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 记忆提炼</span></span><br><span class="line"></span><br><span class="line">当用户说&quot;提炼记忆&quot;或&quot;回顾近期&quot;时：</span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> 读取最近 7 天日志</span><br><span class="line"><span class="bullet">2.</span> 提炼精华</span><br><span class="line"><span class="bullet">3.</span> 提议更新 MEMORY.md</span><br></pre></td></tr></table></figure>
+
+<p><strong>什么值得写进 MEMORY.md</strong>：</p>
+<p>建议定义一个标准：</p>
+<table>
+<thead>
+<tr>
+<th>写入</th>
+<th>不写入</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户明确说”记住这个”</td>
+<td>临时任务（已完成）</td>
+</tr>
+<tr>
+<td>同一事项出现 3 次以上</td>
+<td>日常琐事</td>
+</tr>
+<tr>
+<td>重大决策及原因</td>
+<td>还不确定的想法</td>
+</tr>
+<tr>
+<td>用户偏好、项目背景</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>这样配置后，整个流程是：</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">每天对话 → Agent 自动追加日志</span><br><span class="line">              ↓</span><br><span class="line">每周日（或手动触发）→ 提炼精华</span><br><span class="line">              ↓</span><br><span class="line">         用户确认 → 写入 MEMORY.<span class="built_in">md</span></span><br></pre></td></tr></table></figure>
+
+<p>你只负责最后一步：确认要不要记。</p>
+<h3 id="shared-context-x2F-：跨智能体共享"><a href="#shared-context-x2F-：跨智能体共享" class="headerlink" title="shared-context&#x2F;：跨智能体共享"></a>shared-context&#x2F;：跨智能体共享</h3><p>如果你有多个智能体协同工作，需要一个共享知识库。</p>
+<p><code>shared-context/</code> 目录就是干这个的。</p>
+<p>里面可以放：</p>
+<ul>
+<li><code>THESIS.md</code> — 共同的世界观、品牌调性</li>
+<li><code>FEEDBACK-LOG.md</code> — 跨智能体的纠正记录</li>
+<li><code>DAILY-INTEL.md</code> — 每日情报汇总</li>
+<li><code>STYLE-GUIDE.md</code> — 统一的写作风格指南</li>
+</ul>
+<p><strong>多 Agent 读取机制</strong></p>
+<p>共享知识库的关键问题：<strong>多个 Agent 同时读，会不会打架？</strong></p>
+<p>答案是：<strong>读不会打架，写才会。</strong></p>
+<p>读取是并行的——多个 Agent 可以同时读同一个文件，互不影响。</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Agent</span> A ──┐</span><br><span class="line">          ├──→ DAILY-INTEL.md（同时读取）</span><br><span class="line"><span class="built_in">Agent</span> B ──┤</span><br><span class="line">          │</span><br><span class="line"><span class="built_in">Agent</span> C ──┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>防污染设计：单写者原则</strong></p>
+<p>写入是串行的——同一时间，只能有一个 Agent 写入。</p>
+<p>这就是<strong>单写者原则</strong>：</p>
+<blockquote>
+<p>每个共享文件，只有一个”拥有者”负责写入，其他 Agent 只读。</p>
+</blockquote>
+<p>一个具体设计：</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shared-context/</span><br><span class="line">├── DAILY-INTEL.<span class="built_in">md</span>      → 写者：研究智能体</span><br><span class="line">├── GZH-QUEUE.<span class="built_in">md</span>        → 写者：公众号智能体</span><br><span class="line">├── XHS-QUEUE.<span class="built_in">md</span>        → 写者：小红书智能体</span><br><span class="line">├── FEEDBACK-LOG.<span class="built_in">md</span>     → 写者：主 Agent（人工审核后写入）</span><br><span class="line">└── STYLE-GUIDE.<span class="built_in">md</span>      → 写者：人工（不自动写入）</span><br></pre></td></tr></table></figure>
+
+<p>每个文件旁边标注”谁是写者”。</p>
+<p>Agent 启动时，知道自己对哪些文件有写权限。</p>
+<p><strong>冲突怎么办？</strong></p>
+<p>如果两个 Agent 都想写同一个文件？</p>
+<p>加锁。</p>
+<p>OpenClaw 支持 <code>.lock</code> 文件机制：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DAILY-INTEL<span class="selector-class">.md</span></span><br><span class="line">DAILY-INTEL<span class="selector-class">.md</span><span class="selector-class">.lock</span>  ← Agent A 写入时创建</span><br></pre></td></tr></table></figure>
+
+<p>其他 Agent 看到 <code>.lock</code> 文件，就知道有人在写，等待或跳过。</p>
+<p><strong>推荐实践</strong></p>
+<ul>
+<li>共享文件尽量<strong>只读</strong>，由人工定期更新</li>
+<li>需要自动写入的，明确标注写者</li>
+<li>高频写入的场景，用<strong>队列文件</strong>（每个 Agent 写自己的队列文件）</li>
+</ul>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 不推荐：多个 Agent 写同一个文件</span></span><br><span class="line">DAILY-INTEL.md ← 研究Agent、新闻Agent 都写 ❌</span><br><span class="line"></span><br><span class="line"><span class="meta"># 推荐：每个 Agent 写自己的队列</span></span><br><span class="line">research-queue.md ← 研究Agent 写 ✅</span><br><span class="line"><span class="keyword">new</span><span class="type">s</span>-queue.md     ← 新闻Agent 写 ✅</span><br><span class="line">主Agent 合并读取</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="记忆系统的设计原则"><a href="#记忆系统的设计原则" class="headerlink" title="记忆系统的设计原则"></a>记忆系统的设计原则</h2><h3 id="原则一：分级存储"><a href="#原则一：分级存储" class="headerlink" title="原则一：分级存储"></a>原则一：分级存储</h3><p>不同类型的信息，放不同的地方：</p>
+<table>
+<thead>
+<tr>
+<th>信息类型</th>
+<th>存放位置</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>长期精华</td>
+<td>MEMORY.md</td>
+<td>人工整理，长期有效</td>
+</tr>
+<tr>
+<td>原始记录</td>
+<td>每日日志</td>
+<td>自动记录，供回溯</td>
+</tr>
+<tr>
+<td>团队共享</td>
+<td>shared-context&#x2F;</td>
+<td>跨 Agent 协作</td>
+</tr>
+</tbody></table>
+<h3 id="原则二：单写者原则"><a href="#原则二：单写者原则" class="headerlink" title="原则二：单写者原则"></a>原则二：单写者原则</h3><p>共享文件，<strong>一个写者，多个读者</strong>。</p>
+<p>为什么？</p>
+<p>避免冲突。</p>
+<p>如果两个智能体同时写同一个文件，会出问题。</p>
+<p>一个写，多个读，简单清晰。</p>
+<hr>
+<h2 id="Heartbeat：让-Agent-自愈"><a href="#Heartbeat：让-Agent-自愈" class="headerlink" title="Heartbeat：让 Agent 自愈"></a>Heartbeat：让 Agent 自愈</h2><p>再聊聊 Heartbeat，这是个被低估的功能。</p>
+<h3 id="什么是-Heartbeat"><a href="#什么是-Heartbeat" class="headerlink" title="什么是 Heartbeat"></a>什么是 Heartbeat</h3><p>Heartbeat 是一个<strong>定时触发</strong>的机制。</p>
+<p>OpenClaw 会定期读取 HEARTBEAT.md，执行里面的检查项。</p>
+<p>就像人的心跳——</p>
+<p>定期检查，发现问题，及时处理。</p>
+<h3 id="怎么配置"><a href="#怎么配置" class="headerlink" title="怎么配置"></a>怎么配置</h3><p>在 <code>HEARTBEAT.md</code> 里写入检查项：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># HEARTBEAT.md</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 每4小时检查</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 浏览器进程是否正常</span><br><span class="line"><span class="bullet">-</span> 定时任务是否还在运行</span><br><span class="line"></span><br><span class="line"><span class="section">## 每天检查</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 有没有未读的重要邮件</span><br><span class="line"><span class="bullet">-</span> 日程表有没有即将到来的事项</span><br></pre></td></tr></table></figure>
+
+<p>OpenClaw 会按照配置的频率，自动执行这些检查。</p>
+<h3 id="为什么重要"><a href="#为什么重要" class="headerlink" title="为什么重要"></a>为什么重要</h3><p>AI Agent 最大的问题之一：<strong>它不会主动”想起”事情</strong>。</p>
+<p>你不说，它不做。</p>
+<p>Heartbeat 解决的就是这个问题。</p>
+<p>让 AI <strong>定期主动检查</strong>，而不是等你说。</p>
+<hr>
+<h2 id="实战案例：智能体协作"><a href="#实战案例：智能体协作" class="headerlink" title="实战案例：智能体协作"></a>实战案例：智能体协作</h2><p>说个真实场景。</p>
+<p>你是一个内容创作者，有三个智能体帮你干活：</p>
+<ul>
+<li><strong>研究员</strong> — 每天抓取行业资讯，整理情报</li>
+<li><strong>公众号运营</strong> — 负责公众号的排版、发布、数据追踪</li>
+<li><strong>小红书运营</strong> — 负责小红书的图文内容、话题蹭热点</li>
+</ul>
+<p>它们怎么协作？</p>
+<p><strong>先看流程图：</strong></p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">研究员</span><br><span class="line">  │</span><br><span class="line">  ↓ 写入</span><br><span class="line">DAILY-INTEL.<span class="built_in">md</span>（每日情报汇总）</span><br><span class="line">  │</span><br><span class="line">  ├─→ 公众号运营 读取 → 生成公众号文章</span><br><span class="line">  │</span><br><span class="line">  └─→ 小红书运营 读取 → 生成小红书图文</span><br></pre></td></tr></table></figure>
+
+<p>研究员每天整理情报，写入 <code>DAILY-INTEL.md</code>。</p>
+<p>公众号运营和小红书运营各自读取这个文件，生成适合自己平台的内容。</p>
+<p><strong>关键设计：单写者原则</strong></p>
+<p><code>DAILY-INTEL.md</code> 的写者只有一个：研究员。</p>
+<p>公众号运营和小红书运营只读，不写。</p>
+<p>这样就不会出现”两个人同时改一个文件”的冲突。</p>
+<p><strong>内容适配</strong></p>
+<p>同一个情报源，不同平台要适配不同风格：</p>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>内容特点</th>
+<th>研究员的输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>公众号</strong></td>
+<td>深度、结构化、有观点</td>
+<td>研究员提供完整背景、数据、分析框架</td>
+</tr>
+<tr>
+<td><strong>小红书</strong></td>
+<td>轻快、有图、有话题</td>
+<td>研究员提炼金句、关键词、适合做图的要点</td>
+</tr>
+</tbody></table>
+<p>研究员在 <code>DAILY-INTEL.md</code> 里同时提供两种格式的素材：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 每日情报 2026-03-06</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 公众号素材</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 完整事件背景</span><br><span class="line"><span class="bullet">-</span> 数据支撑</span><br><span class="line"><span class="bullet">-</span> 分析框架</span><br><span class="line"><span class="bullet">-</span> 延伸阅读链接</span><br><span class="line"></span><br><span class="line"><span class="section">## 小红书素材</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 3-5 个金句</span><br><span class="line"><span class="bullet">-</span> 核心关键词</span><br><span class="line"><span class="bullet">-</span> 适合做图的要点</span><br><span class="line"><span class="bullet">-</span> 推荐话题标签</span><br></pre></td></tr></table></figure>
+
+<p>公众号运营和小红书运营各取所需。</p>
+<p><strong>实际收益</strong></p>
+<blockquote>
+<p>这单一改变节省的时间，比我做过的任何 prompt 优化都多。</p>
+</blockquote>
+<p>以前：每个平台都要从头写。</p>
+<p>现在：研究员产出一次，两个平台各取所需。</p>
+<p><strong>进阶：加一个主理人</strong></p>
+<p>如果你想更省心，可以加一个”主理人”智能体：</p>
+<ul>
+<li>协调研究员和各平台运营</li>
+<li>审核内容质量</li>
+<li>统一风格把控</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">主理人</span><br><span class="line">  │</span><br><span class="line">  ├──→ 研究员</span><br><span class="line">  │</span><br><span class="line">  ├──→ 公众号运营</span><br><span class="line">  │</span><br><span class="line">  └──→ 小红书运营</span><br></pre></td></tr></table></figure>
+
+<p>主理人读取 <code>FEEDBACK-LOG.md</code>，了解之前的纠正记录，确保风格一致。</p>
+<hr>
+<h2 id="总结：三层架构一览"><a href="#总结：三层架构一览" class="headerlink" title="总结：三层架构一览"></a>总结：三层架构一览</h2><table>
+<thead>
+<tr>
+<th>层级</th>
+<th>文件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>身份层</strong></td>
+<td>SOUL.md &#x2F; IDENTITY.md &#x2F; USER.md</td>
+<td>定义”我是谁”</td>
+</tr>
+<tr>
+<td><strong>操作层</strong></td>
+<td>AGENTS.md &#x2F; HEARTBEAT.md</td>
+<td>定义”怎么干活”</td>
+</tr>
+<tr>
+<td><strong>知识层</strong></td>
+<td>MEMORY.md &#x2F; 每日日志 &#x2F; shared-context</td>
+<td>定义”记住什么”</td>
+</tr>
+</tbody></table>
+<p>三层协同，形成一个完整的”AI 分身”：</p>
+<ul>
+<li>身份层让它有<strong>个性</strong></li>
+<li>操作层让它有<strong>习惯</strong></li>
+<li>知识层让它有<strong>记忆</strong></li>
+</ul>
+<hr>
+<h2 id="龙虾训好了，下一步？"><a href="#龙虾训好了，下一步？" class="headerlink" title="龙虾训好了，下一步？"></a>龙虾训好了，下一步？</h2><p>你的 AI 已经有了长期记忆。</p>
+<p>能记住你说过的话。</p>
+<p>能主动检查任务。</p>
+<p>能和其他智能体协作。</p>
+<p>但还有一个问题——</p>
+<p>单打独斗有上限。</p>
+<p>想要更强，得<strong>建军团</strong>。</p>
+<blockquote>
+<p>下一篇文章：<strong>建军团——从单兵到 Swarm</strong></p>
+</blockquote>
+<p>让你的 AI 从一个，变成一支队伍。</p>
+<hr>
+<p><em>OpenClaw 进阶之路系列第二篇</em></p>
+<p><em>上一篇：养龙虾——让 AI 真正认识你</em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://stxl117.top">胖小天</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://stxl117.top/2026/03/06/openclaw_2/">https://stxl117.top/2026/03/06/openclaw_2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://stxl117.top" target="_blank">胖小天</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/openclaw%E5%AE%9E%E8%B7%B5/">openclaw实践</a><a class="post-meta__tags" href="/tags/Agent%E5%AD%A6%E4%B9%A0/">Agent学习</a></div><div class="post_share"><div class="social-share" data-image="/images/timg.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wx.jpg" target="_blank"><img class="post-qr-code-img" src="/images/wx.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/images/zfb.jpg" target="_blank"><img class="post-qr-code-img" src="/images/zfb.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/03/15/template/new%20hexo%20post.md/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2026/03/05/openclaw_1/" title="养龙虾——让 AI 真正认识你"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">养龙虾——让 AI 真正认识你</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2026/03/05/openclaw_1/" title="养龙虾——让 AI 真正认识你"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-05</div><div class="title">养龙虾——让 AI 真正认识你</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/timg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">胖小天</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">55</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/skystmm"><i class="fab fa-github"></i><span>github主页</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/skystmm" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://www.xiaohongshu.com/user/profile/5e5e56c90000000001005e5b?xhsshare=CopyLink&amp;appuid=5e5e56c90000000001005e5b&amp;apptime=1719056661&amp;share_id=dd68814526c447bb8acab7a682b84af9" rel="external nofollow noreferrer" target="_blank" title="小红书"><i class="iconfont icon-xiaohongshu" style="color: #FF0000;"></i></a><a class="social-icon" href="https://500px.com.cn/skystmm" rel="external nofollow noreferrer" target="_blank" title="500px"><i class="iconfont icon-px"></i></a><a class="social-icon" href="https://v.douyin.com/i68XehFV/" rel="external nofollow noreferrer" target="_blank" title="抖音"><i class="iconfont icon-douyinzhanghao"></i></a><a class="social-icon" href="mailto:stskymm@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">一切随缘，着力即差 <p> 听雨等风看世界，做人行事过生活<p> ⌨️互联网码农，有限的生命中探索更多可能性 <p>📷风光摄影|人像学习ing<p>🙌🏻乐高机械组拼装<p>🐾夜游西湖爱好者<p>🚲十年后再入坑的老菜腿</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%AD%E9%BE%99%E8%99%BE%E2%80%94%E2%80%94%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84-AI-%E5%88%86%E8%BA%AB"><span class="toc-number">1.</span> <span class="toc-text">训龙虾——打造你的 AI 分身</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E7%9A%84-AI-%E6%80%BB%E6%98%AF%E2%80%9D%E5%A4%B1%E5%BF%86%E2%80%9D"><span class="toc-number">1.1.</span> <span class="toc-text">为什么你的 AI 总是”失忆”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%96%87%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">三层文件架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%B1%82%EF%BC%9A%E8%BA%AB%E4%BB%BD%E5%B1%82%EF%BC%88%E5%9B%9E%E9%A1%BE%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">第一层：身份层（回顾）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%B1%82%EF%BC%9A%E6%93%8D%E4%BD%9C%E5%B1%82"><span class="toc-number">1.4.</span> <span class="toc-text">第二层：操作层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AGENTS-md%EF%BC%9A%E5%B7%A5%E4%BD%9C%E6%8C%87%E5%8D%97"><span class="toc-number">1.4.1.</span> <span class="toc-text">AGENTS.md：工作指南</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HEARTBEAT-md%EF%BC%9A%E8%87%AA%E6%84%88%E6%9C%BA%E5%88%B6"><span class="toc-number">1.4.2.</span> <span class="toc-text">HEARTBEAT.md：自愈机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%92%E8%89%B2%E4%B8%93%E5%B1%9E%E6%8C%87%E5%8D%97%EF%BC%9A%E4%B8%80%E4%BA%BA%E4%B8%80%E5%B2%97"><span class="toc-number">1.4.3.</span> <span class="toc-text">角色专属指南：一人一岗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E5%B1%82%EF%BC%9A%E7%9F%A5%E8%AF%86%E5%B1%82"><span class="toc-number">1.5.</span> <span class="toc-text">第三层：知识层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MEMORY-md%EF%BC%9A%E7%B2%BE%E5%8D%8E%E8%AE%B0%E5%BF%86"><span class="toc-number">1.5.1.</span> <span class="toc-text">MEMORY.md：精华记忆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%8F%E6%97%A5%E6%97%A5%E5%BF%97%EF%BC%9A%E5%8E%9F%E5%A7%8B%E8%AE%B0%E5%BD%95"><span class="toc-number">1.5.2.</span> <span class="toc-text">每日日志：原始记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F%EF%BC%9A%E8%AE%A9-Agent-%E8%87%AA%E5%B7%B1%E8%AE%B0%E8%B4%A6"><span class="toc-number">1.5.3.</span> <span class="toc-text">自动化记忆系统：让 Agent 自己记账</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shared-context-x2F-%EF%BC%9A%E8%B7%A8%E6%99%BA%E8%83%BD%E4%BD%93%E5%85%B1%E4%BA%AB"><span class="toc-number">1.5.4.</span> <span class="toc-text">shared-context&#x2F;：跨智能体共享</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">1.6.</span> <span class="toc-text">记忆系统的设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%88%99%E4%B8%80%EF%BC%9A%E5%88%86%E7%BA%A7%E5%AD%98%E5%82%A8"><span class="toc-number">1.6.1.</span> <span class="toc-text">原则一：分级存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%88%99%E4%BA%8C%EF%BC%9A%E5%8D%95%E5%86%99%E8%80%85%E5%8E%9F%E5%88%99"><span class="toc-number">1.6.2.</span> <span class="toc-text">原则二：单写者原则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Heartbeat%EF%BC%9A%E8%AE%A9-Agent-%E8%87%AA%E6%84%88"><span class="toc-number">1.7.</span> <span class="toc-text">Heartbeat：让 Agent 自愈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Heartbeat"><span class="toc-number">1.7.1.</span> <span class="toc-text">什么是 Heartbeat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AE"><span class="toc-number">1.7.2.</span> <span class="toc-text">怎么配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E8%A6%81"><span class="toc-number">1.7.3.</span> <span class="toc-text">为什么重要</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%EF%BC%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C"><span class="toc-number">1.8.</span> <span class="toc-text">实战案例：智能体协作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%80%E8%A7%88"><span class="toc-number">1.9.</span> <span class="toc-text">总结：三层架构一览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BE%99%E8%99%BE%E8%AE%AD%E5%A5%BD%E4%BA%86%EF%BC%8C%E4%B8%8B%E4%B8%80%E6%AD%A5%EF%BC%9F"><span class="toc-number">1.10.</span> <span class="toc-text">龙虾训好了，下一步？</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/15/%E6%9C%AA%E5%91%BD%E5%90%8D/" title="[object Object]">[object Object]</a><time datetime="2026-03-15T13:17:27.335Z" title="发表于 2026-03-15 21:17:27">2026-03-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/15/template/new%20hexo%20post.md/" title="无题">无题</a><time datetime="2026-03-15T13:11:20.688Z" title="发表于 2026-03-15 21:11:20">2026-03-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/06/openclaw_2/" title="训龙虾——打造你的 AI 分身">训龙虾——打造你的 AI 分身</a><time datetime="2026-03-05T16:00:00.000Z" title="发表于 2026-03-06 00:00:00">2026-03-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/05/openclaw_1/" title="养龙虾——让 AI 真正认识你">养龙虾——让 AI 真正认识你</a><time datetime="2026-03-04T16:00:00.000Z" title="发表于 2026-03-05 00:00:00">2026-03-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/19/copilot/copilot-custom-prompts/Clip%20Web%20Page/" title="无题">无题</a><time datetime="2026-01-19T13:26:50.473Z" title="发表于 2026-01-19 21:26:50">2026-01-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2026 By 胖小天</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href="http://www.beian.gov.cn/" rel="external nofollow noreferrer" target="_blank">浙ICP备20016472号-1</a> | <a href="/privacy/" id="GrKSpPglkahcmqg2S13lrWGbg6c">隐私政策</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
