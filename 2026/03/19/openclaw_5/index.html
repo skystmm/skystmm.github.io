@@ -1,0 +1,522 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>OpenClaw + OpenViking：给你的 AI Agent 装上&quot;长期记忆&quot; | 胖小天</title><meta name="author" content="胖小天,stskymm@gmail.com"><meta name="copyright" content="胖小天"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、问题：AI 的”失忆症”你有没有遇到过这种情况？ 和 AI 聊了一个下午，讨论了项目方案、定了技术选型、甚至聊到了你的偏好。 第二天再打开对话，它问你：  你好，我是 AI 助手，有什么可以帮你？  一切归零。 这不是 AI 的错。是 context 上下文窗口的限制。 两种记忆人的记忆分两种：  短期记忆：工作记忆，容量有限，持续几秒到几分钟 长期记忆：永久存储，容量近乎无限  AI 也一样">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenClaw + OpenViking：给你的 AI Agent 装上&quot;长期记忆&quot;">
+<meta property="og:url" content="https://stxl117.top/2026/03/19/openclaw_5/index.html">
+<meta property="og:site_name" content="胖小天">
+<meta property="og:description" content="一、问题：AI 的”失忆症”你有没有遇到过这种情况？ 和 AI 聊了一个下午，讨论了项目方案、定了技术选型、甚至聊到了你的偏好。 第二天再打开对话，它问你：  你好，我是 AI 助手，有什么可以帮你？  一切归零。 这不是 AI 的错。是 context 上下文窗口的限制。 两种记忆人的记忆分两种：  短期记忆：工作记忆，容量有限，持续几秒到几分钟 长期记忆：永久存储，容量近乎无限  AI 也一样">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://stxl117.top/images/timg.jpg">
+<meta property="article:published_time" content="2026-03-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-22T14:42:17.006Z">
+<meta property="article:author" content="胖小天">
+<meta property="article:tag" content="openclaw实践">
+<meta property="article:tag" content="Agent学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://stxl117.top/images/timg.jpg"><link rel="shortcut icon" href="/images/timg.jpg"><link rel="canonical" href="https://stxl117.top/2026/03/19/openclaw_5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-2643226752809773',
+  enable_page_level_ads: 'true'
+});</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e2b757cd921b05a4a8e6ae397b676a5b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 胖小天","link":"链接: ","source":"来源: 胖小天","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'OpenClaw + OpenViking：给你的 AI Agent 装上"长期记忆"',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-03-22 22:42:17'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4595233_jtcjyr413m.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4595233_5h709e5k5fi.css"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2643226752809773" crossorigin="anonymous"></script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="胖小天" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/timg.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/golang/"><i class="fa-fw iconfont icon-go"></i><span> Go学习笔记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"><i class="fa-fw iconfont icon-jiagou"></i><span> 系统设计</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E9%9A%8F%E7%AC%94/"><i class="fa-fw fas fa-folder-open"></i><span> 随笔</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 推荐链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/top.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="胖小天"><span class="site-name">胖小天</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/golang/"><i class="fa-fw iconfont icon-go"></i><span> Go学习笔记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"><i class="fa-fw iconfont icon-jiagou"></i><span> 系统设计</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E9%9A%8F%E7%AC%94/"><i class="fa-fw fas fa-folder-open"></i><span> 随笔</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 推荐链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">OpenClaw + OpenViking：给你的 AI Agent 装上&quot;长期记忆&quot;</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-18T16:00:00.000Z" title="发表于 2026-03-19 00:00:00">2026-03-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-22T14:42:17.006Z" title="更新于 2026-03-22 22:42:17">2026-03-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ai/">ai</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="OpenClaw + OpenViking：给你的 AI Agent 装上&quot;长期记忆&quot;"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="一、问题：AI-的”失忆症”"><a href="#一、问题：AI-的”失忆症”" class="headerlink" title="一、问题：AI 的”失忆症”"></a>一、问题：AI 的”失忆症”</h2><p>你有没有遇到过这种情况？</p>
+<p>和 AI 聊了一个下午，讨论了项目方案、定了技术选型、甚至聊到了你的偏好。</p>
+<p>第二天再打开对话，它问你：</p>
+<blockquote>
+<p>你好，我是 AI 助手，有什么可以帮你？</p>
+</blockquote>
+<p>一切归零。</p>
+<p>这不是 AI 的错。是 <strong>context 上下文窗口</strong>的限制。</p>
+<h3 id="两种记忆"><a href="#两种记忆" class="headerlink" title="两种记忆"></a>两种记忆</h3><p>人的记忆分两种：</p>
+<ul>
+<li><strong>短期记忆</strong>：工作记忆，容量有限，持续几秒到几分钟</li>
+<li><strong>长期记忆</strong>：永久存储，容量近乎无限</li>
+</ul>
+<p>AI 也一样。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>人类</th>
+<th>AI Agent</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>短期记忆</td>
+<td>工作记忆</td>
+<td>context 上下文窗口</td>
+</tr>
+<tr>
+<td>长期记忆</td>
+<td>大脑皮层</td>
+<td>？（缺失）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>context 上下文窗口是 AI 的”工作内存”，但它没有”硬盘”。</p>
+</blockquote>
+<p>对话一结束，工作内存清空。下次见面，它不认识你。</p>
+<hr>
+<h2 id="二、方案：两层记忆架构"><a href="#二、方案：两层记忆架构" class="headerlink" title="二、方案：两层记忆架构"></a>二、方案：两层记忆架构</h2><p>OpenClaw 的解决方案很直接：</p>
+<p><strong>给 Agent 加一个”硬盘”。</strong></p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────────────────┐</span><br><span class="line">│              <span class="variable">OpenClaw</span> <span class="variable">Agent</span>                 │</span><br><span class="line">├─────────────────────────────────────────────┤</span><br><span class="line">│  短期记忆（<span class="variable">RAM</span>）                            │</span><br><span class="line">│  <span class="operator">-</span> 对话历史                                 │</span><br><span class="line">│  <span class="operator">-</span> 工具调用结果                             │</span><br><span class="line">│  <span class="operator">-</span> 当前任务上下文                           │</span><br><span class="line">│  → 自动压缩，窗口有限                       │</span><br><span class="line">├─────────────────────────────────────────────┤</span><br><span class="line">│  长期记忆（<span class="built_in">Disk</span>）                           │</span><br><span class="line">│  <span class="operator">-</span> <span class="variable">OpenViking</span> 向量存储                      │</span><br><span class="line">│  <span class="operator">-</span> 语义检索                                 │</span><br><span class="line">│  <span class="operator">-</span> 自动提取 <span class="operator">+</span> 自动召回                      │</span><br><span class="line">│  → 持久化，无限容量                         │</span><br><span class="line">└─────────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>短期记忆让 Agent 能对话，长期记忆让 Agent 能成长。</strong></p>
+<hr>
+<h2 id="三、OpenViking：记忆系统的核心"><a href="#三、OpenViking：记忆系统的核心" class="headerlink" title="三、OpenViking：记忆系统的核心"></a>三、OpenViking：记忆系统的核心</h2><p>OpenViking 是 OpenClaw 官方的记忆插件。</p>
+<p>它做了三件事：</p>
+<h3 id="1-向量化存储"><a href="#1-向量化存储" class="headerlink" title="1. 向量化存储"></a>1. 向量化存储</h3><p>把文本变成向量，存进向量数据库。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;用户偏好 Python，不喜欢 JavaScript&quot;</span></span><br><span class="line">        ↓ embedding</span><br><span class="line">[<span class="number">0.12</span>, -<span class="number">0.34</span>, <span class="number">0.56</span>, ..., <span class="number">0.78</span>]  <span class="comment"># 512 维向量</span></span><br><span class="line">        ↓ 存储</span><br><span class="line">sqlite-vec <span class="regexp">/ FAISS /</span> 云端向量库</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-语义检索"><a href="#2-语义检索" class="headerlink" title="2. 语义检索"></a>2. 语义检索</h3><p>用户说：”上次那个项目”</p>
+<p>系统搜索向量库，找到相关记忆。</p>
+<p>不需要精确匹配。</p>
+<blockquote>
+<p>“上次那个项目” ≈ “3月15日讨论的数据分析平台”</p>
+</blockquote>
+<h3 id="3-自动闭环"><a href="#3-自动闭环" class="headerlink" title="3. 自动闭环"></a>3. 自动闭环</h3><p>这是最关键的部分。</p>
+<p><strong>Auto-Capture（自动捕获）</strong>：对话结束，自动提取有价值的记忆</p>
+<p><strong>Auto-Recall（自动召回）</strong>：用户提问前，自动注入相关记忆</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用户提问 → 自动召回 → 注入上下文 → 模型回答</span><br><span class="line">    ↓</span><br><span class="line">对话结束 → 自动捕获 → 提取记忆 → 写入向量库</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>自动召回 + 自动捕获 &#x3D; 记忆闭环</p>
+</blockquote>
+<p>用户无感知。AI 自己”记住”了。</p>
+<hr>
+<h2 id="四、实战：安装与配置"><a href="#四、实战：安装与配置" class="headerlink" title="四、实战：安装与配置"></a>四、实战：安装与配置</h2><p>OpenViking 提供了一键安装脚本，支持三种部署模式：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>适用场景</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>本地部署</strong></td>
+<td>个人使用</td>
+<td>在本机启动 OpenViking 服务</td>
+</tr>
+<tr>
+<td><strong>远端连接</strong></td>
+<td>多人共享</td>
+<td>连接已有的 OpenViking 服务</td>
+</tr>
+<tr>
+<td><strong>火山引擎 ECS</strong></td>
+<td>生产环境</td>
+<td>云端部署 + WebConsole 管理</td>
+</tr>
+</tbody></table>
+<h3 id="快速安装"><a href="#快速安装" class="headerlink" title="快速安装"></a>快速安装</h3><p><strong>方式一：npm 安装（推荐，全平台）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g openclaw-openviking-setup-helper</span><br><span class="line">ov-install</span><br></pre></td></tr></table></figure>
+
+<p><strong>方式二：curl 一键安装（Linux &#x2F; macOS）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://raw.githubusercontent.com/volcengine/OpenViking/main/examples/openclaw-plugin/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p>安装助手会自动：</p>
+<ul>
+<li>检测 Python &#x2F; Node.js 环境</li>
+<li>提示输入火山引擎 Ark API Key</li>
+<li>生成配置文件 <code>~/.openviking/ov.conf</code></li>
+<li>配置 OpenClaw 插件</li>
+</ul>
+<h3 id="启动与验证"><a href="#启动与验证" class="headerlink" title="启动与验证"></a>启动与验证</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载环境变量并启动</span></span><br><span class="line"><span class="built_in">source</span> ~/.openclaw/openviking.env &amp;&amp; openclaw gateway</span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证记忆功能已启用</span></span><br><span class="line">openclaw status</span><br><span class="line"><span class="comment"># Memory 行应显示：enabled (plugin openviking)</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>完整安装指南</strong>：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/volcengine/OpenViking/blob/main/examples/openclaw-plugin/INSTALL-ZH.md">OpenViking 官方文档</a></p>
+</blockquote>
+<blockquote>
+<p><strong>⚠️ 兼容性提示</strong>：OpenClaw <code>2026.3.12+</code> 存在已知兼容性问题，可能导致对话卡死。如遇到此问题，临时回退到 <code>2026.3.11</code>：<code>npm install -g openclaw@2026.3.11</code></p>
+</blockquote>
+<hr>
+<h2 id="五、零成本方案：Hugging-Face-Space"><a href="#五、零成本方案：Hugging-Face-Space" class="headerlink" title="五、零成本方案：Hugging Face Space"></a>五、零成本方案：Hugging Face Space</h2><p>Embedding API 要钱？</p>
+<p><strong>用 Hugging Face Space，免费。</strong></p>
+<h3 id="方案对比"><a href="#方案对比" class="headerlink" title="方案对比"></a>方案对比</h3><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>成本</th>
+<th>限制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OpenAI text-embedding-3-small</td>
+<td>$0.02&#x2F;百万 tokens</td>
+<td>需要信用卡</td>
+</tr>
+<tr>
+<td>Gemini embedding-001</td>
+<td>免费额度有限</td>
+<td>需要绑定 billing</td>
+</tr>
+<tr>
+<td><strong>HF Space + BGE</strong></td>
+<td><strong>完全免费</strong></td>
+<td>CPU，适合个人使用</td>
+</tr>
+</tbody></table>
+<h3 id="五分钟搭建"><a href="#五分钟搭建" class="headerlink" title="五分钟搭建"></a>五分钟搭建</h3><p><strong>1. 创建 Space</strong></p>
+<p>访问 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://huggingface.co/new-space">https://huggingface.co/new-space</a></p>
+<ul>
+<li>SDK：Docker</li>
+<li>Hardware：CPU（免费）</li>
+</ul>
+<p><strong>2. 添加三个文件</strong></p>
+<p>创建 <code>Dockerfile</code>、<code>requirements.txt</code>、<code>app.py</code>：</p>
+<p><strong>Dockerfile</strong></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.10</span>-slim</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置工作目录</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制依赖文件并安装</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> requirements.txt .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip install --no-cache-dir -r requirements.txt</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制应用代码</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> app.py .</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建非 root 用户运行 (Hugging Face 安全要求)</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> useradd -m -u 1000 user</span></span><br><span class="line"><span class="keyword">USER</span> <span class="keyword">user</span></span><br><span class="line"><span class="keyword">ENV</span> HOME=/home/<span class="keyword">user</span> \</span><br><span class="line">    PATH=/home/<span class="keyword">user</span>/.local/bin:$PATH</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> <span class="variable">$HOME</span>/app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --<span class="built_in">chown</span>=user . <span class="variable">$HOME</span>/app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 暴露端口并启动服务</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">7860</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;uvicorn&quot;</span>, <span class="string">&quot;app:app&quot;</span>, <span class="string">&quot;--host&quot;</span>, <span class="string">&quot;0.0.0.0&quot;</span>, <span class="string">&quot;--port&quot;</span>, <span class="string">&quot;7860&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>requirements.txt</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fastapi</span><br><span class="line">uvicorn</span><br><span class="line">sentence-transformers</span><br><span class="line">pydantic</span><br></pre></td></tr></table></figure>
+
+<p><strong>app.py</strong>（带 Token 认证）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI, HTTPException, Depends, status</span><br><span class="line"><span class="keyword">from</span> fastapi.security <span class="keyword">import</span> HTTPBearer, HTTPAuthorizationCredentials</span><br><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">Union</span>, <span class="type">List</span></span><br><span class="line"><span class="keyword">from</span> sentence_transformers <span class="keyword">import</span> SentenceTransformer</span><br><span class="line"><span class="keyword">import</span> uvicorn</span><br><span class="line"></span><br><span class="line">app = FastAPI(title=<span class="string">&quot;Embedding API with Auth&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 实例化 HTTPBearer</span></span><br><span class="line">security = HTTPBearer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 从环境变量读取预设的 Token</span></span><br><span class="line">EXPECTED_TOKEN = os.getenv(<span class="string">&quot;API_TOKEN&quot;</span>, <span class="string">&quot;default-secret-token&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 定义鉴权依赖函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">verify_token</span>(<span class="params">credentials: HTTPAuthorizationCredentials = Depends(<span class="params">security</span>)</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;校验传入的 Bearer Token 是否合法&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> credentials.credentials != EXPECTED_TOKEN:</span><br><span class="line">        <span class="keyword">raise</span> HTTPException(</span><br><span class="line">            status_code=status.HTTP_401_UNAUTHORIZED,</span><br><span class="line">            detail=<span class="string">&quot;Invalid authentication token&quot;</span>,</span><br><span class="line">            headers=&#123;<span class="string">&quot;WWW-Authenticate&quot;</span>: <span class="string">&quot;Bearer&quot;</span>&#125;,</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">return</span> credentials.credentials</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载模型</span></span><br><span class="line">MODEL_NAME = <span class="string">&quot;BAAI/bge-small-zh-v1.5&quot;</span></span><br><span class="line">model = SentenceTransformer(MODEL_NAME)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">EmbeddingRequest</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    <span class="built_in">input</span>: <span class="type">Union</span>[<span class="built_in">str</span>, <span class="type">List</span>[<span class="built_in">str</span>]]</span><br><span class="line">    model: <span class="built_in">str</span> = <span class="string">&quot;bge-small-zh-v1.5&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 在接口的 dependencies 中注入鉴权函数</span></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/v1/embeddings&quot;</span>, dependencies=[Depends(<span class="params">verify_token</span>)]</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">create_embedding</span>(<span class="params">request: EmbeddingRequest</span>):</span><br><span class="line">    texts = [request.<span class="built_in">input</span>] <span class="keyword">if</span> <span class="built_in">isinstance</span>(request.<span class="built_in">input</span>, <span class="built_in">str</span>) <span class="keyword">else</span> request.<span class="built_in">input</span></span><br><span class="line">    embeddings = model.encode(texts, normalize_embeddings=<span class="literal">True</span>).tolist()</span><br><span class="line"></span><br><span class="line">    data = [</span><br><span class="line">        &#123;<span class="string">&quot;object&quot;</span>: <span class="string">&quot;embedding&quot;</span>, <span class="string">&quot;embedding&quot;</span>: emb, <span class="string">&quot;index&quot;</span>: i&#125;</span><br><span class="line">        <span class="keyword">for</span> i, emb <span class="keyword">in</span> <span class="built_in">enumerate</span>(embeddings)</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;object&quot;</span>: <span class="string">&quot;list&quot;</span>,</span><br><span class="line">        <span class="string">&quot;data&quot;</span>: data,</span><br><span class="line">        <span class="string">&quot;model&quot;</span>: request.model,</span><br><span class="line">        <span class="string">&quot;usage&quot;</span>: &#123;<span class="string">&quot;prompt_tokens&quot;</span>: <span class="number">0</span>, <span class="string">&quot;total_tokens&quot;</span>: <span class="number">0</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/health&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">health_check</span>():</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;status&quot;</span>: <span class="string">&quot;ok&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 推送，等待构建完成</strong></p>
+<p><strong>4. 配置 OpenViking</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;embedding&quot;: &#123;</span><br><span class="line">  &quot;dense&quot;: &#123;</span><br><span class="line">    &quot;provider&quot;: &quot;openai&quot;,</span><br><span class="line">    &quot;api_base&quot;: &quot;https://your-username-bge-embedding.hf.space/v1&quot;,</span><br><span class="line">    &quot;api_key&quot;: &quot;your-api-token&quot;,  // 可选，如设置了 API_TOKEN 环境变量</span><br><span class="line">    &quot;model&quot;: &quot;bge-small-zh-v1.5&quot;,</span><br><span class="line">    &quot;dimension&quot;: 512</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>api_key 说明</strong>：如果你在 HF Space 设置了 <code>API_TOKEN</code> 环境变量，需要在配置中添加对应的 <code>api_key</code>。如果未设置认证，可省略此字段。</p>
+</blockquote>
+<p>搞定。</p>
+<blockquote>
+<p>记忆系统不再依赖付费 API，个人开发者零成本使用。</p>
+</blockquote>
+<hr>
+<h2 id="六、高级功能：为什么它比你想的更强"><a href="#六、高级功能：为什么它比你想的更强" class="headerlink" title="六、高级功能：为什么它比你想的更强"></a>六、高级功能：为什么它比你想的更强</h2><h3 id="混合检索：Dense-Sparse-Vector"><a href="#混合检索：Dense-Sparse-Vector" class="headerlink" title="混合检索：Dense + Sparse Vector"></a>混合检索：Dense + Sparse Vector</h3><p>纯向量检索有个问题：</p>
+<blockquote>
+<p>擅长”意思是这个”，但不擅长”精确匹配 ID&#x2F;代码”</p>
+</blockquote>
+<p>比如搜索 <code>sessionKey = &quot;agent:main:feishu&quot;</code>，向量可能找不到。</p>
+<p>因为语义上它和其他 sessionKey 太像了。</p>
+<p><strong>OpenViking 的解决方案</strong>：混合向量存储</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">存储层：</span><br><span class="line">├── dense_vector   <span class="meta"># 稠密向量，语义相似</span></span><br><span class="line">└── sparse_vector  <span class="meta"># 稀疏向量，关键词匹配</span></span><br><span class="line"></span><br><span class="line">索引类型：flat_hybrid（自动混合）</span><br></pre></td></tr></table></figure>
+
+<p><strong>Dense vs Sparse vs BM25 对比</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Dense Vector（稠密向量）</th>
+<th>Sparse Vector（稀疏向量）</th>
+<th>BM25（传统全文检索）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>原理</strong></td>
+<td>语义压缩为低维向量</td>
+<td>高维稀疏表示，保留词项权重</td>
+<td>基于词频统计</td>
+</tr>
+<tr>
+<td><strong>语义理解</strong></td>
+<td>✅ 强</td>
+<td>⚠️ 中等</td>
+<td>❌ 弱</td>
+</tr>
+<tr>
+<td><strong>关键词匹配</strong></td>
+<td>⚠️ 模糊</td>
+<td>✅ 精确</td>
+<td>✅ 精确</td>
+</tr>
+<tr>
+<td><strong>存储成本</strong></td>
+<td>低（固定维度）</td>
+<td>中（随词表增长）</td>
+<td>低（倒排索引）</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>语义相似、同义改写</td>
+<td>专业术语、ID匹配</td>
+<td>大规模文档检索</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Sparse Vector 是 BM25 的”神经网络升级版”——既保留关键词精确匹配能力，又能学习词项重要性，效果更好。</p>
+</blockquote>
+<p><strong>检索流程</strong>：</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Query → <span class="keyword">Intent</span> Analysis（LLM 意图分析）</span><br><span class="line">     → Hierarchical Retrieval（目录递归）</span><br><span class="line">        ├─ 向量定位高相关目录</span><br><span class="line">        └─ 递归精细检索</span><br><span class="line">     → Rerank（重排序）</span><br><span class="line">     → Results</span><br></pre></td></tr></table></figure>
+
+<p>两全其美：语义理解 + 关键词精确匹配。</p>
+<blockquote>
+<p>这是 OpenViking 内置能力，无需额外配置。</p>
+</blockquote>
+<h3 id="时间衰减：新信息更重要"><a href="#时间衰减：新信息更重要" class="headerlink" title="时间衰减：新信息更重要"></a>时间衰减：新信息更重要</h3><p>你有 100 条记忆，今天的和去年的，哪个更相关？</p>
+<p><strong>时间衰减算法</strong>：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">decayedScore</span> = score × e^(-λ × ageInDays)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>权重</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>今天</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>7 天前</td>
+<td>84%</td>
+</tr>
+<tr>
+<td>30 天前</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>90 天前</td>
+<td>12.5%</td>
+</tr>
+</tbody></table>
+<p>新信息自然排名更高。</p>
+<h3 id="Session-隔离：安全第一"><a href="#Session-隔离：安全第一" class="headerlink" title="Session 隔离：安全第一"></a>Session 隔离：安全第一</h3><p>一个 Agent 服务多个用户，会不会串话？</p>
+<p><strong>不会。</strong></p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sessionKey = <span class="symbol">agent:</span>&lt;id&gt;<span class="symbol">:&lt;channel&gt;</span><span class="symbol">:&lt;type&gt;</span><span class="symbol">:&lt;peer&gt;</span></span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line"><span class="symbol">agent:</span><span class="symbol">main:</span><span class="symbol">feishu:</span><span class="symbol">dm:</span>user123    <span class="comment"># 私聊</span></span><br><span class="line"><span class="symbol">agent:</span><span class="symbol">main:</span><span class="symbol">feishu:</span><span class="symbol">group:</span>oc_xxx  <span class="comment"># 群聊</span></span><br></pre></td></tr></table></figure>
+
+<p>不同的 sessionKey &#x3D; 不同的对话宇宙。</p>
+<blockquote>
+<p>sessionKey 是上下文的宇宙边界，正确的隔离配置是安全的基础。</p>
+</blockquote>
+<hr>
+<h2 id="七、对比：为什么选-OpenClaw-OpenViking"><a href="#七、对比：为什么选-OpenClaw-OpenViking" class="headerlink" title="七、对比：为什么选 OpenClaw + OpenViking"></a>七、对比：为什么选 OpenClaw + OpenViking</h2><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>OpenClaw + OpenViking</strong></td>
+<td>开箱即用，本地优先，无外部依赖</td>
+<td>个人&#x2F;小团队</td>
+</tr>
+<tr>
+<td>Mem0</td>
+<td>云服务，多平台 SDK</td>
+<td>产品级应用</td>
+</tr>
+<tr>
+<td>MemGPT</td>
+<td>复杂架构，多层级记忆</td>
+<td>研究&#x2F;实验</td>
+</tr>
+<tr>
+<td>Claude Code Memory</td>
+<td>单文件 Markdown</td>
+<td>轻量级场景</td>
+</tr>
+</tbody></table>
+<p><strong>我的选择理由</strong>：</p>
+<ol>
+<li><strong>零依赖</strong>：不需要 Redis、PostgreSQL，文件系统就是数据库</li>
+<li><strong>可调试</strong>：JSONL 文件，人类可读</li>
+<li><strong>免费可用</strong>：HF Space 托管 Embedding，成本为零</li>
+<li><strong>安全隔离</strong>：Session 机制天然防止信息泄露</li>
+</ol>
+<hr>
+<h2 id="八、总结"><a href="#八、总结" class="headerlink" title="八、总结"></a>八、总结</h2><p>AI Agent 的记忆问题，本质是<strong>存储问题</strong>。</p>
+<p>context 上下文窗口是工作内存，会清空。</p>
+<p>OpenViking 是硬盘，永久保存。</p>
+<p>配置五分钟，Agent 从”失忆”变”有记忆”。</p>
+<p><strong>更关键的是</strong>：这套方案免费可用。</p>
+<p>HF Space 托管 Embedding 模型，个人开发者零成本体验。</p>
+<blockquote>
+<p>短期记忆让 Agent 能对话，长期记忆让 Agent 能成长。</p>
+</blockquote>
+<p>给你的 Agent 装个”硬盘”吧。</p>
+<hr>
+<h2 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h2><ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.openclaw.ai/">OpenClaw 文档</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/openclaw/openviking">OpenViking GitHub</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://huggingface.co/BAAI/bge-small-zh-v1.5">BGE Embedding 模型</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://stxl117.top">胖小天</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://stxl117.top/2026/03/19/openclaw_5/">https://stxl117.top/2026/03/19/openclaw_5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://stxl117.top" target="_blank">胖小天</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/openclaw%E5%AE%9E%E8%B7%B5/">openclaw实践</a><a class="post-meta__tags" href="/tags/Agent%E5%AD%A6%E4%B9%A0/">Agent学习</a></div><div class="post_share"><div class="social-share" data-image="/images/timg.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wx.jpg" target="_blank"><img class="post-qr-code-img" src="/images/wx.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/images/zfb.jpg" target="_blank"><img class="post-qr-code-img" src="/images/zfb.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2026/03/19/openclaw_6/" title="OpenClaw Memory 深度解析"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">OpenClaw Memory 深度解析</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2026/03/05/openclaw_1/" title="养龙虾——让 AI 真正认识你"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-05</div><div class="title">养龙虾——让 AI 真正认识你</div></div></a></div><div><a href="/2026/03/06/openclaw_2/" title="训龙虾——打造你的 AI 分身"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-06</div><div class="title">训龙虾——打造你的 AI 分身</div></div></a></div><div><a href="/2026/03/12/openclaw_3/" title="一个人就是一个团队——OpenClaw 多 Agent 协作实战指南"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-12</div><div class="title">一个人就是一个团队——OpenClaw 多 Agent 协作实战指南</div></div></a></div><div><a href="/2026/03/14/openclaw_4/" title="OpenClaw 安全架构白皮书：从威胁模型到防御实践"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-14</div><div class="title">OpenClaw 安全架构白皮书：从威胁模型到防御实践</div></div></a></div><div><a href="/2026/03/19/openclaw_6/" title="OpenClaw Memory 深度解析"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-19</div><div class="title">OpenClaw Memory 深度解析</div></div></a></div><div><a href="/2026/03/10/agent_protocol/" title="AI Agent 的 USB-C —— 一文读懂四大协议"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-10</div><div class="title">AI Agent 的 USB-C —— 一文读懂四大协议</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/timg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">胖小天</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/skystmm"><i class="fab fa-github"></i><span>github主页</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/skystmm" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://www.xiaohongshu.com/user/profile/5e5e56c90000000001005e5b?xhsshare=CopyLink&amp;appuid=5e5e56c90000000001005e5b&amp;apptime=1719056661&amp;share_id=dd68814526c447bb8acab7a682b84af9" rel="external nofollow noreferrer" target="_blank" title="小红书"><i class="iconfont icon-xiaohongshu" style="color: #FF0000;"></i></a><a class="social-icon" href="https://500px.com.cn/skystmm" rel="external nofollow noreferrer" target="_blank" title="500px"><i class="iconfont icon-px"></i></a><a class="social-icon" href="https://v.douyin.com/i68XehFV/" rel="external nofollow noreferrer" target="_blank" title="抖音"><i class="iconfont icon-douyinzhanghao"></i></a><a class="social-icon" href="mailto:stskymm@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">一切随缘，着力即差 <p> 听雨等风看世界，做人行事过生活<p> ⌨️互联网码农，有限的生命中探索更多可能性 <p>📷风光摄影|人像学习ing<p>🙌🏻乐高机械组拼装<p>🐾夜游西湖爱好者<p>🚲十年后再入坑的老菜腿</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%97%AE%E9%A2%98%EF%BC%9AAI-%E7%9A%84%E2%80%9D%E5%A4%B1%E5%BF%86%E7%97%87%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">一、问题：AI 的”失忆症”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E8%AE%B0%E5%BF%86"><span class="toc-number">1.1.</span> <span class="toc-text">两种记忆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%96%B9%E6%A1%88%EF%BC%9A%E4%B8%A4%E5%B1%82%E8%AE%B0%E5%BF%86%E6%9E%B6%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">二、方案：两层记忆架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81OpenViking%EF%BC%9A%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%A0%B8%E5%BF%83"><span class="toc-number">3.</span> <span class="toc-text">三、OpenViking：记忆系统的核心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%91%E9%87%8F%E5%8C%96%E5%AD%98%E5%82%A8"><span class="toc-number">3.1.</span> <span class="toc-text">1. 向量化存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%AD%E4%B9%89%E6%A3%80%E7%B4%A2"><span class="toc-number">3.2.</span> <span class="toc-text">2. 语义检索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%87%AA%E5%8A%A8%E9%97%AD%E7%8E%AF"><span class="toc-number">3.3.</span> <span class="toc-text">3. 自动闭环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%88%98%EF%BC%9A%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">四、实战：安装与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85"><span class="toc-number">4.1.</span> <span class="toc-text">快速安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E4%B8%8E%E9%AA%8C%E8%AF%81"><span class="toc-number">4.2.</span> <span class="toc-text">启动与验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E9%9B%B6%E6%88%90%E6%9C%AC%E6%96%B9%E6%A1%88%EF%BC%9AHugging-Face-Space"><span class="toc-number">5.</span> <span class="toc-text">五、零成本方案：Hugging Face Space</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94"><span class="toc-number">5.1.</span> <span class="toc-text">方案对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E5%88%86%E9%92%9F%E6%90%AD%E5%BB%BA"><span class="toc-number">5.2.</span> <span class="toc-text">五分钟搭建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AE%83%E6%AF%94%E4%BD%A0%E6%83%B3%E7%9A%84%E6%9B%B4%E5%BC%BA"><span class="toc-number">6.</span> <span class="toc-text">六、高级功能：为什么它比你想的更强</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E6%A3%80%E7%B4%A2%EF%BC%9ADense-Sparse-Vector"><span class="toc-number">6.1.</span> <span class="toc-text">混合检索：Dense + Sparse Vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E8%A1%B0%E5%87%8F%EF%BC%9A%E6%96%B0%E4%BF%A1%E6%81%AF%E6%9B%B4%E9%87%8D%E8%A6%81"><span class="toc-number">6.2.</span> <span class="toc-text">时间衰减：新信息更重要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Session-%E9%9A%94%E7%A6%BB%EF%BC%9A%E5%AE%89%E5%85%A8%E7%AC%AC%E4%B8%80"><span class="toc-number">6.3.</span> <span class="toc-text">Session 隔离：安全第一</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%AF%B9%E6%AF%94%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89-OpenClaw-OpenViking"><span class="toc-number">7.</span> <span class="toc-text">七、对比：为什么选 OpenClaw + OpenViking</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">八、总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90"><span class="toc-number">9.</span> <span class="toc-text">相关资源</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/19/openclaw_5/" title="OpenClaw + OpenViking：给你的 AI Agent 装上&quot;长期记忆&quot;">OpenClaw + OpenViking：给你的 AI Agent 装上&quot;长期记忆&quot;</a><time datetime="2026-03-18T16:00:00.000Z" title="发表于 2026-03-19 00:00:00">2026-03-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/19/openclaw_6/" title="OpenClaw Memory 深度解析">OpenClaw Memory 深度解析</a><time datetime="2026-03-18T16:00:00.000Z" title="发表于 2026-03-19 00:00:00">2026-03-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/14/openclaw_4/" title="OpenClaw 安全架构白皮书：从威胁模型到防御实践">OpenClaw 安全架构白皮书：从威胁模型到防御实践</a><time datetime="2026-03-13T16:00:00.000Z" title="发表于 2026-03-14 00:00:00">2026-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/12/openclaw_3/" title="一个人就是一个团队——OpenClaw 多 Agent 协作实战指南">一个人就是一个团队——OpenClaw 多 Agent 协作实战指南</a><time datetime="2026-03-11T16:00:00.000Z" title="发表于 2026-03-12 00:00:00">2026-03-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/10/agent_protocol/" title="AI Agent 的 USB-C —— 一文读懂四大协议">AI Agent 的 USB-C —— 一文读懂四大协议</a><time datetime="2026-03-09T16:00:00.000Z" title="发表于 2026-03-10 00:00:00">2026-03-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2026 By 胖小天</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href="http://www.beian.gov.cn/" rel="external nofollow noreferrer" target="_blank">浙ICP备20016472号-1</a> | <a href="/privacy/" id="GrKSpPglkahcmqg2S13lrWGbg6c">隐私政策</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
